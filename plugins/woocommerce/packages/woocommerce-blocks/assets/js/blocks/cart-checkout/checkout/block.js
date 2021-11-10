@@ -10,6 +10,7 @@ import {
 	ReturnToCartButton,
 } from '@woocommerce/base-components/cart-checkout';
 import {
+	CheckoutProvider,
 	useCheckoutContext,
 	useEditorContext,
 	useValidationContext,
@@ -32,6 +33,20 @@ import CheckoutOrderError from './checkout-order-error';
 import { CheckoutExpressPayment } from '../payment-methods';
 import { LOGIN_TO_CHECKOUT_URL } from './utils';
 import './style.scss';
+
+/**
+ * Renders the Checkout block wrapped within the CheckoutProvider.
+ *
+ * @param {Object} props Component props.
+ * @return {*} The component.
+ */
+const Block = ( props ) => {
+	return (
+		<CheckoutProvider>
+			<Checkout { ...props } />
+		</CheckoutProvider>
+	);
+};
 
 /**
  * Main Checkout Component.
@@ -148,4 +163,4 @@ const Checkout = ( { attributes, scrollToTop } ) => {
 	);
 };
 
-export default withScrollToTop( Checkout );
+export default withScrollToTop( Block );

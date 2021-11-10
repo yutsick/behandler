@@ -4,11 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { Icon, card } from '@woocommerce/icons';
 import classnames from 'classnames';
-import {
-	registerFeaturePluginBlockType,
-	isExperimentalBuild,
-} from '@woocommerce/block-settings';
-import { createBlock } from '@wordpress/blocks';
+import { registerFeaturePluginBlockType } from '@woocommerce/block-settings';
 
 /**
  * Internal dependencies
@@ -16,36 +12,6 @@ import { createBlock } from '@wordpress/blocks';
 import edit from './edit';
 import blockAttributes from './attributes';
 import './editor.scss';
-
-const transforms = isExperimentalBuild()
-	? {
-			transforms: {
-				from: [
-					{
-						type: 'block',
-						blocks: [ 'woocommerce/checkout' ],
-						transform: ( attributes ) => {
-							return createBlock( 'woocommerce/checkout', {
-								attributes,
-							} );
-						},
-					},
-				],
-				to: [
-					{
-						type: 'block',
-						blocks: [ 'woocommerce/checkout-i2' ],
-						transform: ( attributes ) => {
-							return createBlock(
-								'woocommerce/checkout-i2',
-								attributes
-							);
-						},
-					},
-				],
-			},
-	  }
-	: {};
 
 const settings = {
 	title: __( 'Checkout', 'woocommerce' ),
@@ -80,7 +46,6 @@ const settings = {
 			/>
 		);
 	},
-	...transforms,
 };
 
 registerFeaturePluginBlockType( 'woocommerce/checkout', settings );

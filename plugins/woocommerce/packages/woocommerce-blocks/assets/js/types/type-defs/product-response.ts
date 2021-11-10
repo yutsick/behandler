@@ -1,3 +1,5 @@
+/* eslint-disable camelcase -- API responses have camelcase properties */
+
 /**
  * Internal dependencies
  */

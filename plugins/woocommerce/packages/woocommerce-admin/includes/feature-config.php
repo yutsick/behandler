@@ -6,6 +6,8 @@ if ( ! function_exists( 'wc_admin_get_feature_config' ) ) {
 		return array(
 			'activity-panels' => true,
 			'analytics' => true,
+			'analytics-dashboard' => true,
+			'analytics-dashboard/customizable' => true,
 			'coupons' => true,
 			'customer-effort-score-tracks' => true,
 			'homescreen' => true,
@@ -15,13 +17,14 @@ if ( ! function_exists( 'wc_admin_get_feature_config' ) ) {
 			'navigation' => false,
 			'onboarding' => true,
 			'remote-inbox-notifications' => true,
-			'remote-free-extensions' => true,
-			'payment-gateway-suggestions' => true,
+			'remote-extensions-list' => true,
+			'payment-gateway-suggestions' => false,
 			'settings' => false,
 			'shipping-label-banner' => true,
 			'store-alerts' => true,
-			'tasks' => false,
 			'transient-notices' => true,
+			'wcpay' => true,
+			'wcpay/support-international-countries' => true,
 		);
 	}
 }

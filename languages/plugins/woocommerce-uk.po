@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-11-07 15:21:18+0000\n"
+"PO-Revision-Date: 2021-10-14 09:14:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,173 +11,19 @@ msgstr ""
 "Language: uk_UA\n"
 "Project-Id-Version: Plugins - WooCommerce - Stable (latest release)\n"
 
-#: packages/woocommerce-blocks/assets/js/blocks/cart-checkout/checkout-i2/inner-blocks/checkout-sample-block/block.json
-msgctxt "block description"
-msgid "An example block showing how to integrate with Checkout i2."
-msgstr "Приклад блоку, який показує, як інтегруватися з Checkout i2."
-
-#: packages/woocommerce-blocks/assets/js/blocks/cart-checkout/checkout-i2/inner-blocks/checkout-sample-block/block.json
-msgctxt "block title"
-msgid "Checkout Sample Block"
-msgstr "Приклад блоку оформлення замовлення"
-
-#: packages/woocommerce-blocks/src/StoreApi/Schemas/ProductCollectionDataSchema.php:102
-msgid "Returns number of products with each stock status."
-msgstr "Повертає кількість товарів із кожним статусом запасу."
-
-#: packages/woocommerce-blocks/src/StoreApi/Routes/ProductCollectionData.php:167
-msgid "If true, calculates stock counts for products in the collection."
-msgstr "Якщо true, буде обчислено кількість запасів товарів в колекції."
-
-#: packages/woocommerce-blocks/src/InboxNotifications.php:131
-msgid "Increase your store's revenue with the conversion optimized Cart & Checkout WooCommerce blocks available in the WooCommerce Blocks extension."
-msgstr "Збільште дохід свого магазину за допомогою оптимізованих для конверсії блоків кошика та оформлення замовлення WooCommerce, доступних в розширенні WooCommerce Blocks."
-
-#: packages/woocommerce-blocks/src/InboxNotifications.php:125
-msgid "Introducing the Cart and Checkout blocks!"
-msgstr "Представляємо блоки кошика та оформлення замовлення!"
-
-#. translators: %d is the number of products in the cart.
-#. translators: %d is the count of items in the cart.
-#: packages/woocommerce-blocks/src/BlockTypes/MiniCart.php:198
-#: packages/woocommerce-blocks/build/mini-cart-component-frontend.js:17
-msgid "%d item"
-msgid_plural "%d items"
-msgstr[0] "%d товар"
-msgstr[1] "%d товари"
-msgstr[2] "%d товарів"
-
-#: packages/woocommerce-admin/src/API/OnboardingTasks.php:864
-msgid "Sorry, no snoozed task with that ID was found."
-msgstr "На жаль, відкладених завдань з таким ID не знайдено."
-
-#: packages/woocommerce-admin/src/API/OnboardingTasks.php:827
-msgid "Sorry, no snoozeable task with that ID was found."
-msgstr "На жаль, завдань з таким ID, які можна відкласти, не знайдено."
-
-#: packages/woocommerce-admin/src/API/OnboardingTasks.php:762
-msgid "Sorry, no dismissable task with that ID was found."
-msgstr "На жаль, завдань з таким ID, які можна закрити, не знайдено."
-
-#: packages/woocommerce-admin/src/API/OnboardingTasks.php:256
-msgid "Sorry, you are not allowed to snooze onboarding tasks."
-msgstr "На жаль, вам не дозволено відкладати завдання по адаптацію."
-
-#: packages/woocommerce-admin/src/API/OnboardingTasks.php:242
-msgid "Sorry, you are not allowed to retrieve onboarding tasks."
-msgstr "На жаль, вам не дозволено отримувати завдання по адаптації."
-
-#: packages/woocommerce-admin/src/API/OnboardingTasks.php:165
-msgid "Optional parameter to query specific task list."
-msgstr "Необов'язковий параметр для запиту певного списку завдань."
-
-#: packages/woocommerce-admin/src/API/OnboardingTasks.php:158
-msgid "Time period to snooze the task."
-msgstr "Термін відкладання завдання."
-
-#: packages/woocommerce-admin/src/API/OnboardingProfile.php:419
-msgid "Store email address."
-msgstr "Email магазину."
-
-#: packages/woocommerce-admin/src/API/OnboardingProfile.php:412
-msgid "Whether or not this store agreed to receiving marketing contents from WooCommerce.com."
-msgstr "Незалежно від того, чи погодився цей магазин на отримання маркетингового контенту від WooCommerce.com."
-
-#: includes/rest-api/Controllers/Version3/class-wc-rest-crud-controller.php:606
-msgid "Whether to consider GMT post dates when limiting response by published or modified date."
-msgstr "Чи слід враховувати дати запису за GMT при обмеженні відповіді за датою публікації чи зміною."
-
-#: includes/rest-api/Controllers/Version3/class-wc-rest-crud-controller.php:600
-msgid "Limit response to resources modified before a given ISO8601 compliant date."
-msgstr "Обмежити відповідь для ресурсів, змінених до зазначеної дати у форматі ISO8601."
-
-#: includes/rest-api/Controllers/Version3/class-wc-rest-crud-controller.php:594
-msgid "Limit response to resources modified after a given ISO8601 compliant date."
-msgstr "Обмежити відповідь для ресурсів, змінених після зазначеної дати у форматі ISO8601."
-
-#: includes/class-wc-post-types.php:347
-msgid "This is where you can browse products in this store."
-msgstr "Тут ви можете переглядати товари цього магазину."
-
-#: includes/admin/class-wc-admin-assets.php:312
-msgid "Are you sure you want to remove the selected shipping?"
-msgstr "Ви впевнені, що хочете видалити вибрану доставку?"
-
-#: includes/admin/class-wc-admin-assets.php:311
-msgid "Are you sure you want to remove the selected fees?"
-msgstr "Ви впевнені, що хочете видалити вибрані збори?"
-
-#: packages/woocommerce-admin/src/Features/OnboardingTasks.php:722
-#: packages/woocommerce-admin/dist/chunks/task-list.js:1
-msgid "Add recommended marketing tools to reach new customers and grow your business"
-msgstr "Додайте рекомендовані маркетингові інструменти для залучення нових клієнтів та розвитку вашого бізнесу"
-
-#: packages/woocommerce-admin/src/Features/OnboardingTasks.php:721
-#: packages/woocommerce-admin/dist/chunks/task-list.js:1
-msgid "Set up marketing tools"
-msgstr "Налаштування маркетингових інструментів"
-
-#: packages/woocommerce-blocks/src/Domain/Bootstrap.php:129
-msgid "The WooCommerce Blocks feature plugin requires a more recent version of WooCommerce and has been paused. Please update WooCommerce to the latest version to continue enjoying WooCommerce Blocks."
-msgstr "Плагін WooCommerce Blocks потребує більш нової версії WooCommerce, тому його робота була призупинена. Будь ласка, оновіть WooCommerce до останньої версії, щоб продовжити використання WooCommerce Blocks."
-
-#: packages/woocommerce-blocks/src/BlockTypes/CheckoutI2.php:237
-msgid "Locations outside all other zones"
-msgstr "Місця за межами всіх інших зон"
-
-#: packages/woocommerce-blocks/src/BlockTypes/CheckoutI2.php:236
-msgid "International"
-msgstr "Міжнародна"
-
-#. translators: %1$s is an open anchor tag (<a>) and %2$s is a close link tag
-#. (</a>).
-#: packages/woocommerce-admin/src/Notes/AddFirstProduct.php:67
-msgid "%1$1sExplore our docs%2$2s for more information, or just get started!"
-msgstr "%1$1sПерегляньте наші документи%2$2s для отримання додаткової інформації або просто розпочніть роботу!"
-
-#: packages/woocommerce-admin/src/Features/RemoteFreeExtensions/DefaultFreeExtensions.php:351
-msgid "Google Ads & Marketing by Kliken"
-msgstr "Реклама і маркетинг Google від Kliken"
-
-#: packages/woocommerce-admin/src/Features/RemoteFreeExtensions/DefaultFreeExtensions.php:320
-msgid "Reach out to customers"
-msgstr "Звернутися до клієнтів"
-
 #. translators: 1: opening product link tag. 2: closing link tag
 #: packages/woocommerce-admin/src/Features/RemoteFreeExtensions/DefaultFreeExtensions.php:299
 msgid "Level up your email marketing with %1$sMailPoet%2$s"
 msgstr "Підвищіть свій рівень Email-маркетингу з %1$sMailPoet%2$s"
 
 #. translators: 1: opening product link tag. 2: closing link tag
-#: packages/woocommerce-admin/src/Features/RemoteFreeExtensions/DefaultFreeExtensions.php:277
-msgid "Enhance speed and security with %1$sJetpack%2$s"
-msgstr "Підвищте швидкість та безпеку за допомогою %1$sJetpack%2$s"
-
-#. translators: 1: opening product link tag. 2: closing link tag
-#: packages/woocommerce-admin/src/Features/RemoteFreeExtensions/DefaultFreeExtensions.php:197
-msgid "Get automated sales tax with %1$sWooCommerce Tax%2$s"
-msgstr "Автоматично отримуйте розрахунок податку з продажів із %1$sWooCommerce Tax%2$s"
-
-#. translators: 1: opening product link tag. 2: closing link tag
 #: packages/woocommerce-admin/src/Features/RemoteFreeExtensions/DefaultFreeExtensions.php:130
 msgid "Print shipping labels with %1$sWooCommerce Shipping%2$s"
 msgstr "Друкуйте етикетки доставки за допомогою %1$sWooCommerce Shipping%2$s"
 
-#: includes/class-wc-countries.php:1410
-msgid "ZIP Code"
-msgstr "Поштовий індекс"
-
-#: includes/class-wc-countries.php:1116
-msgid "PIN"
-msgstr "Індекс"
-
 #: includes/admin/views/html-admin-page-addons.php:132
 msgid "View details"
 msgstr "Переглянути деталі"
-
-#: includes/admin/views/html-admin-page-addons.php:129
-msgid "per year"
-msgstr "за рік"
 
 #: includes/admin/views/html-admin-page-addons.php:29
 msgid "Search for extensions"
@@ -186,10 +32,6 @@ msgstr "Пошук розширень"
 #: includes/admin/views/html-admin-page-addons.php:23
 msgid "Grow your business with hundreds of free and paid WooCommerce extensions."
 msgstr "Розвивайте свій бізнес за допомогою сотень безкоштовних та платних розширень WooCommerce."
-
-#: includes/admin/views/html-admin-page-addons.php:14
-msgid "Browse Categories"
-msgstr "Перегляд категорій"
 
 #: includes/admin/class-wc-admin-menus.php:156
 msgid "My WooCommerce.com Subscriptions"
@@ -295,15 +137,6 @@ msgstr "Волинська область"
 #: i18n/states.php:1599
 msgid "Vinnytsia Oblast"
 msgstr "Вінницька область"
-
-#. translators: 1: opening analytics docs link tag. 2: closing link tag
-#: packages/woocommerce-admin/src/Notes/UnsecuredReportFiles.php:37
-msgid "Files that may contain %1$sstore analytics%2$s reports were found in your uploads directory - we recommend assessing and deleting any such files."
-msgstr "У вашому каталозі завантажень виявлено файли, які можуть містити звіти %1$sаналітики магазину%2$s. Ми рекомендуємо переглядати та видаляти всі подібні файли."
-
-#: packages/woocommerce-admin/src/Notes/UnsecuredReportFiles.php:33
-msgid "Potentially unsecured files were found in your uploads directory"
-msgstr "У вашій директорії завантажень виявлено потенційно незахищені файли"
 
 #: src/Internal/ProductAttributesLookup/LookupDataStore.php:106
 msgid "Update the table directly upon product changes, instead of scheduling a deferred update."
@@ -617,12 +450,6 @@ msgstr "Посилання на категорію товару."
 #: includes/class-wc-post-types.php:107
 msgid "Product Category Link"
 msgstr "Посилання категорії товару"
-
-#. translators: %1$s: Link to WP Mail Logging plugin, %2$s: Link to Email FAQ
-#. support page.
-#: includes/admin/settings/class-wc-settings-emails.php:50
-msgid "To ensure your store&rsquo;s notifications arrive in your and your customers&rsquo; inboxes, we recommend connecting your email address to your domain and setting up a dedicated SMTP server. If something doesn&rsquo;t seem to be sending correctly, install the <a href=\"%1$s\">WP Mail Logging Plugin</a> or check the <a href=\"%2$s\">Email FAQ page</a>."
-msgstr "Щоб листи з повідомленнями магазину надходили вам та вашим клієнтам, рекомендуємо підключити адресу електронної пошти до вашого домену та налаштувати виділений SMTP-сервер. Якщо схоже, що повідомлення не надсилаються коректно, встановіть <a href=\"%1$s\">плагін реєстрації пошти WP</a> або перегляньте <a href=\"%2$s\">сторінку поширених питань по електронній пошті</а>."
 
 #: i18n/states.php:1845
 msgid "Delta Amacuro"
@@ -2096,15 +1923,6 @@ msgctxt "district"
 msgid "Belgrade"
 msgstr "Белград"
 
-#. translators: 1: opening product link tag. 2: closing link tag
-#: packages/woocommerce-admin/src/Features/RemoteFreeExtensions/DefaultFreeExtensions.php:32
-msgid "Accept credit cards with %1$sWooCommerce Payments%2$s"
-msgstr "Прийом платежів з банківських карток за допомогою %1$sWooCommerce Payments%2$s"
-
-#: packages/woocommerce-admin/src/Features/RemoteFreeExtensions/DefaultFreeExtensions.php:352
-msgid "Get in front of shoppers and drive traffic so you can grow your business with Smart Shopping Campaigns and free listings."
-msgstr "Прогнозуйте потреби покупців і залучайте відвідувачів на свій сайт за допомогою компаній Smart Shopping і безкоштовних оголошень для розширення бізнесу."
-
 #: packages/woocommerce-admin/src/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:215
 msgid "eWAY"
 msgstr "eWAY"
@@ -3408,10 +3226,6 @@ msgstr "Назва атрибута таксономії."
 msgid "Add to cart URL."
 msgstr "URL Додати у кошик."
 
-#: packages/woocommerce-blocks/src/StoreApi/Schemas/ProductSchema.php:372
-msgid "Is the product stock backordered? This will also return false if backorder notifications are turned off."
-msgstr "Запаси товару відносяться до невиконаного замовлення? Також дасть помилковий результат, якщо вимкнені повідомлення про невиконане замовлення."
-
 #: packages/woocommerce-blocks/src/StoreApi/Schemas/ProductSchema.php:354
 msgid "Does the product have additional options before it can be added to the cart?"
 msgstr "Чи має товар додаткові параметри, які можна налаштувати перед додаванням його в кошик?"
@@ -3879,10 +3693,6 @@ msgstr "%1$s вимагає екземпляр %2$s або %3$s для адре�
 #: packages/woocommerce-blocks/src/StoreApi/Schemas/AbstractAddressSchema.php:72
 msgid "Country/Region code in ISO 3166-1 alpha-2 format."
 msgstr "Код країни/регіону у форматі ISO 3166-1 alpha-2."
-
-#: packages/woocommerce-blocks/src/StoreApi/Schemas/AbstractAddressSchema.php:60
-msgid "State/County code, or name of the state, county, province, or district."
-msgstr "Код області/регіону або назва області, району чи провінції."
 
 #: packages/woocommerce-blocks/src/StoreApi/Schemas/AbstractAddressSchema.php:48
 #: packages/woocommerce-blocks/src/StoreApi/Utilities/OrderController.php:336
@@ -5040,10 +4850,6 @@ msgstr "Якщо вам потрібно знову увімкнути або в
 msgid "Profile Setup Wizard"
 msgstr "Майстер налаштування облікового запису"
 
-#: packages/woocommerce-admin/src/Features/Onboarding.php:796
-msgid "WooCommerce Onboarding"
-msgstr "WooCommerce Onboarding"
-
 #. translators: site currency symbol (used to show that the product costs
 #. money)
 #: packages/woocommerce-admin/src/Features/Onboarding.php:626
@@ -5496,11 +5302,6 @@ msgstr "Обмежити результат об'єктами, виключаю�
 #: packages/woocommerce-admin/src/API/Reports/Customers/Stats/Controller.php:222
 msgid "Limit response to objects with specfic names."
 msgstr "Обмежити результат об'єктами з конкретними назвами."
-
-#: packages/woocommerce-admin/src/API/Reports/Customers/Controller.php:404
-#: packages/woocommerce-admin/src/API/Reports/Customers/Stats/Controller.php:207
-msgid "Limit response to objects with a customer field containing the search term. Searches the field provided by `searchby`."
-msgstr "Обмежити результат об'єктами, у яких настроюване поле містить критерій пошуку. Пошук у полі, наданому \"searchby\"."
 
 #: packages/woocommerce-admin/src/API/Reports/Customers/Controller.php:345
 msgid "Limit response to resources with orders published before a given ISO8601 compliant date."
@@ -10647,7 +10448,7 @@ msgstr "Ми приймаємо платежі через PayPal. Під час 
 
 #: includes/class-wc-privacy.php:124
 msgid "In this subsection you should list which third party payment processors you’re using to take payments on your store since these may handle customer data. We’ve included PayPal as an example, but you should remove this if you’re not using PayPal."
-msgstr "В цьому розділі вам необхідно вказати, послугами яких сторонніх платіжних сервісів ви користуєтеся для прийому платежів у своєму магазині, так як ці сервіси можуть обробляти дані покупців. Ми навели відомості про використання PayPal як приклад. Якщо ви не користуєтеся послугами PayPal, цей текст необхідно видалити."
+msgstr "В цьому розділі ви повинні вказати, які інші процесори платежів ви використовуєте для оплат у Вашому магазині, оскільки вони можуть обробляти дані клієнта. Ми включили PayPal в приклад, але ви повинні видалити це, якщо ви не використовуєте PayPal."
 
 #: includes/class-wc-privacy.php:121
 msgid "We share information with third parties who help us provide our orders and store services to you; for example --"
@@ -14235,10 +14036,6 @@ msgstr "Створити новий вебхук"
 msgid "Webhooks are event notifications sent to URLs of your choice. They can be used to integrate with third-party services which support them."
 msgstr "Webhooks - це повідомлення про події, які надсилаються на Ваші обрані URL-адреси. Їх можна використовувати для інтеграції з сторонніми послугами, які їх підтримують."
 
-#: packages/woocommerce-admin/src/Features/PaymentGatewaySuggestions/DefaultPaymentGateways.php:137
-msgid "Safe and secure payments using credit cards or your customer's PayPal account."
-msgstr "Надійні та безпечні платежі за допомогою кредитних карт або PayPal."
-
 #: includes/admin/class-wc-admin-profile.php:99
 msgid "Copy from billing address"
 msgstr "Копіювати з платіжної адреси"
@@ -14336,17 +14133,9 @@ msgstr "Вранча"
 msgid "Vaslui"
 msgstr "Васлуй"
 
-#: i18n/states.php:1361
-msgid "Vâlcea"
-msgstr "Вилча"
-
 #: i18n/states.php:1360
 msgid "Tulcea"
 msgstr "Тулча"
-
-#: i18n/states.php:1359
-msgid "Timiș"
-msgstr "Тіміш"
 
 #: i18n/states.php:1358
 msgid "Teleorman"
@@ -14364,10 +14153,6 @@ msgstr "Сібіу"
 msgid "Satu Mare"
 msgstr "Сату-Маре"
 
-#: i18n/states.php:1354
-msgid "Sălaj"
-msgstr "Селаж"
-
 #: i18n/states.php:1353
 msgid "Prahova"
 msgstr "Прахова"
@@ -14376,29 +14161,9 @@ msgstr "Прахова"
 msgid "Olt"
 msgstr "Олт"
 
-#: i18n/states.php:1351
-msgid "Neamț"
-msgstr "Нямц"
-
-#: i18n/states.php:1350
-msgid "Mureș"
-msgstr "Муреш"
-
-#: i18n/states.php:1349
-msgid "Mehedinți"
-msgstr "Мехедінць"
-
-#: i18n/states.php:1348
-msgid "Maramureș"
-msgstr "Марамуреш"
-
 #: i18n/states.php:1347
 msgid "Ilfov"
 msgstr "Ілфов"
-
-#: i18n/states.php:1345
-msgid "Ialomița"
-msgstr "Яломіца"
 
 #: i18n/states.php:1344
 msgid "Hunedoara"
@@ -14416,10 +14181,6 @@ msgstr "Горж"
 msgid "Giurgiu"
 msgstr "Джурджу"
 
-#: i18n/states.php:1340
-msgid "Galați"
-msgstr "Галац"
-
 #: i18n/states.php:1339
 msgid "Dolj"
 msgstr "Долж"
@@ -14428,53 +14189,13 @@ msgstr "Долж"
 msgid "Covasna"
 msgstr "Ковасна"
 
-#: i18n/states.php:1336
-msgid "Constanța"
-msgstr "Констанца"
-
 #: i18n/states.php:1335
 msgid "Cluj"
 msgstr "Клуж"
 
-#: i18n/states.php:1334
-msgid "Caraș-Severin"
-msgstr "Караш-Северін"
-
-#: i18n/states.php:1332
-msgid "Buzău"
-msgstr "Бузеу"
-
-#: i18n/states.php:1331
-msgid "București"
-msgstr "Бухарест"
-
-#: i18n/states.php:1330
-msgid "Brașov"
-msgstr "Брашов"
-
-#: i18n/states.php:1329
-msgid "Brăila"
-msgstr "Браїла"
-
-#: i18n/states.php:1328
-msgid "Botoșani"
-msgstr "Ботошані"
-
-#: i18n/states.php:1327
-msgid "Bistrița-Năsăud"
-msgstr "Бистриця-Несеуд"
-
 #: i18n/states.php:1326
 msgid "Bihor"
 msgstr "Біхор"
-
-#: i18n/states.php:1325
-msgid "Bacău"
-msgstr "Бакеу"
-
-#: i18n/states.php:1324
-msgid "Argeș"
-msgstr "Арджеш"
 
 #: i18n/states.php:1323
 msgid "Arad"
@@ -27597,7 +27318,7 @@ msgstr "Цього місяця"
 #: includes/admin/reports/class-wc-report-taxes-by-date.php:51
 #: packages/woocommerce-admin/dist/date/index.js:1
 msgid "Last month"
-msgstr "Минулий місяць"
+msgstr "Минулого місяця"
 
 #: includes/admin/reports/class-wc-report-coupon-usage.php:133
 #: includes/admin/reports/class-wc-report-customers.php:170
@@ -29270,11 +28991,6 @@ msgstr "Ваші зміни збережено."
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:611
 msgid "There was an error calling %s"
 msgstr "Сталася помилка виклику %s"
-
-#. translators: %1$s: callback string, %2$s: error message
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:589
-msgid "There was an error calling %1$s: %2$s"
-msgstr "Сталася помилка виклику %1$s: %2$s"
 
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:533
 msgid "Tax rates successfully deleted"

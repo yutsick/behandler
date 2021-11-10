@@ -246,6 +246,10 @@
             font-size: 16px;
             line-height: 19px;
             color: #361D32;
+
+            &.text-limit-150 {
+                min-height: 115px;
+            }
         }
 
         fieldset {
@@ -611,6 +615,87 @@
         }
     }
 }
+
+.btn {
+    height: 57px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 0.3s ease;
+
+    &-line-dark {
+        color: #361D32;
+        border: 1px solid #361D32;
+        background: transparent;
+
+        &[type="submit"] {
+            color: #361D32;
+            border: 1px solid #361D32;
+            background: transparent;
+        }
+    
+        &:hover,
+        &[type="submit"]:hover {
+            background-color: #361D32;
+            color: #fff;
+        }
+    }
+    
+    &-accent {
+        color: #F55951;
+        background: transparent;
+        border: 1px solid #F55951;
+
+        &[type="submit"],
+        &[type="submit"]:hover {
+            color: #F55951;
+            background: transparent;
+            border: 1px solid #F55951;
+        }
+    }
+
+    &-group {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.rz-modal-footer .btn,
+.rz-modal-footer input.btn {
+    height: 57px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.form-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &_space-between {
+        justify-content: space-between;
+    }
+
+    &_input-min-number {
+        width: 95px;
+
+        input,
+        input[type=number] {
+            width: 95px;
+        }
+    }
+}
+
+
+
 
 @media screen and (max-width: 1200px) {
     .admin-bar .brk-mobile-header {

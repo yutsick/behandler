@@ -7,7 +7,6 @@ import {
 	useCheckoutContext,
 	useShippingDataContext,
 } from '@woocommerce/base-context';
-import { useCheckoutSubmit } from '@woocommerce/base-context/hooks';
 
 /**
  * Internal dependencies
@@ -16,8 +15,11 @@ import CheckoutOrderNotes from './order-notes';
 
 const OrderNotesStep = () => {
 	const { needsShipping } = useShippingDataContext();
-	const { orderNotes, dispatchActions } = useCheckoutContext();
-	const { isDisabled } = useCheckoutSubmit();
+	const {
+		isProcessing: checkoutIsProcessing,
+		orderNotes,
+		dispatchActions,
+	} = useCheckoutContext();
 	const { setOrderNotes } = dispatchActions;
 
 	return (
@@ -25,11 +27,11 @@ const OrderNotesStep = () => {
 			id="order-notes"
 			showStepNumber={ false }
 			className="wc-block-checkout__order-notes"
-			disabled={ isDisabled }
+			disabled={ checkoutIsProcessing }
 		>
 			<CheckoutOrderNotes
+				disabled={ checkoutIsProcessing }
 				onChange={ setOrderNotes }
-				disabled={ isDisabled }
 				placeholder={
 					needsShipping
 						? __(

@@ -13,7 +13,6 @@ import {
 import { useCallback, useEffect, useState, useMemo } from '@wordpress/element';
 import CheckboxList from '@woocommerce/base-components/checkbox-list';
 import DropdownSelector from '@woocommerce/base-components/dropdown-selector';
-import Label from '@woocommerce/base-components/filter-element-label';
 import FilterSubmitButton from '@woocommerce/base-components/filter-submit-button';
 import isShallowEqual from '@wordpress/is-shallow-equal';
 import { decodeEntities } from '@wordpress/html-entities';
@@ -23,6 +22,7 @@ import { decodeEntities } from '@wordpress/html-entities';
  */
 import { getAttributeFromID } from '../../utils/attributes';
 import { updateAttributeFilter } from '../../utils/attributes-query';
+import Label from './label';
 import { previewAttributeObject, previewOptions } from './preview';
 import './style.scss';
 
@@ -161,6 +161,13 @@ const AttributeFilterBlock = ( {
 		queryState.attributes,
 	] );
 
+	// Track checked STATE changes - if state changes, update the query.
+	useEffect( () => {
+		if ( ! blockAttributes.showFilterButton ) {
+			onSubmit( checked );
+		}
+	}, [ blockAttributes.showFilterButton, checked, onSubmit ] );
+
 	const checkedQuery = useMemo( () => {
 		return productAttributesQuery
 			.filter(
@@ -178,17 +185,8 @@ const AttributeFilterBlock = ( {
 			! isShallowEqual( checked, currentCheckedQuery ) // checked query doesn't match the UI
 		) {
 			setChecked( currentCheckedQuery );
-			if ( ! blockAttributes.showFilterButton ) {
-				onSubmit( currentCheckedQuery );
-			}
 		}
-	}, [
-		checked,
-		currentCheckedQuery,
-		previousCheckedQuery,
-		onSubmit,
-		blockAttributes.showFilterButton,
-	] );
+	}, [ checked, currentCheckedQuery, previousCheckedQuery ] );
 
 	/**
 	 * Returns an array of term objects that have been chosen via the checkboxes.
@@ -314,17 +312,8 @@ const AttributeFilterBlock = ( {
 			}
 
 			setChecked( newChecked );
-			if ( ! blockAttributes.showFilterButton ) {
-				onSubmit( newChecked );
-			}
 		},
-		[
-			checked,
-			displayedOptions,
-			multiple,
-			onSubmit,
-			blockAttributes.showFilterButton,
-		]
+		[ checked, displayedOptions, multiple ]
 	);
 
 	if ( displayedOptions.length === 0 && ! attributeTermsLoading ) {

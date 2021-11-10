@@ -16,10 +16,6 @@ import { getSetting } from '@woocommerce/settings';
  */
 import './style.scss';
 
-const filteredCartCouponsFilterArg = {
-	context: 'summary',
-};
-
 const TotalsDiscount = ( {
 	cartCoupons = [],
 	currency,
@@ -45,18 +41,12 @@ const TotalsDiscount = ( {
 		? discountValue + discountTaxValue
 		: discountValue;
 
-	const filteredCartCoupons = __experimentalApplyCheckoutFilter( {
-		arg: filteredCartCouponsFilterArg,
-		filterName: 'coupons',
-		defaultValue: cartCoupons,
-	} );
-
 	return (
 		<TotalsItem
 			className="wc-block-components-totals-discount"
 			currency={ currency }
 			description={
-				filteredCartCoupons.length !== 0 && (
+				cartCoupons.length !== 0 && (
 					<LoadingMask
 						screenReaderLabel={ __(
 							'Removing coupon…',
@@ -66,19 +56,30 @@ const TotalsDiscount = ( {
 						showSpinner={ false }
 					>
 						<ul className="wc-block-components-totals-discount__coupon-list">
-							{ filteredCartCoupons.map( ( cartCoupon ) => {
+							{ cartCoupons.map( ( cartCoupon ) => {
+								const filteredCouponCode = __experimentalApplyCheckoutFilter(
+									{
+										arg: {
+											context: 'summary',
+											coupon: cartCoupon,
+										},
+										filterName: 'couponName',
+										defaultValue: cartCoupon.code,
+									}
+								);
+
 								return (
 									<RemovableChip
 										key={ 'coupon-' + cartCoupon.code }
 										className="wc-block-components-totals-discount__coupon-list-item"
-										text={ cartCoupon.label }
+										text={ filteredCouponCode }
 										screenReaderText={ sprintf(
 											/* translators: %s Coupon code. */
 											__(
 												'Coupon: %s',
 												'woocommerce'
 											),
-											cartCoupon.label
+											filteredCouponCode
 										) }
 										disabled={ isRemovingCoupon }
 										onRemove={ () => {
@@ -91,7 +92,7 @@ const TotalsDiscount = ( {
 												'Remove coupon "%s"',
 												'woocommerce'
 											),
-											cartCoupon.label
+											filteredCouponCode
 										) }
 									/>
 								);

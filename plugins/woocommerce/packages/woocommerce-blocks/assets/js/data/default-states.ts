@@ -6,17 +6,6 @@ import type { Cart, CartMeta } from '@woocommerce/types';
 /**
  * Internal dependencies
  */
-import {
-	EMPTY_CART_COUPONS,
-	EMPTY_CART_ITEMS,
-	EMPTY_CART_FEES,
-	EMPTY_CART_ITEM_ERRORS,
-	EMPTY_CART_ERRORS,
-	EMPTY_SHIPPING_RATES,
-	EMPTY_TAX_LINES,
-	EMPTY_PAYMENT_REQUIREMENTS,
-	EMPTY_EXTENSIONS,
-} from './constants';
 import type { ResponseError } from './types';
 
 export interface CartState {
@@ -27,15 +16,12 @@ export interface CartState {
 	errors: Array< ResponseError >;
 }
 
-export const EMPTY_PENDING_QUANTITY: [  ] = [];
-export const EMPTY_PENDING_DELETE: [  ] = [];
-
 export const defaultCartState: CartState = {
-	cartItemsPendingQuantity: EMPTY_PENDING_QUANTITY,
-	cartItemsPendingDelete: EMPTY_PENDING_DELETE,
+	cartItemsPendingQuantity: [],
+	cartItemsPendingDelete: [],
 	cartData: {
-		coupons: EMPTY_CART_COUPONS,
-		shippingRates: EMPTY_SHIPPING_RATES,
+		coupons: [],
+		shippingRates: [],
 		shippingAddress: {
 			first_name: '',
 			last_name: '',
@@ -46,7 +32,6 @@ export const defaultCartState: CartState = {
 			state: '',
 			postcode: '',
 			country: '',
-			phone: '',
 		},
 		billingAddress: {
 			first_name: '',
@@ -61,13 +46,13 @@ export const defaultCartState: CartState = {
 			phone: '',
 			email: '',
 		},
-		items: EMPTY_CART_ITEMS,
+		items: [],
 		itemsCount: 0,
 		itemsWeight: 0,
 		needsShipping: true,
 		needsPayment: false,
 		hasCalculatedShipping: true,
-		fees: EMPTY_CART_FEES,
+		fees: [],
 		totals: {
 			currency_code: '',
 			currency_symbol: '',
@@ -86,11 +71,11 @@ export const defaultCartState: CartState = {
 			total_shipping_tax: '0',
 			total_price: '0',
 			total_tax: '0',
-			tax_lines: EMPTY_TAX_LINES,
+			tax_lines: [],
 		},
-		errors: EMPTY_CART_ITEM_ERRORS,
-		paymentRequirements: EMPTY_PAYMENT_REQUIREMENTS,
-		extensions: EMPTY_EXTENSIONS,
+		errors: [],
+		paymentRequirements: [],
+		extensions: {},
 	},
 	metaData: {
 		updatingCustomerData: false,
@@ -99,5 +84,5 @@ export const defaultCartState: CartState = {
 		removingCoupon: '',
 		isCartDataStale: false,
 	},
-	errors: EMPTY_CART_ERRORS,
+	errors: [],
 };

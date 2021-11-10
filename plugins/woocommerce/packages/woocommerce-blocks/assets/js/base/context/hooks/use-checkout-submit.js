@@ -25,14 +25,8 @@ export const useCheckoutSubmit = () => {
 		hasError,
 	} = useCheckoutContext();
 	const { paymentMethods = {} } = usePaymentMethods();
-	const {
-		activePaymentMethod,
-		currentStatus: paymentStatus,
-	} = usePaymentMethodDataContext();
+	const { activePaymentMethod } = usePaymentMethodDataContext();
 	const paymentMethod = paymentMethods[ activePaymentMethod ] || {};
-	const waitingForProcessing =
-		isProcessing || isAfterProcessing || isBeforeProcessing;
-	const waitingForRedirect = isComplete && ! hasError;
 
 	return {
 		submitButtonText:
@@ -40,8 +34,8 @@ export const useCheckoutSubmit = () => {
 			__( 'Place Order', 'woocommerce' ),
 		onSubmit,
 		isCalculating,
-		isDisabled: isProcessing || paymentStatus.isDoingExpressPayment,
-		waitingForProcessing,
-		waitingForRedirect,
+		waitingForProcessing:
+			isProcessing || isAfterProcessing || isBeforeProcessing,
+		waitingForRedirect: isComplete && ! hasError,
 	};
 };

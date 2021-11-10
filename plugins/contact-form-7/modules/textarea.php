@@ -101,9 +101,7 @@ function wpcf7_textarea_validation_filter( $result, $tag ) {
 	$type = $tag->type;
 	$name = $tag->name;
 
-	$value = isset( $_POST[$name] )
-		? wp_unslash( (string) $_POST[$name] )
-		: '';
+	$value = isset( $_POST[$name] ) ? (string) $_POST[$name] : '';
 
 	if ( $tag->is_required() and '' === $value ) {
 		$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
@@ -118,7 +116,7 @@ function wpcf7_textarea_validation_filter( $result, $tag ) {
 			$maxlength = $minlength = null;
 		}
 
-		$code_units = wpcf7_count_code_units( $value );
+		$code_units = wpcf7_count_code_units( stripslashes( $value ) );
 
 		if ( false !== $code_units ) {
 			if ( $maxlength and $maxlength < $code_units ) {

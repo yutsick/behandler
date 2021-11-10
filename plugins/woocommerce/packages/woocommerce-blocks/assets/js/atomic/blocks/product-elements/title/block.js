@@ -25,7 +25,7 @@ import './style.scss';
  * @param {Object}  props                  Incoming props.
  * @param {string}  [props.className]      CSS Class name for the component.
  * @param {number}  [props.headingLevel]   Heading level (h1, h2 etc)
- * @param {boolean} [props.showProductLink]    Whether or not to display a link to the product page.
+ * @param {boolean} [props.productLink]    Whether or not to display a link to the product page.
  * @param {string}  [props.align]          Title alignment.
  * @param {string}  [props.color]          Title color name.
  * @param {string}  [props.customColor]    Custom title color value.
@@ -37,7 +37,7 @@ import './style.scss';
 export const Block = ( {
 	className,
 	headingLevel = 2,
-	showProductLink = true,
+	productLink = true,
 	align,
 	color,
 	customColor,
@@ -98,10 +98,10 @@ export const Block = ( {
 				className={ classnames( {
 					[ titleClasses ]: isFeaturePluginBuild(),
 				} ) }
-				disabled={ ! showProductLink }
+				disabled={ ! productLink }
 				name={ product.name }
 				permalink={ product.permalink }
-				rel={ showProductLink ? 'nofollow' : null }
+				rel={ productLink ? 'nofollow' : null }
 				style={ gatedStyledText( {
 					color: customColor,
 					fontSize: customFontSize,
@@ -119,7 +119,7 @@ export const Block = ( {
 Block.propTypes = {
 	className: PropTypes.string,
 	headingLevel: PropTypes.number,
-	showProductLink: PropTypes.bool,
+	productLink: PropTypes.bool,
 	align: PropTypes.string,
 	color: PropTypes.string,
 	customColor: PropTypes.string,

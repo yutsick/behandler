@@ -87,6 +87,7 @@ global $step;
                         </div>
                     </div> -->
               
+
                     <form method="post" action="/form_wizard_step/" class="woocommerce-form woocommerce-form-register register" >
                         <input type="hidden" value="first" name="step">
                         <?php 

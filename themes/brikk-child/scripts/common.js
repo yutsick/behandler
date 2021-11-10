@@ -111,15 +111,17 @@ jQuery(document).ready(function () {
 
 
   //Textarea limit display
-  function textLimitDisplay(input, limit) {
+  function textLimitDisplay(input) {
     $.each(input, (i,l) => {
+      let limit = $(l).attr('maxlength');
       $(l).closest('form').find('.text-limit-result').text($(l).val().length + "/" + limit);
       $(l).on('input', () => {
         $(l).closest('form').find('.text-limit-result').text($(l).val().length + "/" + limit);
       })
     });
   }
-  textLimitDisplay($('.text-limit'), 600);
+  textLimitDisplay($('.text-limit'));
+  textLimitDisplay($('.text-limit-150'));
 
 
 

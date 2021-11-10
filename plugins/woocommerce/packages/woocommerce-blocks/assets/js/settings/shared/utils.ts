@@ -15,14 +15,14 @@ import { allSettings } from './settings-init';
  * the `fallback` will be returned instead. An optional `filter`
  * callback can be passed to format the returned value.
  */
-export const getSetting = < T >(
+export const getSetting = (
 	name: string,
 	fallback: unknown = false,
 	filter = ( val: unknown, fb: unknown ) =>
 		typeof val !== 'undefined' ? val : fb
-): T => {
+): unknown => {
 	const value = name in allSettings ? allSettings[ name ] : fallback;
-	return filter( value, fallback ) as T;
+	return filter( value, fallback );
 };
 
 /**

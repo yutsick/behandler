@@ -5,21 +5,15 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { previewCart } from '@woocommerce/resource-previews';
 import { dispatch } from '@wordpress/data';
 import { CART_STORE_KEY as storeKey } from '@woocommerce/block-data';
-import { SlotFillProvider } from '@woocommerce/blocks-checkout';
 import { default as fetchMock } from 'jest-fetch-mock';
 
 /**
  * Internal dependencies
  */
-import Block from '../block';
+import CartBlock from '../block';
 import { defaultCartState } from '../../../../data/default-states';
 import { allSettings } from '../../../../settings/shared/settings-init';
 
-const CartBlock = ( props ) => (
-	<SlotFillProvider>
-		<Block { ...props } />
-	</SlotFillProvider>
-);
 describe( 'Testing cart', () => {
 	beforeEach( async () => {
 		fetchMock.mockResponse( ( req ) => {

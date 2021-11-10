@@ -15,8 +15,7 @@ export const ValidationInputError = ( {
 	elementId = '',
 } ) => {
 	const { getValidationError, getValidationErrorId } = useValidationContext();
-
-	if ( ! errorMessage || typeof errorMessage !== 'string' ) {
+	if ( ! errorMessage ) {
 		const error = getValidationError( propertyName ) || {};
 		if ( error.message && ! error.hidden ) {
 			errorMessage = error.message;

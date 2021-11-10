@@ -46,7 +46,7 @@
                         <input type="text" name="post_title" value="" placeholder="" class="">
                     </div> -->
                     <div class="rz-form-group rz-field rz-col-12 rz-relative" data-type="text" data-storage="request" data-disabled="no" data-heading="Navn på behandlingen*" data-id="doctors-name">
-                        <input type="text" name="rz_doctors-name" value="" class="" placeholder=" " required>
+                        <input type="text" name="rz_doctors-name" value="" class="" placeholder=" ">
                         <label class="">
                             Navn på behandlingen*
                             <i class="rz-required"></i>
@@ -131,19 +131,58 @@
 
                         </div>
                     </div> 
+                    
+                    <!-- <div class="rz-form-group rz-field rz-col-12" data-type="map" data-storage="request" data-disabled="no" data-heading="Location" data-id="location">
+                        <div class="rz-heading">
+
+                            <label class="">
+                                Location
+                            </label>
+
+
+                        </div>
+
+                        <div class="rz-location">
+                            <div class="rz-grid">
+
+                                <div class="rz-form-group rz-col-12 rz-col-md-12 rz-mb-4">
+                                    <label class="rz-block rz-mb-2">Address</label>
+                                    <input type="text" class="rz-map-address" name="rz_location[]" value="Barcelona, Spain" placeholder="e.g. Barcelona">
+                                </div>
+                                <div class="rz-form-group rz-col-6 rz-col-md-12 rz-mb-4 rz-none">
+                                    <label class="rz-block rz-mb-2">Latitude</label>
+                                    <input type="text" value="41.38506389999999" disabled>
+                                    <input type="hidden" class="rz-map-lat" name="rz_location[]" value="41.38506389999999">
+                                </div>
+                                <div class="rz-form-group rz-col-6 rz-col-md-12 rz-mb-4 rz-none">
+                                    <label class="rz-block rz-mb-2">Longitude</label>
+                                    <input type="text" value="2.1734034999999494" disabled>
+                                    <input type="hidden" class="rz-map-lng" name="rz_location[]" value="2.1734034999999494">
+                                </div>
+
+                                !-- geo information --
+                                <div class="rz-none">
+                                    <input type="text" class="rz-map-country" name="rz_location[]" value="">
+                                    <input type="text" class="rz-map-city" name="rz_location[]" value="">
+                                    <input type="text" class="rz-map-city-alt" name="rz_location[]" value="">
+                                </div>
+
+                            </div>
+                            <div class="rz-map"></div>
+                        </div>
+                    </div> -->
                 </div>
             
     </section>
-    <section class="rz-submission-step rz-mt-3" data-id="pricing">
+    <section class="rz-submission-step" data-id="pricing">
             
 
         
                 <div class="rz-grid">
 
 
-                    <?php /*
+                    
 
-                     <!-- REMOVED by Client as non actual
                     <div class="rz-form-group rz-field rz-col-12 rz-mt-3" data-type="repeater" data-storage="request" data-disabled="no" data-heading="Add Seasonal Pricing" data-id="price_seasonal">
                     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide toggle">
                         <label for="Kampagne" class="switch rz-w-100">
@@ -196,11 +235,11 @@
                             </div>
                         </div>
 
-                    </div> */ ?>
+                    </div>
 
                     <div class="rz-form-group rz-field rz-col-12 rz-relative" data-type="text" data-storage="request" data-disabled="no" data-heading="Specialeområde(r)*" data-id="doctor-type">
                         
-                        <input type="text" name="rz_doctor-type" value=""  class="" placeholder=" " required>
+                        <input type="text" name="rz_doctor-type" value=""  class="" placeholder=" ">
                         <label class="">
                             Specialeområde(r)*
                             <i class="rz-required"></i>
@@ -230,9 +269,9 @@
                     <div class="rz-form-group rz-field rz-col-12" data-type="repeater" data-storage="request" data-disabled="no" data-heading="Add Availability" data-id="time_availability">
                         <div class="rz-heading">
 
-                            <p class="">
+                            <label class="">
                                 Add Availability
-                            </p>
+                            </label>
 
 
                         </div>
@@ -242,7 +281,7 @@
 
                             <textarea type="text" class="rz-repeater-value rz-none" name="rz_time_availability"></textarea>
 
-                            <input type="hidden" class="rz-repeater-schema" value="{&quot;period&quot;:{&quot;name&quot;:&quot;Period&quot;,&quot;heading&quot;:&quot;name&quot;,&quot;fields&quot;:{&quot;name&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;Name&quot;,&quot;value&quot;:&quot;Custom Period&quot;,&quot;col&quot;:6},&quot;key&quot;:{&quot;type&quot;:&quot;key&quot;,&quot;name&quot;:&quot;Unique ID&quot;,&quot;value&quot;:&quot;custom-period&quot;,&quot;defined&quot;:false,&quot;col&quot;:6},&quot;start_time&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Start Time&quot;,&quot;options&quot;:{&quot;0&quot;:&quot;12:01 am&quot;,&quot;3600&quot;:&quot;1:00 am&quot;,&quot;7200&quot;:&quot;2:00 am&quot;,&quot;10800&quot;:&quot;3:00 am&quot;,&quot;14400&quot;:&quot;4:00 am&quot;,&quot;18000&quot;:&quot;5:00 am&quot;,&quot;21600&quot;:&quot;6:00 am&quot;,&quot;25200&quot;:&quot;7:00 am&quot;,&quot;28800&quot;:&quot;8:00 am&quot;,&quot;32400&quot;:&quot;9:00 am&quot;,&quot;36000&quot;:&quot;10:00 am&quot;,&quot;39600&quot;:&quot;11:00 am&quot;,&quot;43200&quot;:&quot;12:00 pm&quot;,&quot;46800&quot;:&quot;1:00 pm&quot;,&quot;50400&quot;:&quot;2:00 pm&quot;,&quot;54000&quot;:&quot;3:00 pm&quot;,&quot;57600&quot;:&quot;4:00 pm&quot;,&quot;61200&quot;:&quot;5:00 pm&quot;,&quot;64800&quot;:&quot;6:00 pm&quot;,&quot;68400&quot;:&quot;7:00 pm&quot;,&quot;72000&quot;:&quot;8:00 pm&quot;,&quot;75600&quot;:&quot;9:00 pm&quot;,&quot;79200&quot;:&quot;10:00 pm&quot;,&quot;82800&quot;:&quot;11:00 pm&quot;,&quot;86400&quot;:&quot;12:00 am&quot;},&quot;value&quot;:28800,&quot;allow_empty&quot;:false,&quot;col&quot;:6},&quot;end_time&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;End Time&quot;,&quot;options&quot;:{&quot;0&quot;:&quot;12:01 am&quot;,&quot;3600&quot;:&quot;1:00 am&quot;,&quot;7200&quot;:&quot;2:00 am&quot;,&quot;10800&quot;:&quot;3:00 am&quot;,&quot;14400&quot;:&quot;4:00 am&quot;,&quot;18000&quot;:&quot;5:00 am&quot;,&quot;21600&quot;:&quot;6:00 am&quot;,&quot;25200&quot;:&quot;7:00 am&quot;,&quot;28800&quot;:&quot;8:00 am&quot;,&quot;32400&quot;:&quot;9:00 am&quot;,&quot;36000&quot;:&quot;10:00 am&quot;,&quot;39600&quot;:&quot;11:00 am&quot;,&quot;43200&quot;:&quot;12:00 pm&quot;,&quot;46800&quot;:&quot;1:00 pm&quot;,&quot;50400&quot;:&quot;2:00 pm&quot;,&quot;54000&quot;:&quot;3:00 pm&quot;,&quot;57600&quot;:&quot;4:00 pm&quot;,&quot;61200&quot;:&quot;5:00 pm&quot;,&quot;64800&quot;:&quot;6:00 pm&quot;,&quot;68400&quot;:&quot;7:00 pm&quot;,&quot;72000&quot;:&quot;8:00 pm&quot;,&quot;75600&quot;:&quot;9:00 pm&quot;,&quot;79200&quot;:&quot;10:00 pm&quot;,&quot;82800&quot;:&quot;11:00 pm&quot;,&quot;86400&quot;:&quot;12:00 am&quot;},&quot;value&quot;:64800,&quot;allow_empty&quot;:false,&quot;col&quot;:6},&quot;duration&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Appointment Duration&quot;,&quot;options&quot;:{&quot;1800&quot;:&quot;30m&quot;,&quot;2700&quot;:&quot;45m&quot;,&quot;3600&quot;:&quot;60m&quot;,&quot;5400&quot;:&quot;90m&quot;,&quot;7200&quot;:&quot;120m&quot;,&quot;custom&quot;:&quot;Custom&quot;},&quot;value&quot;:&quot;60m&quot;,&quot;allow_empty&quot;:false,&quot;style&quot;:&quot;v2&quot;},&quot;custom_duration_length&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;Custom Appointment Duration Lenght&quot;,&quot;dependency&quot;:{&quot;id&quot;:&quot;duration&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;},&quot;col&quot;:6},&quot;custom_duration_entity&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Custom Appointment Duration Entity&quot;,&quot;options&quot;:{&quot;60&quot;:&quot;Minutes&quot;,&quot;3600&quot;:&quot;Hours&quot;,&quot;86400&quot;:&quot;Days&quot;},&quot;value&quot;:&quot;m&quot;,&quot;allow_empty&quot;:false,&quot;dependency&quot;:{&quot;id&quot;:&quot;duration&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;},&quot;col&quot;:6},&quot;interval&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Time Between Appointment&quot;,&quot;options&quot;:{&quot;none&quot;:&quot;None&quot;,&quot;300&quot;:&quot;5m&quot;,&quot;600&quot;:&quot;10m&quot;,&quot;custom&quot;:&quot;Custom&quot;},&quot;value&quot;:&quot;none&quot;,&quot;allow_empty&quot;:false,&quot;style&quot;:&quot;v2&quot;},&quot;custom_interval_length&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;Custom Time Between Appointment Lenght&quot;,&quot;dependency&quot;:{&quot;id&quot;:&quot;interval&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;},&quot;col&quot;:6},&quot;custom_interval_entity&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Custom Time Between Appointment Entity&quot;,&quot;options&quot;:{&quot;60&quot;:&quot;Minutes&quot;,&quot;3600&quot;:&quot;Hours&quot;,&quot;86400&quot;:&quot;Days&quot;},&quot;value&quot;:&quot;m&quot;,&quot;allow_empty&quot;:false,&quot;dependency&quot;:{&quot;id&quot;:&quot;interval&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;},&quot;col&quot;:6},&quot;recurring&quot;:{&quot;type&quot;:&quot;checkbox&quot;,&quot;name&quot;:&quot;Recurring Period&quot;},&quot;start&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;Start Date&quot;,&quot;placeholder&quot;:&quot;YYYY-MM-DD&quot;,&quot;col&quot;:6,&quot;dependency&quot;:{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:false}},&quot;end&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;End Date&quot;,&quot;placeholder&quot;:&quot;YYYY-MM-DD&quot;,&quot;col&quot;:6,&quot;dependency&quot;:{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:false}},&quot;recurring_availability&quot;:{&quot;type&quot;:&quot;checklist&quot;,&quot;name&quot;:&quot;Repeat Availability&quot;,&quot;options&quot;:{&quot;1&quot;:&quot;Monday&quot;,&quot;2&quot;:&quot;Tuesday&quot;,&quot;3&quot;:&quot;Wednesday&quot;,&quot;4&quot;:&quot;Thursday&quot;,&quot;5&quot;:&quot;Friday&quot;,&quot;6&quot;:&quot;Saturday&quot;,&quot;7&quot;:&quot;Sunday&quot;},&quot;dependency&quot;:{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:true}},&quot;price&quot;:{&quot;type&quot;:&quot;number&quot;,&quot;name&quot;:&quot;Custom Price&quot;,&quot;description&quot;:&quot;Leave empty if you want to use the base price&quot;,&quot;min&quot;:0,&quot;step&quot;:0.01,&quot;col&quot;:6},&quot;price_weekend&quot;:{&quot;type&quot;:&quot;number&quot;,&quot;name&quot;:&quot;Custom Weekend Price&quot;,&quot;description&quot;:&quot;Leave empty if you want to use the base weekend price&quot;,&quot;min&quot;:0,&quot;step&quot;:0.01,&quot;col&quot;:6},&quot;limit&quot;:{&quot;type&quot;:&quot;number&quot;,&quot;name&quot;:&quot;Limit Guests&quot;,&quot;description&quot;:&quot;Number only. Leave empty for unlimited.&quot;,&quot;min&quot;:0,&quot;step&quot;:1}}}}">
+                            <input type="hidden" class="rz-repeater-schema" value="{&quot;period&quot;:{&quot;name&quot;:&quot;Period&quot;,&quot;heading&quot;:&quot;name&quot;,&quot;fields&quot;:{&quot;name&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;Name&quot;,&quot;value&quot;:&quot;Custom Period&quot;,&quot;col&quot;:6},&quot;key&quot;:{&quot;type&quot;:&quot;key&quot;,&quot;name&quot;:&quot;Unique ID&quot;,&quot;value&quot;:&quot;custom-period&quot;,&quot;defined&quot;:false,&quot;col&quot;:6},&quot;start_time&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Start Time&quot;,&quot;options&quot;:{&quot;0&quot;:&quot;12:01 am&quot;,&quot;3600&quot;:&quot;1:00 am&quot;,&quot;7200&quot;:&quot;2:00 am&quot;,&quot;10800&quot;:&quot;3:00 am&quot;,&quot;14400&quot;:&quot;4:00 am&quot;,&quot;18000&quot;:&quot;5:00 am&quot;,&quot;21600&quot;:&quot;6:00 am&quot;,&quot;25200&quot;:&quot;7:00 am&quot;,&quot;28800&quot;:&quot;8:00 am&quot;,&quot;32400&quot;:&quot;9:00 am&quot;,&quot;36000&quot;:&quot;10:00 am&quot;,&quot;39600&quot;:&quot;11:00 am&quot;,&quot;43200&quot;:&quot;12:00 pm&quot;,&quot;46800&quot;:&quot;1:00 pm&quot;,&quot;50400&quot;:&quot;2:00 pm&quot;,&quot;54000&quot;:&quot;3:00 pm&quot;,&quot;57600&quot;:&quot;4:00 pm&quot;,&quot;61200&quot;:&quot;5:00 pm&quot;,&quot;64800&quot;:&quot;6:00 pm&quot;,&quot;68400&quot;:&quot;7:00 pm&quot;,&quot;72000&quot;:&quot;8:00 pm&quot;,&quot;75600&quot;:&quot;9:00 pm&quot;,&quot;79200&quot;:&quot;10:00 pm&quot;,&quot;82800&quot;:&quot;11:00 pm&quot;,&quot;86400&quot;:&quot;12:00 am&quot;},&quot;value&quot;:28800,&quot;allow_empty&quot;:false,&quot;col&quot;:6},&quot;end_time&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;End Time&quot;,&quot;options&quot;:{&quot;0&quot;:&quot;12:01 am&quot;,&quot;3600&quot;:&quot;1:00 am&quot;,&quot;7200&quot;:&quot;2:00 am&quot;,&quot;10800&quot;:&quot;3:00 am&quot;,&quot;14400&quot;:&quot;4:00 am&quot;,&quot;18000&quot;:&quot;5:00 am&quot;,&quot;21600&quot;:&quot;6:00 am&quot;,&quot;25200&quot;:&quot;7:00 am&quot;,&quot;28800&quot;:&quot;8:00 am&quot;,&quot;32400&quot;:&quot;9:00 am&quot;,&quot;36000&quot;:&quot;10:00 am&quot;,&quot;39600&quot;:&quot;11:00 am&quot;,&quot;43200&quot;:&quot;12:00 pm&quot;,&quot;46800&quot;:&quot;1:00 pm&quot;,&quot;50400&quot;:&quot;2:00 pm&quot;,&quot;54000&quot;:&quot;3:00 pm&quot;,&quot;57600&quot;:&quot;4:00 pm&quot;,&quot;61200&quot;:&quot;5:00 pm&quot;,&quot;64800&quot;:&quot;6:00 pm&quot;,&quot;68400&quot;:&quot;7:00 pm&quot;,&quot;72000&quot;:&quot;8:00 pm&quot;,&quot;75600&quot;:&quot;9:00 pm&quot;,&quot;79200&quot;:&quot;10:00 pm&quot;,&quot;82800&quot;:&quot;11:00 pm&quot;,&quot;86400&quot;:&quot;12:00 am&quot;},&quot;value&quot;:64800,&quot;allow_empty&quot;:false,&quot;col&quot;:6},&quot;duration&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Appointment Duration&quot;,&quot;options&quot;:{&quot;900&quot;:&quot;15m&quot;,&quot;1800&quot;:&quot;30m&quot;,&quot;3600&quot;:&quot;60m&quot;,&quot;custom&quot;:&quot;Custom&quot;},&quot;value&quot;:&quot;60m&quot;,&quot;allow_empty&quot;:false,&quot;style&quot;:&quot;v2&quot;},&quot;custom_duration_length&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;Custom Appointment Duration Lenght&quot;,&quot;dependency&quot;:{&quot;id&quot;:&quot;duration&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;},&quot;col&quot;:6},&quot;custom_duration_entity&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Custom Appointment Duration Entity&quot;,&quot;options&quot;:{&quot;60&quot;:&quot;Minutes&quot;,&quot;3600&quot;:&quot;Hours&quot;,&quot;86400&quot;:&quot;Days&quot;},&quot;value&quot;:&quot;m&quot;,&quot;allow_empty&quot;:false,&quot;dependency&quot;:{&quot;id&quot;:&quot;duration&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;},&quot;col&quot;:6},&quot;interval&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Time Between Appointment&quot;,&quot;options&quot;:{&quot;none&quot;:&quot;None&quot;,&quot;300&quot;:&quot;5m&quot;,&quot;600&quot;:&quot;10m&quot;,&quot;custom&quot;:&quot;Custom&quot;},&quot;value&quot;:&quot;none&quot;,&quot;allow_empty&quot;:false,&quot;style&quot;:&quot;v2&quot;},&quot;custom_interval_length&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;Custom Time Between Appointment Lenght&quot;,&quot;dependency&quot;:{&quot;id&quot;:&quot;interval&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;},&quot;col&quot;:6},&quot;custom_interval_entity&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Custom Time Between Appointment Entity&quot;,&quot;options&quot;:{&quot;60&quot;:&quot;Minutes&quot;,&quot;3600&quot;:&quot;Hours&quot;,&quot;86400&quot;:&quot;Days&quot;},&quot;value&quot;:&quot;m&quot;,&quot;allow_empty&quot;:false,&quot;dependency&quot;:{&quot;id&quot;:&quot;interval&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;},&quot;col&quot;:6},&quot;recurring&quot;:{&quot;type&quot;:&quot;checkbox&quot;,&quot;name&quot;:&quot;Recurring Period&quot;},&quot;start&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;Start Date&quot;,&quot;placeholder&quot;:&quot;YYYY-MM-DD&quot;,&quot;col&quot;:6,&quot;dependency&quot;:{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:false}},&quot;end&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;End Date&quot;,&quot;placeholder&quot;:&quot;YYYY-MM-DD&quot;,&quot;col&quot;:6,&quot;dependency&quot;:{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:false}},&quot;recurring_availability&quot;:{&quot;type&quot;:&quot;checklist&quot;,&quot;name&quot;:&quot;Repeat Availability&quot;,&quot;options&quot;:{&quot;1&quot;:&quot;Monday&quot;,&quot;2&quot;:&quot;Tuesday&quot;,&quot;3&quot;:&quot;Wednesday&quot;,&quot;4&quot;:&quot;Thursday&quot;,&quot;5&quot;:&quot;Friday&quot;,&quot;6&quot;:&quot;Saturday&quot;,&quot;7&quot;:&quot;Sunday&quot;},&quot;dependency&quot;:{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:true}},&quot;price&quot;:{&quot;type&quot;:&quot;number&quot;,&quot;name&quot;:&quot;Custom Price&quot;,&quot;description&quot;:&quot;Leave empty if you want to use the base price&quot;,&quot;min&quot;:0,&quot;step&quot;:0.01,&quot;col&quot;:6},&quot;price_weekend&quot;:{&quot;type&quot;:&quot;number&quot;,&quot;name&quot;:&quot;Custom Weekend Price&quot;,&quot;description&quot;:&quot;Leave empty if you want to use the base weekend price&quot;,&quot;min&quot;:0,&quot;step&quot;:0.01,&quot;col&quot;:6},&quot;limit&quot;:{&quot;type&quot;:&quot;number&quot;,&quot;name&quot;:&quot;Limit Guests&quot;,&quot;description&quot;:&quot;Number only. Leave empty for unlimited.&quot;,&quot;min&quot;:0,&quot;step&quot;:1}}}}">
 
                             <div class="rz-repeater-content rz-grid">
                                 <div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none" data-type="text" data-storage="field" data-disabled="no" data-heading="Name" data-id="name">
@@ -351,25 +390,21 @@
                                     </div>
 
                                 </div>
-                                
-                                 <div class="rz-form-group rz-field rz-col-12 rz-field-ready" data-type="text" data-storage="field" data-disabled="no" data-heading="Appointment Duration" data-id="duration">
+                                <div class="rz-form-group rz-field rz-col-12 rz-field-ready" data-type="select" data-storage="field" data-disabled="no" data-heading="Appointment Duration" data-id="duration">
                                     
-                                    <div class="rz-select1 rz-select-single1 rz-relative">
-                                        <!-- <input type="text" name="duration" value="60" placeholder=" " class=""> -->
+                                    <div class="rz-select rz-select-single rz-relative">
                                         <select name="duration" class="">
-                                            <option value="1800" >30m</option>
-                                            <option value="2700" selected>45m</option>
+                                            <option value="900" >15m</option>
+                                            <option value="1800" selected>30m</option>
                                             <option value="3600">60m</option>
-                                            <option value="5400">90m</option>
-                                            <option value="7200">120m</option>
-                                            <option value="custom">Custom</option>
-                                        </select> 
+                                            <!--<option value="custom">Custom</option>-->
+                                        </select>
                                         <label class="">
                                             Appointment Duration
                                         </label>
                                     </div>
 
-                                </div> 
+                                </div>
                                 <div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer rz-relative" data-dependency="{&quot;id&quot;:&quot;duration&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;}" data-type="text" data-storage="field" data-disabled="no" data-heading="Custom Appointment Duration Lenght" data-id="custom_duration_length">
                                     <input type="text" name="custom_duration_length" value="" placeholder=" " class="">
                                     <label class="">
@@ -448,7 +483,7 @@
                                         <span class="rz-transition"></span>
                                         <em>Yes</em>
                                     </label>
- 
+
                                     <input type="hidden" name="recurring" value="1">
                                 </div>
                                 <div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer" data-dependency="{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:false}" data-type="text" data-storage="field" data-disabled="no" data-heading="Start Date" data-id="start">
@@ -634,9 +669,9 @@
 </div>
 <!-- END MODAL -->
 
-<!-- <script>
+<script>
     function showPromo() {
   var element = document.getElementById("promotion");
   element.classList.toggle("rz-none");
 }
-</script> -->
+</script>

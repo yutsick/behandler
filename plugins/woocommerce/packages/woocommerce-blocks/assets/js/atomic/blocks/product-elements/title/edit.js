@@ -31,7 +31,7 @@ const TitleEdit = ( {
 	attributes,
 	setAttributes,
 } ) => {
-	const { headingLevel, showProductLink, align } = attributes;
+	const { headingLevel, productLink, align } = attributes;
 	return (
 		<>
 			<BlockControls>
@@ -66,10 +66,10 @@ const TitleEdit = ( {
 							'Links the image to the single product listing.',
 							'woocommerce'
 						) }
-						checked={ showProductLink }
+						checked={ productLink }
 						onChange={ () =>
 							setAttributes( {
-								showProductLink: ! showProductLink,
+								productLink: ! productLink,
 							} )
 						}
 					/>

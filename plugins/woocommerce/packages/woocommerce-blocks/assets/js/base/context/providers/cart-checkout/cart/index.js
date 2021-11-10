@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { CheckoutProvider } from '../checkout-provider';
+import { CheckoutProvider } from '../checkout';
 
 /**
  * Cart provider

@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { cloneElement, isValidElement } from '@wordpress/element';
-import type { HTMLProps, ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 interface IconProps {
 	srcElement?: ReactElement;
@@ -14,8 +14,7 @@ function Icon( {
 	srcElement,
 	size = 24,
 	...props
-}: IconProps &
-	HTMLProps< HTMLImageElement | SVGElement > ): ReactElement | null {
+}: IconProps ): ReactElement | null {
 	if ( ! isValidElement( srcElement ) ) {
 		return null;
 	}

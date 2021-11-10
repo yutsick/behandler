@@ -176,7 +176,11 @@ const ProductAttributeTermControl = ( {
 				isHierarchical
 			/>
 			{ !! onOperatorChange && (
-				<div hidden={ selected.length < 2 }>
+				<div
+					className={
+						selected.length < 2 ? 'screen-reader-text' : ''
+					}
+				>
 					<SelectControl
 						className="woocommerce-product-attributes__operator"
 						label={ __(

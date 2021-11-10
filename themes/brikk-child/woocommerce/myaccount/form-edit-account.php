@@ -132,67 +132,188 @@ defined( 'ABSPATH' ) || exit;
 		<p>Her kan du redigere, tilføje eller fjerne typer af behandlings du tilbyder.</p>
 
 		<div class="tab-content_style-cards">
-						<?php 
-							
-								
-							$args = array(
-								'post_type' => 'rz_listing',
-								'author' => wp_get_current_user()->user_login,
-							);
-							$query = new WP_Query( $args );
-							
-							// Цикл
-							if ( $query->have_posts() ) {
-								while ( $query->have_posts() ) {
-									$query->the_post();
-									$fields = get_post_custom();
-								?>
-								<div class="tab-content_style-cards__item">
-									<div class="list_card">
-										<h3>
-											<?php the_title(); ?>
-										</h3>
-											<div class="rz-flex list_card__price">
-												<div class="price">
-													Kr <?php 
-													echo $fields['rz_price'][0];
-													?>
-												</div>
-												<span class=delimiter>|</span>
-												<div class="time">
-													<?php 
-													$tt = json_decode($fields['rz_time_availability'][0]);
-													echo ($tt[0]->{'fields'}->{'duration'}/60).' min';
-													?> 
-												</div>
-											</div>
+			<?php 
+				
+					
+				$args = array(
+					'post_type' => 'rz_listing',
+					'author' => wp_get_current_user()->user_login,
+				);
+				$query = new WP_Query( $args );
+				
+				// Цикл
+				if ( $query->have_posts() ) {
+					while ( $query->have_posts() ) {
+						$query->the_post();
+						$fields = get_post_custom();
+					?>
+					<div class="tab-content_style-cards__item">
+						<div class="list_card">
+							<h3>
+								<?php the_title(); ?>
+							</h3>
+								<div class="rz-flex list_card__price">
+									<div class="price">
+										Kr <?php 
+										echo $fields['rz_price'][0];
+										?>
+									</div>
+									<span class=delimiter>|</span>
+									<div class="time">
+										<?php 
+										$tt = json_decode($fields['rz_time_availability'][0]);
+										echo ($tt[0]->{'fields'}->{'duration'}/60).' min';
+										?> 
+									</div>
+								</div>
 
-											<div class="list_card__red-line">
-												<span>20 % fra mellem</span>
-												<span class="list_card__red-line__time">11<sup>15</sup> - 13<sup>45</sup></span>
-											</div>
+								<div class="list_card__red-line">
+									<span>20 % fra mellem</span>
+									<span class="list_card__red-line__time">11<sup>15</sup> - 13<sup>45</sup></span>
+								</div>
 
-											<div class="list_desc">
-												<?php echo mb_strimwidth($fields['post_content'][0],0,40,""); ?>
-												<a href="<?php the_permalink(); ?>">læs mere</a>
-											</div>
-											<div class="red-text rz-mt-3 rz-text-right" style="display: none;">
-												Book nu &rarr;
-											</div>
+								<div class="list_desc">
+									<?php echo mb_strimwidth($fields['post_content'][0],0,40,""); ?>
+									<a href="<?php the_permalink(); ?>">læs mere</a>
+								</div>
+								<div class="red-text rz-mt-3 rz-text-right" style="display: none;">
+									Book nu &rarr;
+								</div>
+							</div>
+						</div>
+						<?php
+						
+						}
+					} 
+					?> 
+
+					<div class="tab-content_style-cards__item">
+						<div class="rz-submission-content label-inside">
+							<div class="add-listing" data-modal="modal_listing">
+								<div class="add-listing-inner">
+									<div class="icon"><img src="http://behandler/wp-content/themes/brikk-child/images/medical.png"></div>
+									<p>Tilføj en ny<br>behandlingsmulighed</p>
+								</div>
+							</div>
+
+							<span class="rz-overlay"></span>
+							<div class="rz-modal rz-modal-ready" data-id="modal_listing" data-signup="pass">
+								<a href="#" class="rz-close">
+									<i class="fas fa-times"></i>
+								</a>
+								<div class="rz-modal-heading rz--border rz-modal-title-bg">
+									<h4 class="">Tilføj ny behandlingstype</h4>
+								</div>
+								<div class="rz-modal-content">
+									<div class="rz-modal-append">
+										<div class="rz-modal-container">
+										<!-- START MODAL CONTENT -->
+											<form method="post" action="/form_wizard_step/">
+												<section class="rz-submission-step rz-active" data-id="fields" data-group="0">
+													<input type="hidden" name="add_post" value="add_post" />
+													<input type="hidden" name="location" value="//" />
+													<div class="rz-grid">
+													<div class="rz-form-group rz-field rz-col-12 rz-relative rz-field-ready" data-type="text" data-storage="request" data-disabled="no" data-heading="Navn på behandlingen*" data-id="doctors-name">
+														<input type="text" name="rz_doctors-name" value="" class="" placeholder=" "/>
+														<label class="">
+														Navn på behandlingen*
+														<i class="rz-required"></i>
+														</label>
+													</div>
+													<div class="rz-form-group form-group form-group_space-between rz-col-12">
+														<div class="">
+															<label>
+																Pris per time
+																<i class="rz-required"></i>
+															</label>
+														</div>
+
+														<div class="rz-number-type-number form-group_input-min-number" data-type="number">
+															<input type="number" name="rz_price" min="0" step="0.01" placeholder="0" data-format="<strong>%s</strong>"/>
+														</div>
+													</div>
+													
+													<div class="toggle rz-w-100 tab-content_style__toggle rz-col-12">
+														<label for="tilbudkampagne" class="switch">
+															Tilbud/Kampagne
+															<input onclick="$(this).attr('value', this.checked ? 1 : 0);showPromo()" type="checkbox" name="tilbudkampagne" id="tilbudkampagne" value="<?php echo esc_attr(get_the_author_meta('tilbudkampagne', $user->ID)); ?>" class="switch-input regular-text"/>
+															<span class="slider round"></span>
+														</label>
+													</div>
+
+													<div class="rz-repeater rz-repeater-collect rz-none rz-col-12" id="promotion">
+
+															<textarea type="text" class="rz-repeater-value rz-none" name="rz_price_seasonal"></textarea>
+
+															<div class="rz-repeater-content rz-grid">
+																<div class="rz-form-group rz-field rz-col-12 rz-field-ready rz-relative rz-mt-2" data-type="text" data-storage="field" data-disabled="no" data-heading="Start Date" data-id="start">
+
+
+																	<input type="text" name="start_discount" class="" placeholder=" ">
+																	<label class="">
+																		Startdato (DD/MM)
+																		<i class="rz-required"></i>
+																	</label>
+																</div>
+																<div class="rz-form-group rz-field rz-col-12 rz-field-ready rz-relative" data-type="text" data-storage="field" data-disabled="no" data-heading="End Date" data-id="end">
+																	<input type="text" name="end_discount" class="" placeholder=" ">
+																	<label class="">
+																		Udløbsdato DD/MM
+																		<i class="rz-required"></i>
+																	</label>
+																</div>
+																<div class="rz-form-group rz-field rz-col-12 rz-field-ready rz-relative" data-type="text" data-storage="field" data-disabled="no" data-heading="End Date" data-id="end">
+																	<input type="text" name="end_discount" class="" placeholder=" ">
+																	<label class="">
+																		Tidsrum (lad denne være blank for heldagstilbud)
+																		<i class="rz-required"></i>
+																	</label>
+																</div>
+																<div class="rz-form-group form-group form-group_space-between rz-col-12" data-input-type="number" data-type="number" data-storage="field" data-disabled="no" data-heading="Base Price" data-id="price">
+																	<div class="">
+																		<label class="">
+																			Tilbudspris
+																			<i class="rz-required"></i>
+																		</label>
+																	</div>
+
+																	<div class="rz-number-type-number form-group_input-min-number" data-type="number">
+
+																		<input type="number" name="price_discount" placeholder="0" min="0" step="0.01" data-format="<strong>%s</strong>">
+
+																	</div>
+																</div>
+																
+															</div>
+														</div>
+
+														<div class="rz-form-group rz-field rz-col-12 rz-relative rz-field-ready rz-mt-2" data-type="textarea" data-storage="request" data-disabled="no" data-heading="Beskrivelse af behandlingen*" data-id="post_content">
+															<textarea maxlength="150" type="text" name="post_content" class="text-limit-150"></textarea>
+															<label class="">
+															Beskrivelse af behandlingen*
+															<i class="rz-required"></i>
+															</label>
+															<p class="text-limit-result">392/600</p>
+															
+														</div>
+													</div>
+												</section>
+											</form>
+										<!-- END MODAl CONTENT -->
+										</div>
+										<div class="rz-modal-footer rz--top-border btn-group">
+											<a href="#" class="rz-close rz-modal-button rz-mr-2 btn btn-line-dark"><span>Annuler</span></a>
+
+											<input type="submit" value="Gem" class="rz-modal-button btn btn-accent"/>
 										</div>
 									</div>
-									<?php
-									
-									}
-								} 
-								?> 
-								<div class="tab-content_style-cards__item">
-									<?php include (get_stylesheet_directory().'/page-add-listing.php'); ?>
 								</div>
-							<?
-							?>
+							</div>
+						</div>
 					</div>
-
+				<?
+				?>
+		</div>			
 	</div>
 	<div class="bg-white rz-mt-3 rz-p-3 tab-content_style">
 		<h3>Specialeområde(r)</h3>

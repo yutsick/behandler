@@ -262,7 +262,7 @@ abstract class Widget_Base extends Element_Base {
 			$skin_options = [];
 
 			if ( $this->_has_template_content ) {
-				$skin_options[''] = esc_html__( 'Default', 'elementor' );
+				$skin_options[''] = __( 'Default', 'elementor' );
 			}
 
 			foreach ( $skins as $skin_id => $skin ) {
@@ -277,7 +277,7 @@ abstract class Widget_Base extends Element_Base {
 				$this->add_control(
 					'_skin',
 					[
-						'label' => esc_html__( 'Skin', 'elementor' ),
+						'label' => __( 'Skin', 'elementor' ),
 						'type' => Controls_Manager::HIDDEN,
 						'default' => $default_value,
 					]
@@ -286,7 +286,7 @@ abstract class Widget_Base extends Element_Base {
 				$this->add_control(
 					'_skin',
 					[
-						'label' => esc_html__( 'Skin', 'elementor' ),
+						'label' => __( 'Skin', 'elementor' ),
 						'type' => Controls_Manager::SELECT,
 						'default' => $default_value,
 						'options' => $skin_options,
@@ -414,20 +414,6 @@ abstract class Widget_Base extends Element_Base {
 		}
 
 		return $content;
-	}
-
-	/**
-	 * Safe print parsed text editor.
-	 *
-	 * @uses static::parse_text_editor.
-	 *
-	 * @access protected
-	 *
-	 * @param string $content Text editor content.
-	 */
-	final protected function print_text_editor( $content ) {
-		// PHPCS - the method `parse_text_editor` is safe.
-		echo static::parse_text_editor( $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -731,7 +717,7 @@ abstract class Widget_Base extends Element_Base {
 	 * @param null $repeater_name
 	 * @param null $index
 	 */
-	final public function print_unescaped_setting( $setting, $repeater_name = null, $index = null ) {
+	final protected function print_unescaped_setting( $setting, $repeater_name = null, $index = null ) {
 		if ( $repeater_name ) {
 			$repeater = $this->get_settings_for_display( $repeater_name );
 			$output = $repeater[ $index ][ $setting ];
@@ -975,10 +961,9 @@ abstract class Widget_Base extends Element_Base {
 	 * @param string $replacement   Widget replacement
 	 */
 	protected function deprecated_notice( $plugin_title, $since, $last = '', $replacement = '' ) {
-		$this->start_controls_section(
-			'Deprecated',
+		$this->start_controls_section( 'Deprecated',
 			[
-				'label' => esc_html__( 'Deprecated', 'elementor' ),
+				'label' => __( 'Deprecated', 'elementor' ),
 			]
 		);
 
@@ -1075,7 +1060,7 @@ abstract class Widget_Base extends Element_Base {
 			return;
 		}
 
-		Utils::print_unescaped_internal_string( $this->get_widget_css() );
+		echo $this->get_widget_css();
 	}
 
 	private function get_widgets_css_data_manager() {

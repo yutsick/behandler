@@ -30,10 +30,10 @@ a#listing_switch {
     color: #361D32;
     text-decoration: none;
 
-    position: fixed;
+    position: absolute;
     right: calc(50% - 585px);
     z-index: 4;
-    top: 120px;
+    top: 100px;
 }
 
 #listing_switch_text {
@@ -99,15 +99,15 @@ a#listing_switch {
 }
 
 .contain-page-map {
-   
+    //width: calc(30% + 120px);
     width: calc(30%);
-    
+    //position: absolute;
     position: fixed;
     top: 75px;
-   
+    //left: 795px;
     left: 64%;
-    z-index: 1;
-   
+    z-index: 3;
+    height: 694px;
 }
 
 .contain-page-map.in-active {
@@ -146,7 +146,9 @@ a#listing_switch {
         right: 15px;
     }
 
-   
+    .contain-page-map {
+        //left: 580px;
+    }
 }
 
 @media (max-width: 991px) {

@@ -50,11 +50,12 @@ const Panel = ( {
 					{ title }
 				</button>
 			</TitleTag>
-			{ isOpen && (
-				<div className="wc-block-components-panel__content">
-					{ children }
-				</div>
-			) }
+			<div
+				className="wc-block-components-panel__content"
+				hidden={ ! isOpen }
+			>
+				{ children }
+			</div>
 		</div>
 	);
 };

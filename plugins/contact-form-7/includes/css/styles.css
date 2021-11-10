@@ -2,13 +2,11 @@
 	position: absolute;
 	overflow: hidden;
 	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
 	height: 1px;
 	width: 1px;
-	margin: -1px;
+	margin: 0;
 	padding: 0;
 	border: 0;
-	word-wrap: normal !important;
 }
 
 .wpcf7 form .wpcf7-response-output {
@@ -37,8 +35,7 @@
 }
 
 .wpcf7 form.invalid .wpcf7-response-output,
-.wpcf7 form.unaccepted .wpcf7-response-output,
-.wpcf7 form.payment-required .wpcf7-response-output {
+.wpcf7 form.unaccepted .wpcf7-response-output {
 	border-color: #ffb900; /* Yellow */
 }
 
@@ -74,7 +71,7 @@
 	content: " ";
 }
 
-.wpcf7-spinner {
+.wpcf7 .ajax-loader {
 	visibility: hidden;
 	display: inline-block;
 	background-color: #23282d; /* Dark Gray 800 */
@@ -88,11 +85,11 @@
 	position: relative;
 }
 
-form.submitting .wpcf7-spinner {
+.wpcf7 form.submitting .ajax-loader {
 	visibility: visible;
 }
 
-.wpcf7-spinner::before {
+.wpcf7 .ajax-loader::before {
 	content: '';
 	position: absolute;
 	background-color: #fbfbfc; /* Light Gray 100 */
@@ -110,7 +107,7 @@ form.submitting .wpcf7-spinner {
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.wpcf7-spinner::before {
+	.wpcf7 .ajax-loader::before {
 		animation-name: blink;
 		animation-duration: 2000ms;
 	}

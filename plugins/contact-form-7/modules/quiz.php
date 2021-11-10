@@ -70,9 +70,7 @@ function wpcf7_quiz_form_tag_handler( $tag ) {
 		$answer = '2';
 	}
 
-	$answer = wpcf7_canonicalize( $answer, array(
-		'strip_separators' => true,
-	) );
+	$answer = wpcf7_canonicalize( $answer );
 
 	$atts['type'] = 'text';
 	$atts['name'] = $tag->name;
@@ -97,11 +95,8 @@ add_filter( 'wpcf7_validate_quiz', 'wpcf7_quiz_validation_filter', 10, 2 );
 function wpcf7_quiz_validation_filter( $result, $tag ) {
 	$name = $tag->name;
 
-	$answer = isset( $_POST[$name] ) ? wp_unslash( $_POST[$name] ) : '';
-
-	$answer = wpcf7_canonicalize( $answer, array(
-		'strip_separators' => true,
-	) );
+	$answer = isset( $_POST[$name] ) ? wpcf7_canonicalize( $_POST[$name] ) : '';
+	$answer = wp_unslash( $answer );
 
 	$answer_hash = wp_hash( $answer, 'wpcf7_quiz' );
 
@@ -154,9 +149,7 @@ function wpcf7_quiz_ajax_refill( $items ) {
 			$answer = '2';
 		}
 
-		$answer = wpcf7_canonicalize( $answer, array(
-			'strip_separators' => true,
-		) );
+		$answer = wpcf7_canonicalize( $answer );
 
 		$refill[$name] = array( $question, wp_hash( $answer, 'wpcf7_quiz' ) );
 	}

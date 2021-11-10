@@ -6,8 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { createSlotFill, hasValidFills, useSlot } from '../slot';
-import TotalsWrapper from '../wrapper';
+import { createSlotFill } from '../slot';
 
 const slotName = '__experimentalOrderMeta';
 
@@ -16,19 +15,14 @@ const { Fill: ExperimentalOrderMeta, Slot: OrderMetaSlot } = createSlotFill(
 );
 
 const Slot = ( { className, extensions, cart } ) => {
-	const { fills } = useSlot( slotName );
 	return (
-		hasValidFills( fills ) && (
-			<TotalsWrapper slotWrapper={ true }>
-				<OrderMetaSlot
-					className={ classnames(
-						className,
-						'wc-block-components-order-meta'
-					) }
-					fillProps={ { extensions, cart } }
-				/>
-			</TotalsWrapper>
-		)
+		<OrderMetaSlot
+			className={ classnames(
+				className,
+				'wc-block-components-order-meta'
+			) }
+			fillProps={ { extensions, cart } }
+		/>
 	);
 };
 

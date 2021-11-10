@@ -80,17 +80,11 @@ function wpcf7_sendinblue_submit( $contact_form, $result ) {
 		return;
 	}
 
-	$contact_params = apply_filters(
-		'wpcf7_sendinblue_contact_parameters',
-		array(
-			'email' => $attributes['EMAIL'],
-			'attributes' => (object) $attributes,
-			'listIds' => (array) $prop['contact_lists'],
-			'updateEnabled' => false,
-		)
-	);
-
-	$contact_id = $service->create_contact( $contact_params );
+	$contact_id = $service->create_contact( array(
+		'email' => $attributes['EMAIL'],
+		'attributes' => (object) $attributes,
+		'listIds' => (array) $prop['contact_lists'],
+	) );
 
 	if ( ! $contact_id ) {
 		return;
@@ -100,41 +94,21 @@ function wpcf7_sendinblue_submit( $contact_form, $result ) {
 		return;
 	}
 
-	$first_name = isset( $attributes['FIRSTNAME'] )
-		? trim( $attributes['FIRSTNAME'] )
-		: '';
-
-	$last_name = isset( $attributes['LASTNAME'] )
-		? trim( $attributes['LASTNAME'] )
-		: '';
-
-	if ( $first_name or $last_name ) {
-		$email_to_name = sprintf(
-			/* translators: 1: first name, 2: last name */
-			_x( '%1$s %2$s', 'personal name', 'contact-form-7' ),
-			$first_name,
-			$last_name
-		);
-	} else {
-		$email_to_name = '';
-	}
-
-	$email_params = apply_filters(
-		'wpcf7_sendinblue_email_parameters',
-		array(
-			'templateId' => absint( $prop['email_template'] ),
-			'to' => array(
-				array(
-					'name' => $email_to_name,
-					'email' => $attributes['EMAIL'],
+	$service->send_email( array(
+		'templateId' => absint( $prop['email_template'] ),
+		'to' => array(
+			array(
+				'name' => sprintf(
+					'%1$s %2$s',
+					$attributes['FIRSTNAME'],
+					$attributes['LASTNAME']
 				),
+				'email' => $attributes['EMAIL'],
 			),
-			'params' => (object) $attributes,
-			'tags' => array( 'Contact Form 7' ),
-		)
-	);
-
-	$service->send_email( $email_params );
+		),
+		'params' => (object) $attributes,
+		'tags' => array( 'Contact Form 7' ),
+	) );
 }
 
 

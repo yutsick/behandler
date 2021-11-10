@@ -1,2 +1,2 @@
 export * from './validation';
-export { extensionCartUpdate } from './extension-cart-update';
+export { updateCartFromApi } from './update-cart-from-api';

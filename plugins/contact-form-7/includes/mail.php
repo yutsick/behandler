@@ -373,9 +373,7 @@ class WPCF7_MailTaggedText {
 			: null;
 
 		if ( $mail_tag->get_option( 'do_not_heat' ) ) {
-			$submitted = isset( $_POST[$field_name] )
-				? wp_unslash( $_POST[$field_name] )
-				: '';
+			$submitted = isset( $_POST[$field_name] ) ? $_POST[$field_name] : '';
 		}
 
 		$replaced = $submitted;
@@ -408,7 +406,7 @@ class WPCF7_MailTaggedText {
 		);
 
 		if ( null !== $replaced ) {
-			$replaced = trim( $replaced );
+			$replaced = wp_unslash( trim( $replaced ) );
 
 			$this->replaced_tags[$tag] = $replaced;
 			return $replaced;
@@ -482,7 +480,7 @@ class WPCF7_MailTag {
 	}
 
 	public function field_name() {
-		return strtr( $this->name, '.', '_' );
+		return $this->name;
 	}
 
 	public function get_option( $option ) {
@@ -501,7 +499,7 @@ class WPCF7_MailTag {
 		if ( $submission = WPCF7_Submission::get_instance() ) {
 			$contact_form = $submission->get_contact_form();
 			$tags = $contact_form->scan_form_tags( array(
-				'name' => $this->field_name(),
+				'name' => $this->name,
 				'feature' => '! zero-controls-container',
 			) );
 

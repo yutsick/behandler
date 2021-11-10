@@ -1,7 +1,6 @@
 <?php get_header('registration'); 
 global $client;
 ?>
-<script src = "/wp-content/plugins/routiz/assets/dist/js/submission.js"></script>
 <div class="contain-registration">
     <div class="registration-imag">
         <a href="#" id="'history-back" class="history-back" onClick="history.back()">
@@ -32,7 +31,7 @@ global $client;
 
                     <?php 
                     $client = 'business';
-                    include 'woocommerce/myaccount/form-register.php'; 
+                    include 'woocommerce/myaccount/form-register.php';
                     ?>
                      
                 </div>
@@ -42,33 +41,4 @@ global $client;
 
     </div>
 </div>
-<script> 
-
-var $files = document.querySelector('#files');
-var $gal_id = document.querySelector('#rz_gallery_id');
-var el = document.querySelector('.rz-image-preview');
-const config = {
-    childList: true
-};
-
-const callback = function(mutationsList, observer) {
-    for (let mutation of mutationsList) {
-        if (mutation.type === 'childList') {
-            var $picId = [];
-            $images_data = document.querySelectorAll('.rz-image-prv-wrapper');
-            var i;
-            for (var i = 0; i < $images_data.length; i++){
-                var $id = $images_data[i].getAttribute("data-id");   
-                $picId.push( $id);
-            }
-             $gal_id.value = $picId; 
-        } 
-    }
-};
-
-const observer = new MutationObserver(callback);
-observer.observe(el, config);
-
-
-</script>
 <?php get_footer('registration'); ?>

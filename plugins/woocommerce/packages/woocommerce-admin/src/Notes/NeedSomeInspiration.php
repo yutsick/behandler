@@ -30,7 +30,12 @@ class NeedSomeInspiration {
 	 */
 	public static function get_note() {
 		// We want to show the note after 4 days.
-		if ( ! self::is_wc_admin_active_in_date_range( 'week-1-4', 4 * DAY_IN_SECONDS ) ) {
+		if ( ! self::wc_admin_active_for( 4 * DAY_IN_SECONDS ) ) {
+			return;
+		}
+
+		// We don't want to show the note after 30 days.
+		if ( self::wc_admin_active_for( 30 * DAY_IN_SECONDS ) ) {
 			return;
 		}
 
@@ -60,7 +65,8 @@ class NeedSomeInspiration {
 		$note->add_action(
 			'need-some-inspiration',
 			__( 'See success stories', 'woocommerce' ),
-			'https://woocommerce.com/success-stories/?utm_source=inbox&utm_medium=product',
+			'https://woocommerce.com/success-stories/?utm_source=inbox',
+			Note::E_WC_ADMIN_NOTE_ACTIONED,
 			true
 		);
 		return $note;

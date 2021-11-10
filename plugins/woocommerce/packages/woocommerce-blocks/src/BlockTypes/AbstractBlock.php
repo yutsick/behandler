@@ -81,9 +81,7 @@ abstract class AbstractBlock {
 	 */
 	public function render_callback( $attributes = [], $content = '' ) {
 		$render_callback_attributes = $this->parse_render_callback_attributes( $attributes );
-		if ( ! is_admin() ) {
-			$this->enqueue_assets( $render_callback_attributes );
-		}
+		$this->enqueue_assets( $render_callback_attributes );
 		return $this->render( $render_callback_attributes, $content );
 	}
 
@@ -123,31 +121,23 @@ abstract class AbstractBlock {
 	 */
 	protected function register_block_type_assets() {
 		if ( null !== $this->get_block_type_editor_script() ) {
-			$data     = $this->asset_api->get_script_data( $this->get_block_type_editor_script( 'path' ) );
-			$has_i18n = in_array( 'wp-i18n', $data['dependencies'], true );
-
 			$this->asset_api->register_script(
 				$this->get_block_type_editor_script( 'handle' ),
 				$this->get_block_type_editor_script( 'path' ),
 				array_merge(
 					$this->get_block_type_editor_script( 'dependencies' ),
 					$this->integration_registry->get_all_registered_editor_script_handles()
-				),
-				$has_i18n
+				)
 			);
 		}
 		if ( null !== $this->get_block_type_script() ) {
-			$data     = $this->asset_api->get_script_data( $this->get_block_type_script( 'path' ) );
-			$has_i18n = in_array( 'wp-i18n', $data['dependencies'], true );
-
 			$this->asset_api->register_script(
 				$this->get_block_type_script( 'handle' ),
 				$this->get_block_type_script( 'path' ),
 				array_merge(
 					$this->get_block_type_script( 'dependencies' ),
 					$this->integration_registry->get_all_registered_script_handles()
-				),
-				$has_i18n
+				)
 			);
 		}
 	}
@@ -199,9 +189,9 @@ abstract class AbstractBlock {
 	 */
 	protected function get_block_type_editor_script( $key = null ) {
 		$script = [
-			'handle'       => 'wc-' . $this->block_name . '-block',
+			'handle'       => 'wc-' . $this->block_name,
 			'path'         => $this->asset_api->get_block_asset_build_path( $this->block_name ),
-			'dependencies' => [ 'wc-blocks' ],
+			'dependencies' => [ 'wc-vendors', 'wc-blocks' ],
 		];
 		return $key ? $script[ $key ] : $script;
 	}
@@ -213,7 +203,7 @@ abstract class AbstractBlock {
 	 * @return string|null
 	 */
 	protected function get_block_type_editor_style() {
-		return 'wc-blocks-editor-style';
+		return 'wc-block-editor';
 	}
 
 	/**
@@ -225,7 +215,7 @@ abstract class AbstractBlock {
 	 */
 	protected function get_block_type_script( $key = null ) {
 		$script = [
-			'handle'       => 'wc-' . $this->block_name . '-block-frontend',
+			'handle'       => 'wc-' . $this->block_name . '-frontend',
 			'path'         => $this->asset_api->get_block_asset_build_path( $this->block_name . '-frontend' ),
 			'dependencies' => [],
 		];
@@ -239,7 +229,7 @@ abstract class AbstractBlock {
 	 * @return string|null
 	 */
 	protected function get_block_type_style() {
-		return 'wc-blocks-style';
+		return 'wc-block-style';
 	}
 
 	/**
@@ -255,10 +245,10 @@ abstract class AbstractBlock {
 	/**
 	 * Get block attributes.
 	 *
-	 * @return array;
+	 * @return array|null;
 	 */
 	protected function get_block_type_attributes() {
-		return [];
+		return null;
 	}
 
 	/**
@@ -358,7 +348,6 @@ abstract class AbstractBlock {
 					'restApiRoutes' => [
 						'/wc/store' => array_keys( Package::container()->get( RestApi::class )->get_routes_from_namespace( 'wc/store' ) ),
 					],
-					'defaultAvatar' => get_avatar_url( 0, [ 'force_default' => true ] ),
 
 					/*
 					 * translators: If your word count is based on single characters (e.g. East Asian characters),

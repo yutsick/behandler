@@ -16,6 +16,7 @@ $rz_search_form_more = $rz_explore->type ? $rz_explore->type->get('rz_search_for
         <?php // if( $rz_explore->type ): ?>
 
             <?php do_action('routiz/explore/filters/before'); ?>
+
             <?php if( $rz_search_form ): ?>
                 <?php $filters = Rz()->json_decode( Rz()->get_meta( 'rz_search_fields', $rz_search_form ) ); ?>
                 <?php if( $filters ): ?>

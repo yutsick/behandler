@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
  */
 class DataSourcePoller {
 	const DATA_SOURCES = array(
-		'https://woocommerce.com/wp-json/wccom/obw-free-extensions/2.0/extensions.json',
+		'https://woocommerce.com/wp-json/wccom/obw-free-extensions/1.0/extensions.json',
 	);
 
 	/**
@@ -65,13 +65,7 @@ class DataSourcePoller {
 	private static function read_data_source( $url ) {
 		$logger_context = array( 'source' => $url );
 		$logger         = self::get_logger();
-		$response       = wp_remote_get(
-			add_query_arg(
-				'_locale',
-				get_user_locale(),
-				$url
-			)
-		);
+		$response       = wp_remote_get( $url );
 
 		if ( is_wp_error( $response ) || ! isset( $response['body'] ) ) {
 			$logger->error(

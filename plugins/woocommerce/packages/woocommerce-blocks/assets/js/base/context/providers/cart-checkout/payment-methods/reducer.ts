@@ -32,14 +32,17 @@ const reducer = (
 ): PaymentMethodDataContextState => {
 	switch ( type ) {
 		case STATUS.STARTED:
-			return {
-				...state,
-				currentStatus: STATUS.STARTED,
-				paymentMethodData: paymentMethodData || state.paymentMethodData,
-				hasSavedToken: hasSavedPaymentToken(
-					paymentMethodData || state.paymentMethodData
-				),
-			};
+			return state.currentStatus !== STATUS.STARTED
+				? {
+						...state,
+						currentStatus: STATUS.STARTED,
+						paymentMethodData:
+							paymentMethodData || state.paymentMethodData,
+						hasSavedToken: hasSavedPaymentToken(
+							paymentMethodData || state.paymentMethodData
+						),
+				  }
+				: state;
 		case STATUS.ERROR:
 			return state.currentStatus !== STATUS.ERROR
 				? {

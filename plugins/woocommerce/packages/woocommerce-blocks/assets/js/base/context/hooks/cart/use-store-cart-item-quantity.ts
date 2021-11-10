@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useCallback, useState, useEffect } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import { CART_STORE_KEY as storeKey } from '@woocommerce/block-data';
 import { useDebounce } from 'use-debounce';
 import { usePrevious } from '@woocommerce/base-hooks';
@@ -84,14 +84,14 @@ export const useStoreCartItemQuantity = (
 		[ cartItemKey ]
 	);
 
-	const removeItem = useCallback( () => {
+	const removeItem = () => {
 		return cartItemKey
 			? removeItemFromCart( cartItemKey ).then( () => {
 					triggerFragmentRefresh();
 					return true;
 			  } )
 			: Promise.resolve( false );
-	}, [ cartItemKey, removeItemFromCart ] );
+	};
 
 	// Observe debounced quantity value, fire action to update server on change.
 	useEffect( () => {

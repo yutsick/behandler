@@ -149,7 +149,11 @@ const ProductCategoryControl = ( {
 				isSingle={ isSingle }
 			/>
 			{ !! onOperatorChange && (
-				<div hidden={ selected.length < 2 }>
+				<div
+					className={
+						selected.length < 2 ? 'screen-reader-text' : ''
+					}
+				>
 					<SelectControl
 						className="woocommerce-product-categories__operator"
 						label={ __(

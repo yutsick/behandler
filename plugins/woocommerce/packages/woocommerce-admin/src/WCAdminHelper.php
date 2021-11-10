@@ -73,11 +73,10 @@ class WCAdminHelper {
 	 * Test if WooCommerce Admin has been active within a pre-defined range.
 	 *
 	 * @param string $range range available in WC_ADMIN_STORE_AGE_RANGES.
-	 * @param int    $custom_start custom start in range.
 	 * @throws \InvalidArgumentException Throws exception when invalid $range is passed in.
 	 * @return bool Whether or not WooCommerce admin has been active within the range.
 	 */
-	public static function is_wc_admin_active_in_date_range( $range, $custom_start = null ) {
+	public static function is_wc_admin_active_in_date_range( $range ) {
 		if ( ! array_key_exists( $range, self::WC_ADMIN_STORE_AGE_RANGES ) ) {
 			throw new \InvalidArgumentException(
 				sprintf(
@@ -90,8 +89,7 @@ class WCAdminHelper {
 		$wc_admin_active_for = self::get_wcadmin_active_for_in_seconds();
 
 		$range_data = self::WC_ADMIN_STORE_AGE_RANGES[ $range ];
-		$start      = null !== $custom_start ? $custom_start : $range_data['start'];
-		if ( $range_data && $wc_admin_active_for >= $start ) {
+		if ( $range_data && $wc_admin_active_for >= $range_data['start'] ) {
 			return isset( $range_data['end'] ) ? $wc_admin_active_for < $range_data['end'] : true;
 		}
 		return false;

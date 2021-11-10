@@ -23,7 +23,10 @@ $cover_type = $rz_listing->type->get('rz_display_listing_cover');
 
             </div>
         </div>
-       
+        <?php /**debug info */
+                //the_author_meta('ID');
+                //print_r(get_post_custom()); 
+                ?>
     <?php elseif ($cover_type == 'author'): ?>
             
         <?php Rz()->the_template('routiz/explore/listing/author'); ?>
@@ -31,8 +34,7 @@ $cover_type = $rz_listing->type->get('rz_display_listing_cover');
     <?php endif; ?>
 
     <?php if (!$rz_listing->type->get('rz_display_hide_listing_details')): ?>
-        
-        <a class="rz-listing-content" href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"<?php if ($rz_listing->type->get('rz_open_listing_new_tab')) {
+        <a class="rz-listing-content" href="<?php the_permalink(); ?>"<?php if ($rz_listing->type->get('rz_open_listing_new_tab')) {
             echo ' target="_blank"';
         } ?>>
 

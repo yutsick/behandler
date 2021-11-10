@@ -2,7 +2,7 @@
 
 $user_id = get_current_user_id(); 
 
-/*Second wizard step*/ 
+/*Second wizard step*/
 
 if ($_POST['step'] == 'first'){
   
@@ -11,21 +11,6 @@ if ($_POST['step'] == 'first'){
     update_user_meta($user_id, 'sygesikring', sanitize_text_field($_POST['sygesikring']));
     update_user_meta($user_id, 'online_behandling', sanitize_text_field($_POST['online_behandling']));
     update_user_meta($user_id, 'alternativ_behandler', sanitize_text_field($_POST['alternativ_behandler']));
-
-    $args = array(
-      'post_type' => 'rz_listing',
-      'ID'        =>  get_user_meta($user_id, 'behandlerID')[0],
-      'meta_input'=> [
-        'rz_time' => sanitize_text_field($_POST['time']),
-        'rz_rab' => sanitize_text_field($_POST['rab']),
-        'rz_sygesikring' => sanitize_text_field($_POST['sygesikring']),
-        'rz_online_behandling' => sanitize_text_field($_POST['online_behandling']),
-        'rz_alternativ_behandler' => sanitize_text_field($_POST['alternativ_behandler']),
-        
-        ],
-      );
-    wp_update_post( $args );
-
 }
 
 
@@ -35,7 +20,7 @@ if ($_POST['step'] == 'second'){
   $post_id = 'user_'.$current_user->ID;
   $id_attach = explode(",", $_POST['rz_gallery_id'][0]);
   update_field('gallery', $id_attach, $post_id);
-  update_field('rz_gallery', $_POST['rz_gallery'], get_user_meta($current_user->ID, 'behandlerID')[0]);
+
 }
 
 
@@ -52,40 +37,28 @@ if(!empty ($_POST['recurring_availability'])){
 if (!empty($_POST['add_post'])) {
     
     $rz_time_availability = '[{"template":{"id":"period","name":"Period","heading":"name","heading_text":"Custom Period"},"fields":{"name":"Custom Period","key":"custom-period","start_time":"'.$_POST["start_time"].'","end_time":"'.$_POST["end_time"].'","duration":"'.$_POST["duration"].'","custom_duration_length":"","custom_duration_entity":"60","interval":"'.$_POST["interval"].'","custom_interval_length":"","custom_interval_entity":"60","recurring":"1","start":"","end":"","recurring_availability":'.$rec_str.',"price":"","price_weekend":"","limit":""}}]';
-    
-    /**REMOVED by Client as non actual*/
-    //$rz_price_seasonal = '[{"template":{"id":"period","name":"Period","heading":"start","heading_text":"Discount"},"fields":{"start":"'.$_POST["start_discount"].'","end":"'.$_POST["end_discount"].'","price":"'.$_POST["price_discount"].'","price_weekend":""}}]';
+    $rz_price_seasonal = '[{"template":{"id":"period","name":"Period","heading":"start","heading_text":"Discount"},"fields":{"start":"'.$_POST["start_discount"].'","end":"'.$_POST["end_discount"].'","price":"'.$_POST["price_discount"].'","price_weekend":""}}]';
 
     $listing_postarr = array(
-      'post_type' => 'rz_listing',
-      'post_title' => sanitize_text_field($_POST['rz_doctors-name']),
-      'meta_input' =>   [
-        'rz_listing_type' => '624',
-        'rz_doctors-name' => sanitize_text_field($_POST['rz_doctors-name']),
-        'rz_doctor-type' => sanitize_text_field($_POST['rz_doctor-type']),
-        'rz_price' => sanitize_text_field($_POST['rz_price']),
-        'post_content' => sanitize_text_field($_POST['post_content']),
-        'rz_instant' => '1',
-      ],        
-      'post_status' => 'publish',
+    'post_type' => 'rz_listing',
+    'post_title' => sanitize_text_field($_POST['rz_doctors-name']),
+    
+    'meta_input' => [
+    'rz_listing_type' => '624',
+    'rz_doctors-name' => sanitize_text_field($_POST['rz_doctors-name']),
+    'rz_doctor-type' => sanitize_text_field($_POST['rz_doctor-type']),
+    'rz_price' => sanitize_text_field($_POST['rz_price']),
+    'post_content' => sanitize_text_field($_POST['post_content']),
+    'rz_instant' => '1',
+    ], 
+    'post_status' => 'publish',
     );
 
     $my_post_id = wp_insert_post( $listing_postarr );
 
     update_post_meta ($my_post_id, 'rz_time_availability',$rz_time_availability);
-
-    /**REMOVED by Client as non actual*/
-    //update_post_meta ($my_post_id, 'rz_price_seasonal',$rz_price_seasonal);
+    update_post_meta ($my_post_id, 'rz_price_seasonal',$rz_price_seasonal);
     update_field('rz_gallery', $_POST['rz_gallery'], $my_post_id);
-
-    /** Update specialeomrade in docs listing */  
-
-    $post_special_ID = get_user_meta($current_user->ID, 'behandlerID', true);
-    $post_special_data = get_post_meta($post_special_ID,'rz_special_area', true);
-    $new_post_special_data = $post_special_data.', '.sanitize_text_field($_POST['rz_doctor-type']);
-    update_post_meta($post_special_ID,'rz_special_area', $new_post_special_data);
-    
-    /** ----END---- */
 }
 global $register;
 $register = true;

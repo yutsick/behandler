@@ -79,6 +79,63 @@ Template Post Type: page
         </div>
     </div>
 
+    <div class="paper__white">
+        <div class="container">
+            <div class="paper">
+                <div class="paper__info">
+                    <?php if (get_field('white_article_head')): ?>
+                        <div class="paper__info_head">
+                            <h2>
+                                <?php the_field('white_article_head'); ?>
+                            </h2>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (get_field('white_article_text')): ?>
+                        <div class="paper__info_text">
+                            <?php the_field('white_article_text'); ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <div class="paper__image">
+                    <?php
+                    $image = get_field('white_article_img');
+                    if (!empty($image)): ?>
+                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="paper__pinks">
+        <div class="container">
+            <div class="paper">
+                <div class="paper__info">
+                    <?php if (get_field('pink_article_head')): ?>
+                        <div class="paper__info_head">
+                            <h2>
+                                <?php the_field('pink_article_head'); ?>
+                            </h2>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (get_field('pink_article_text')): ?>
+                        <div class="paper__info_text">
+                            <?php the_field('pink_article_text'); ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+                <div class="paper__image">
+                    <?php
+                    $image = get_field('pink_article_img');
+                    if (!empty($image)): ?>
+                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="price__info">
         <div class="container">
             <?php if (get_field('prices_head')): ?>
@@ -188,100 +245,42 @@ Template Post Type: page
                 <?php endif; ?>
 
             </div>
-            
-        </div>
-    </div>
-    
-    <div class="paper__white">
-        <div class="container">
-            <div class="paper">
-                <div class="paper__info">
-                    <?php if (get_field('white_article_head')): ?>
-                        <div class="paper__info_head">
-                            <h2>
-                                <?php the_field('white_article_head'); ?>
-                            </h2>
+            <div class="contact__us">
+                <?php if (get_field('form_head')): ?>
+                    <div class="contact__us_head">
+                        <h2><?php the_field('form_head'); ?></h2>
+                    </div>
+                <?php endif; ?>
+                <?php if (get_field('form_text')): ?>
+                    <div class="contact__us_text">
+                        <?php the_field('form_text'); ?>
+                    </div>
+                <?php endif; ?>
+                <?php echo do_shortcode( '[contact-form-7 id="2716" title="Contact form 1"]' );?>
+                <!--
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="in-name" class="display-none">Navn</label>
+                            <input type="text" class="form-control" id="in-name" placeholder="Navn">
                         </div>
-                    <?php endif; ?>
-                    <?php if (get_field('white_article_text')): ?>
-                        <div class="paper__info_text">
-                            <?php the_field('white_article_text'); ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-                <div class="paper__image">
-                    <?php
-                    $image = get_field('white_article_img');
-                    if (!empty($image)): ?>
-                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="paper__pinks">
-        <div class="container">
-            <div class="paper">
-                <div class="paper__info">
-                    <?php if (get_field('pink_article_head')): ?>
-                        <div class="paper__info_head">
-                            <h2>
-                                <?php the_field('pink_article_head'); ?>
-                            </h2>
+                        <div class="form-group">
+                            <label for="in-mail" class="display-none">E-mail adresse</label>
+                            <input type="email" class="form-control" id="in-mail" placeholder="E-mail adresse">
                         </div>
-                    <?php endif; ?>
-                    <?php if (get_field('pink_article_text')): ?>
-                        <div class="paper__info_text">
-                            <?php the_field('pink_article_text'); ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
-                <div class="paper__image">
-                    <?php
-                    $image = get_field('pink_article_img');
-                    if (!empty($image)): ?>
-                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
-                    <?php endif; ?>
-                </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="in-text" class="display-none">Skriv besked</label>
+                        <textarea class="form-control" id="in-text" rows="3" placeholder="Skriv besked"></textarea>
+                    </div>
+                    <div class="form-group justify-end">
+                        <button type="submit" class="btn-button-send">Sende</button>
+                    </div>
+                </form>
+                -->
             </div>
         </div>
     </div>
 
-    <div class="contact__us">
-        <?php if (get_field('form_head')): ?>
-            <div class="contact__us_head">
-                <h2><?php the_field('form_head'); ?></h2>
-            </div>
-        <?php endif; ?>
-        <?php if (get_field('form_text')): ?>
-            <div class="contact__us_text">
-                <?php the_field('form_text'); ?>
-            </div>
-        <?php endif; ?>
-        <?php echo do_shortcode( '[contact-form-7 id="2716" title="Contact form 1"]' );?>
-        <!--
-        <form>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="in-name" class="display-none">Navn</label>
-                    <input type="text" class="form-control" id="in-name" placeholder="Navn">
-                </div>
-
-                <div class="form-group">
-                    <label for="in-mail" class="display-none">E-mail adresse</label>
-                    <input type="email" class="form-control" id="in-mail" placeholder="E-mail adresse">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="in-text" class="display-none">Skriv besked</label>
-                <textarea class="form-control" id="in-text" rows="3" placeholder="Skriv besked"></textarea>
-            </div>
-            <div class="form-group justify-end">
-                <button type="submit" class="btn-button-send">Sende</button>
-            </div>
-        </form>
-        -->
-    </div>
 <?php get_footer();

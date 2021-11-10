@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { WC_BLOCKS_IMAGE_URL } from '@woocommerce/block-settings';
+import { WC_BLOCKS_ASSET_URL } from '@woocommerce/block-settings';
 import { CartResponse } from '@woocommerce/types';
 import { getSetting } from '@woocommerce/settings';
 
@@ -14,7 +14,7 @@ import { previewShippingRates } from './shipping-rates';
 const displayWithTax = getSetting( 'displayCartPricesIncludingTax', false );
 // Sample data for cart block.
 // This closely resembles the data returned from the Store API /cart endpoint.
-// https://github.com/woocommerce/woocommerce-gutenberg-products-block/blob/trunk/src/StoreApi/docs/cart.md#cart-response
+// https://github.com/woocommerce/woocommerce-gutenberg-products-block/tree/trunk/src/RestApi/StoreApi#cart-api
 export const previewCart: CartResponse = {
 	coupons: [],
 	shipping_rates: getSetting( 'shippingMethodsExist', false )
@@ -41,8 +41,8 @@ export const previewCart: CartResponse = {
 			images: [
 				{
 					id: 10,
-					src: WC_BLOCKS_IMAGE_URL + 'previews/beanie.jpg',
-					thumbnail: WC_BLOCKS_IMAGE_URL + 'previews/beanie.jpg',
+					src: WC_BLOCKS_ASSET_URL + 'img/beanie.jpg',
+					thumbnail: WC_BLOCKS_ASSET_URL + 'img/beanie.jpg',
 					srcset: '',
 					sizes: '',
 					name: '',
@@ -111,8 +111,8 @@ export const previewCart: CartResponse = {
 			images: [
 				{
 					id: 11,
-					src: WC_BLOCKS_IMAGE_URL + 'previews/cap.jpg',
-					thumbnail: WC_BLOCKS_IMAGE_URL + 'previews/cap.jpg',
+					src: WC_BLOCKS_ASSET_URL + 'img/cap.jpg',
+					thumbnail: WC_BLOCKS_ASSET_URL + 'img/cap.jpg',
 					srcset: '',
 					sizes: '',
 					name: '',
@@ -165,6 +165,7 @@ export const previewCart: CartResponse = {
 	needs_payment: true,
 	needs_shipping: getSetting( 'shippingEnabled', true ),
 	has_calculated_shipping: true,
+	extensions: {},
 	shipping_address: {
 		first_name: '',
 		last_name: '',
@@ -175,7 +176,6 @@ export const previewCart: CartResponse = {
 		state: '',
 		postcode: '',
 		country: '',
-		phone: '',
 	},
 	billing_address: {
 		first_name: '',
@@ -216,8 +216,4 @@ export const previewCart: CartResponse = {
 			},
 		],
 	},
-	errors: [],
-	payment_requirements: [ 'products' ],
-	generated_timestamp: Date.now(),
-	extensions: {},
 };

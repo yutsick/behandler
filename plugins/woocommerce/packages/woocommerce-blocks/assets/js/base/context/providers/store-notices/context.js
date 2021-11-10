@@ -16,6 +16,7 @@ import { useSelect, useDispatch } from '@wordpress/data';
 import { useStoreEvents } from '../../hooks/use-store-events';
 import { useEditorContext } from '../editor-context';
 import StoreNoticesContainer from './components/store-notices-container';
+import SnackbarNoticesContainer from './components/snackbar-notices-container';
 
 /**
  * @typedef {import('@woocommerce/type-defs/contexts').NoticeContext} NoticeContext
@@ -25,6 +26,7 @@ import StoreNoticesContainer from './components/store-notices-container';
 const StoreNoticesContext = createContext( {
 	notices: [],
 	createNotice: ( status, text, props ) => void { status, text, props },
+	createSnackbarNotice: ( content, options ) => void { content, options },
 	removeNotice: ( id, ctxt ) => void { id, ctxt },
 	setIsSuppressed: ( val ) => void { val },
 	context: 'wc/core',
@@ -50,10 +52,10 @@ export const useStoreNoticesContext = () => {
  *  - Success
  *
  * @param {Object} props Incoming props for the component.
- * @param {JSX.Element} props.children The Elements wrapped by this component.
- * @param {string} [props.className] CSS class used.
- * @param {boolean} [props.createNoticeContainer] Whether to create a notice container or not.
- * @param {string} [props.context] The notice context for notices being rendered.
+ * @param {React.ReactChildren} props.children The Elements wrapped by this component.
+ * @param {string} props.className CSS class used.
+ * @param {boolean} props.createNoticeContainer Whether to create a notice container or not.
+ * @param {string} props.context The notice context for notices being rendered.
  */
 export const StoreNoticesProvider = ( {
 	children,
@@ -88,6 +90,16 @@ export const StoreNoticesProvider = ( {
 		[ removeNotice, context ]
 	);
 
+	const createSnackbarNotice = useCallback(
+		( content = '', options = {} ) => {
+			createNoticeWithContext( 'default', content, {
+				...options,
+				type: 'snackbar',
+			} );
+		},
+		[ createNoticeWithContext ]
+	);
+
 	const { notices } = useSelect(
 		( select ) => {
 			return {
@@ -100,6 +112,7 @@ export const StoreNoticesProvider = ( {
 	const contextValue = {
 		notices,
 		createNotice: createNoticeWithContext,
+		createSnackbarNotice,
 		removeNotice: removeNoticeWithContext,
 		context,
 		setIsSuppressed,
@@ -114,10 +127,19 @@ export const StoreNoticesProvider = ( {
 		/>
 	);
 
+	const snackbarNoticeOutput = isSuppressed ? null : (
+		<SnackbarNoticesContainer
+			notices={ contextValue.notices }
+			removeNotice={ contextValue.removeNotice }
+			isEditor={ isEditor }
+		/>
+	);
+
 	return (
 		<StoreNoticesContext.Provider value={ contextValue }>
 			{ createNoticeContainer && noticeOutput }
 			{ children }
+			{ snackbarNoticeOutput }
 		</StoreNoticesContext.Provider>
 	);
 };

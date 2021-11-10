@@ -122,13 +122,13 @@ class Leaderboards extends \WC_REST_Data_Controller {
 			'label'   => __( 'Top Coupons - Number of Orders', 'woocommerce' ),
 			'headers' => array(
 				array(
-					'label' => __( 'Coupon code', 'woocommerce' ),
+					'label' => __( 'Coupon Code', 'woocommerce' ),
 				),
 				array(
 					'label' => __( 'Orders', 'woocommerce' ),
 				),
 				array(
-					'label' => __( 'Amount discounted', 'woocommerce' ),
+					'label' => __( 'Amount Discounted', 'woocommerce' ),
 				),
 			),
 			'rows'    => $rows,
@@ -188,16 +188,16 @@ class Leaderboards extends \WC_REST_Data_Controller {
 
 		return array(
 			'id'      => 'categories',
-			'label'   => __( 'Top categories - Items sold', 'woocommerce' ),
+			'label'   => __( 'Top Categories - Items Sold', 'woocommerce' ),
 			'headers' => array(
 				array(
 					'label' => __( 'Category', 'woocommerce' ),
 				),
 				array(
-					'label' => __( 'Items sold', 'woocommerce' ),
+					'label' => __( 'Items Sold', 'woocommerce' ),
 				),
 				array(
-					'label' => __( 'Net sales', 'woocommerce' ),
+					'label' => __( 'Net Sales', 'woocommerce' ),
 				),
 			),
 			'rows'    => $rows,
@@ -324,16 +324,16 @@ class Leaderboards extends \WC_REST_Data_Controller {
 
 		return array(
 			'id'      => 'products',
-			'label'   => __( 'Top products - Items sold', 'woocommerce' ),
+			'label'   => __( 'Top Products - Items Sold', 'woocommerce' ),
 			'headers' => array(
 				array(
 					'label' => __( 'Product', 'woocommerce' ),
 				),
 				array(
-					'label' => __( 'Items sold', 'woocommerce' ),
+					'label' => __( 'Items Sold', 'woocommerce' ),
 				),
 				array(
-					'label' => __( 'Net sales', 'woocommerce' ),
+					'label' => __( 'Net Sales', 'woocommerce' ),
 				),
 			),
 			'rows'    => $rows,

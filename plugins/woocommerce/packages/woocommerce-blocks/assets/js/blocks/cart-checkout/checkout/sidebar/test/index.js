@@ -23,5 +23,7 @@ describe( 'Testing checkout sidebar', () => {
 			/>
 		);
 		expect( container ).toMatchSnapshot();
+		// ["Components must be wrapped within `SlotFillProvider`. See https://developer.wordpress.org/block-editor/components/slot-fill/"]
+		expect( console ).toHaveWarned();
 	} );
 } );

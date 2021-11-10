@@ -7,6 +7,7 @@ namespace Automattic\WooCommerce\Admin\Features\PaymentGatewaySuggestions;
 
 defined( 'ABSPATH' ) || exit;
 
+use Automattic\WooCommerce\Admin\Features\Features;
 use Automattic\WooCommerce\Admin\Features\OnboardingTasks;
 
 /**
@@ -24,7 +25,7 @@ class DefaultPaymentGateways {
 			array(
 				'id'         => 'payfast',
 				'title'      => __( 'PayFast', 'woocommerce' ),
-				'content'    => __( 'The PayFast extension for WooCommerce enables you to accept payments by Credit Card and EFT via one of South Africa’s most popular payment gateways. No setup fees or monthly subscription costs. Selecting this extension will configure your store to use South African rands as the selected currency.', 'woocommerce' ),
+				'content'    => __( 'The PayFast extension for WooCommerce enables you to accept payments by Credit Card and EFT via one of South Africa’s most popular payment gateways. No setup fees or monthly subscription costs.  Selecting this extension will configure your store to use South African rands as the selected currency.', 'woocommerce' ),
 				'image'      => WC()->plugin_url() . '/assets/images/payfast.png',
 				'plugins'    => array( 'woocommerce-payfast-gateway' ),
 				'is_visible' => array(
@@ -37,16 +38,15 @@ class DefaultPaymentGateways {
 				),
 			),
 			array(
-				'id'                      => 'stripe',
-				'title'                   => __( ' Stripe', 'woocommerce' ),
-				'content'                 => __( 'Accept debit and credit cards in 135+ currencies, methods such as Alipay, and one-touch checkout with Apple Pay.', 'woocommerce' ),
-				'image'                   => WC()->plugin_url() . '/assets/images/stripe.png',
-				'plugins'                 => array( 'woocommerce-gateway-stripe' ),
-				'is_visible'              => array(
+				'id'         => 'stripe',
+				'title'      => __( 'Credit cards - powered by Stripe', 'woocommerce' ),
+				'content'    => __( 'Accept debit and credit cards in 135+ currencies, methods such as Alipay, and one-touch checkout with Apple Pay.', 'woocommerce' ),
+				'image'      => WC()->plugin_url() . '/assets/images/stripe.png',
+				'plugins'    => array( 'woocommerce-gateway-stripe' ),
+				'is_visible' => array(
 					self::get_rules_for_countries( OnboardingTasks::get_stripe_supported_countries() ),
 					self::get_rules_for_cbd( false ),
 				),
-				'recommendation_priority' => 3,
 			),
 			array(
 				'id'         => 'paystack',
@@ -60,8 +60,8 @@ class DefaultPaymentGateways {
 				),
 			),
 			array(
-				'id'         => 'kco',
-				'title'      => __( 'Klarna Checkout', 'woocommerce' ),
+				'key'        => 'kco',
+				'title'      => __( 'Klarna', 'woocommerce' ),
 				'content'    => __( 'Choose the payment that you want, pay now, pay later or slice it. No credit card numbers, no passwords, no worries.', 'woocommerce' ),
 				'image'      => WC()->plugin_url() . '/assets/images/klarna-black.png',
 				'plugins'    => array( 'klarna-checkout-for-woocommerce' ),
@@ -71,32 +71,7 @@ class DefaultPaymentGateways {
 				),
 			),
 			array(
-				'id'         => 'klarna_payments',
-				'title'      => __( 'Klarna Payments', 'woocommerce' ),
-				'content'    => __( 'Choose the payment that you want, pay now, pay later or slice it. No credit card numbers, no passwords, no worries.', 'woocommerce' ),
-				'image'      => WC()->plugin_url() . '/assets/images/klarna-black.png',
-				'plugins'    => array( 'klarna-payments-for-woocommerce' ),
-				'is_visible' => array(
-					self::get_rules_for_countries(
-						array(
-							'DK',
-							'DE',
-							'AT',
-							'NL',
-							'CH',
-							'BE',
-							'SP',
-							'PL',
-							'FR',
-							'IT',
-							'GB',
-						)
-					),
-					self::get_rules_for_cbd( false ),
-				),
-			),
-			array(
-				'id'         => 'mollie_wc_gateway_banktransfer',
+				'key'        => 'mollie_wc_gateway_banktransfer',
 				'title'      => __( 'Mollie', 'woocommerce' ),
 				'content'    => __( 'Effortless payments by Mollie: Offer global and local payment methods, get onboarded in minutes, and supported in your language.', 'woocommerce' ),
 				'image'      => plugins_url( 'images/onboarding/mollie.svg', WC_ADMIN_PLUGIN_FILE ),
@@ -120,16 +95,14 @@ class DefaultPaymentGateways {
 				),
 			),
 			array(
-				'id'                      => 'woo-mercado-pago-custom',
-				'title'                   => __( 'Mercado Pago Checkout Pro & Custom', 'woocommerce' ),
-				'content'                 => __( 'Accept credit and debit cards, offline (cash or bank transfer) and logged-in payments with money in Mercado Pago. Safe and secure payments with the leading payment processor in LATAM.', 'woocommerce' ),
-				'image'                   => plugins_url( 'images/onboarding/mercadopago.png', WC_ADMIN_PLUGIN_FILE ),
-				'plugins'                 => array( 'woocommerce-mercadopago' ),
-				'is_visible'              => array(
+				'id'         => 'woo-mercado-pago-custom',
+				'title'      => __( 'Mercado Pago Checkout Pro & Custom', 'woocommerce' ),
+				'content'    => __( 'Accept credit and debit cards, offline (cash or bank transfer) and logged-in payments with money in Mercado Pago. Safe and secure payments with the leading payment processor in LATAM.', 'woocommerce' ),
+				'image'      => plugins_url( 'images/onboarding/mercadopago.png', WC_ADMIN_PLUGIN_FILE ),
+				'plugins'    => array( 'woocommerce-mercadopago' ),
+				'is_visible' => array(
 					self::get_rules_for_countries( array( 'AR', 'BR', 'CL', 'CO', 'MX', 'PE', 'UY' ) ),
 				),
-				'recommendation_priority' => 2,
-				'is_local_partner'        => true,
 			),
 			array(
 				'id'         => 'ppcp-gateway',
@@ -141,7 +114,7 @@ class DefaultPaymentGateways {
 					(object) array(
 						'type'      => 'base_location_country',
 						'value'     => 'IN',
-						'operation' => '!=',
+						'operation' => '=',
 					),
 					self::get_rules_for_cbd( false ),
 				),
@@ -165,20 +138,19 @@ class DefaultPaymentGateways {
 				),
 			),
 			array(
-				'id'                      => 'woocommerce_payments',
-				'title'                   => __( 'WooCommerce Payments', 'woocommerce' ),
-				'content'                 => __(
+				'id'          => 'woocommerce_payments',
+				'title'       => __( 'WooCommerce Payments', 'woocommerce' ),
+				'content'     => __(
 					'Manage transactions without leaving your WordPress Dashboard. Only with WooCommerce Payments.',
 					'woocommerce'
 				),
-				'image'                   => plugins_url( 'images/onboarding/wcpay.svg', WC_ADMIN_PLUGIN_FILE ),
-				'plugins'                 => array( 'woocommerce-payments' ),
-				'description'             => 'Try the new way to get paid. Securely accept credit and debit cards on your site. Manage transactions without leaving your WordPress dashboard. Only with WooCommerce Payments.',
-				'is_visible'              => array(
+				'image'       => plugins_url( 'images/onboarding/wcpay.svg', WC_ADMIN_PLUGIN_FILE ),
+				'plugins'     => array( 'woocommerce-payments' ),
+				'description' => 'Try the new way to get paid. Securely accept credit and debit cards on your site. Manage transactions without leaving your WordPress dashboard. Only with WooCommerce Payments.',
+				'is_visible'  => array(
 					self::get_rules_for_cbd( false ),
 					self::get_rules_for_countries( self::get_wcpay_countries() ),
 				),
-				'recommendation_priority' => 1,
 			),
 			array(
 				'id'         => 'razorpay',
@@ -190,31 +162,16 @@ class DefaultPaymentGateways {
 					(object) array(
 						'type'      => 'base_location_country',
 						'value'     => 'IN',
-						'operation' => '=',
+						'operation' => '!=',
 					),
 					self::get_rules_for_cbd( false ),
 				),
 			),
 			array(
-				'id'         => 'payubiz',
-				'title'      => __( 'PayU for WooCommerce', 'woocommerce' ),
-				'content'    => __( 'Enable PayU’s exclusive plugin for WooCommerce to start accepting payments in 100+ payment methods available in India including credit cards, debit cards, UPI, & more!', 'woocommerce' ),
-				'image'      => plugins_url( 'images/onboarding/payu.svg', WC_ADMIN_PLUGIN_FILE ),
-				'plugins'    => array( 'payu-india' ),
-				'is_visible' => array(
-					(object) array(
-						'type'      => 'base_location_country',
-						'value'     => 'IN',
-						'operation' => '=',
-					),
-					self::get_rules_for_cbd( false ),
-				),
-			),
-			array(
-				'id'         => 'eway',
+				'key'        => 'eway_payments',
 				'title'      => __( 'eWAY', 'woocommerce' ),
 				'content'    => __( 'The eWAY extension for WooCommerce allows you to take credit card payments directly on your store without redirecting your customers to a third party site to make payment.', 'woocommerce' ),
-				'image'      => plugins_url( 'images/onboarding/eway.png', WC_ADMIN_PLUGIN_FILE ),
+				'image'      => WC()->plugin_url() . '/assets/images/eway-logo.jpg',
 				'plugins'    => array( 'woocommerce-gateway-eway' ),
 				'is_visible' => array(
 					self::get_rules_for_countries( array( 'AU', 'NZ' ) ),
@@ -222,7 +179,7 @@ class DefaultPaymentGateways {
 				),
 			),
 			array(
-				'id'         => 'square_credit_card',
+				'key'        => 'square_credit_card',
 				'title'      => __( 'Square', 'woocommerce' ),
 				'content'    => __( 'Securely accept credit and debit cards with one low rate, no surprise fees (custom rates available). Sell online and in store and track sales and inventory in one place.', 'woocommerce' ),
 				'image'      => WC()->plugin_url() . '/assets/images/square-black.png',
@@ -252,7 +209,10 @@ class DefaultPaymentGateways {
 	 * @return array Array of countries.
 	 */
 	public static function get_wcpay_countries() {
-		return array( 'US', 'PR', 'AU', 'CA', 'DE', 'ES', 'FR', 'GB', 'IE', 'IT', 'NZ', 'AT', 'BE', 'NL', 'PL', 'PT', 'CH', 'HK', 'SG' );
+		$countries               = array( 'US', 'PR' );
+		$countries_international = array( 'AU', 'CA', 'DE', 'ES', 'FR', 'GB', 'IE', 'IT', 'NZ' );
+
+		return Features::is_enabled( 'wcpay/support-international-countries' ) ? array_merge( $countries, $countries_international ) : $countries;
 	}
 
 	/**
@@ -301,7 +261,6 @@ class DefaultPaymentGateways {
 				'option_name'  => 'woocommerce_onboarding_profile',
 				'operation'    => '=',
 				'value'        => $venue,
-				'default'      => array(),
 			);
 		}
 

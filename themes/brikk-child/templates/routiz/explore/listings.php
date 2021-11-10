@@ -15,11 +15,7 @@ global $rz_explore;
                 Behandlere
              </h3>
         </div>
-
-        <?php if ($rz_explore->total_types): 
-     
-          
-            ?>
+        <?php if ($rz_explore->total_types): ?>
             <?php if ($rz_explore->query()->posts->have_posts()): ?>
 
             <div class="brk-listing-summary">
@@ -60,9 +56,9 @@ global $rz_explore;
                 <?php while ($rz_explore->query()->posts->have_posts()): $rz_explore->query()->posts->the_post(); ?>
                     <li class="rz-listing-item <?php Rz()->listing_class(); ?>">
                     
-                        <?php Rz()->the_template('explore/listing/listing'); ?>
+                        <?php Rz()->the_template('routiz/explore/listing/listing'); ?>
                     </li>
-                    <?php Rz()->the_template('explore/listing/banner'); ?>
+                    <?php Rz()->the_template('routiz/explore/listing/banner'); ?>
                 <?php endwhile;
                 wp_reset_postdata(); ?>
             </ul>

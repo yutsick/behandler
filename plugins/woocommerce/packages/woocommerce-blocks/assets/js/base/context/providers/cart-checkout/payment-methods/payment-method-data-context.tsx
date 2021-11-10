@@ -4,20 +4,17 @@
 import {
 	createContext,
 	useContext,
+	useState,
 	useReducer,
 	useCallback,
-	useRef,
 	useEffect,
+	useRef,
 	useMemo,
 } from '@wordpress/element';
 
 /**
  * Internal dependencies
  */
-import type {
-	CustomerPaymentMethods,
-	PaymentMethodDataContextType,
-} from './types';
 import {
 	STATUS,
 	DEFAULT_PAYMENT_DATA_CONTEXT_STATE,
@@ -25,12 +22,22 @@ import {
 } from './constants';
 import reducer from './reducer';
 import {
+	statusOnly,
+	error,
+	failed,
+	success,
+	started,
+	setRegisteredPaymentMethods,
+	setRegisteredExpressPaymentMethods,
+	setShouldSavePaymentMethod,
+} from './actions';
+import {
 	usePaymentMethods,
 	useExpressPaymentMethods,
 } from './use-payment-method-registration';
-import { usePaymentMethodDataDispatchers } from './use-payment-method-dispatchers';
-import { useActivePaymentMethod } from './use-active-payment-method';
+import { useCustomerDataContext } from '../customer';
 import { useCheckoutContext } from '../checkout-state';
+import { useShippingDataContext } from '../shipping';
 import { useEditorContext } from '../../editor-context';
 import {
 	EMIT_TYPES,
@@ -39,9 +46,28 @@ import {
 	reducer as emitReducer,
 } from './event-emit';
 import { useValidationContext } from '../../validation';
+import { useStoreEvents } from '../../../hooks/use-store-events';
 import { useStoreNotices } from '../../../hooks/use-store-notices';
 import { useEmitResponse } from '../../../hooks/use-emit-response';
+
+import type {
+	PaymentStatusDispatchers,
+	PaymentMethods,
+	CustomerPaymentMethods,
+	PaymentMethodsDispatcherType,
+	PaymentMethodDataContextType,
+} from './types';
 import { getCustomerPaymentMethods } from './utils';
+
+const {
+	STARTED,
+	PROCESSING,
+	COMPLETE,
+	PRISTINE,
+	ERROR,
+	FAILED,
+	SUCCESS,
+} = STATUS;
 
 const PaymentMethodDataContext = createContext( DEFAULT_PAYMENT_METHOD_DATA );
 
@@ -50,9 +76,11 @@ export const usePaymentMethodDataContext = (): PaymentMethodDataContextType => {
 };
 
 /**
- * PaymentMethodDataProvider is automatically included in the CheckoutDataProvider.
+ * PaymentMethodDataProvider is automatically included in the
+ * CheckoutDataProvider.
  *
- * This provides the api interface (via the context hook) for payment method status and data.
+ * This provides the api interface (via the context hook) for payment method
+ * status and data.
  *
  * @param {Object} props          Incoming props for provider
  * @param {Object} props.children The wrapped components in this provider.
@@ -62,6 +90,7 @@ export const PaymentMethodDataProvider = ( {
 }: {
 	children: React.ReactChildren;
 } ): JSX.Element => {
+	const { setBillingData } = useCustomerDataContext();
 	const {
 		isProcessing: checkoutIsProcessing,
 		isIdle: checkoutIsIdle,
@@ -69,46 +98,81 @@ export const PaymentMethodDataProvider = ( {
 		hasError: checkoutHasError,
 	} = useCheckoutContext();
 	const { isEditor, getPreviewData } = useEditorContext();
-	const { setValidationErrors } = useValidationContext();
-	const { addErrorNotice, removeNotice } = useStoreNotices();
 	const {
 		isSuccessResponse,
 		isErrorResponse,
 		isFailResponse,
 		noticeContexts,
 	} = useEmitResponse();
+	const { dispatchCheckoutEvent } = useStoreEvents();
+
+	const [ activePaymentMethod, setActive ] = useState( '' ); // The active payment method - e.g. Stripe CC or BACS.
+	const [ activeSavedToken, setActiveSavedToken ] = useState( '' ); // If a previously saved payment method is active, the token for that method. For example, a for a Stripe CC card saved to user account.
 	const [ observers, observerDispatch ] = useReducer( emitReducer, {} );
-	const { onPaymentProcessing } = useEventEmitters( observerDispatch );
+	const [ paymentData, dispatch ] = useReducer(
+		reducer,
+		DEFAULT_PAYMENT_DATA_CONTEXT_STATE
+	);
 	const currentObservers = useRef( observers );
+	const { onPaymentProcessing } = useEventEmitters( observerDispatch );
 
 	// ensure observers are always current.
 	useEffect( () => {
 		currentObservers.current = observers;
 	}, [ observers ] );
 
-	const [ paymentData, dispatch ] = useReducer(
-		reducer,
-		DEFAULT_PAYMENT_DATA_CONTEXT_STATE
+	const setActivePaymentMethod = useCallback(
+		( paymentMethodSlug ) => {
+			setActive( paymentMethodSlug );
+			dispatch( statusOnly( PRISTINE ) );
+			dispatchCheckoutEvent( 'set-active-payment-method', {
+				paymentMethodSlug,
+			} );
+		},
+		[ setActive, dispatch, dispatchCheckoutEvent ]
 	);
-	const {
-		dispatchActions,
-		setPaymentStatus,
-	} = usePaymentMethodDataDispatchers( dispatch );
+
+	const paymentMethodsDispatcher = useCallback<
+		PaymentMethodsDispatcherType
+	>(
+		( paymentMethods ) => {
+			dispatch(
+				setRegisteredPaymentMethods( paymentMethods as PaymentMethods )
+			);
+		},
+		[ dispatch ]
+	);
+
+	const expressPaymentMethodsDispatcher = useCallback<
+		PaymentMethodsDispatcherType
+	>(
+		( paymentMethods ) => {
+			dispatch(
+				setRegisteredExpressPaymentMethods(
+					paymentMethods as PaymentMethods
+				)
+			);
+		},
+		[ dispatch ]
+	);
 
 	const paymentMethodsInitialized = usePaymentMethods(
-		dispatchActions.setRegisteredPaymentMethods
+		paymentMethodsDispatcher
 	);
 
 	const expressPaymentMethodsInitialized = useExpressPaymentMethods(
-		dispatchActions.setRegisteredExpressPaymentMethods
+		expressPaymentMethodsDispatcher
 	);
 
-	const {
-		activePaymentMethod,
-		activeSavedToken,
-		setActivePaymentMethod,
-		setActiveSavedToken,
-	} = useActivePaymentMethod();
+	const { setValidationErrors } = useValidationContext();
+	const { addErrorNotice, removeNotice } = useStoreNotices();
+	const { setShippingAddress } = useShippingDataContext();
+	const setShouldSavePayment = useCallback(
+		( shouldSave ) => {
+			dispatch( setShouldSavePaymentMethod( shouldSave ) );
+		},
+		[ dispatch ]
+	);
 
 	const customerPaymentMethods = useMemo( (): CustomerPaymentMethods => {
 		if ( isEditor ) {
@@ -116,9 +180,13 @@ export const PaymentMethodDataProvider = ( {
 				'previewSavedPaymentMethods'
 			) as CustomerPaymentMethods;
 		}
-		return paymentMethodsInitialized
-			? getCustomerPaymentMethods( paymentData.paymentMethods )
-			: {};
+		if (
+			! paymentMethodsInitialized ||
+			Object.keys( paymentData.paymentMethods ).length === 0
+		) {
+			return {};
+		}
+		return getCustomerPaymentMethods( paymentData.paymentMethods );
 	}, [
 		isEditor,
 		getPreviewData,
@@ -143,63 +211,71 @@ export const PaymentMethodDataProvider = ( {
 		[ addErrorNotice, noticeContexts.EXPRESS_PAYMENTS, removeNotice ]
 	);
 
-	const isExpressPaymentMethodActive = Object.keys(
-		paymentData.expressPaymentMethods
-	).includes( activePaymentMethod );
-
 	const currentStatus = useMemo(
 		() => ( {
-			isPristine: paymentData.currentStatus === STATUS.PRISTINE,
-			isStarted: paymentData.currentStatus === STATUS.STARTED,
-			isProcessing: paymentData.currentStatus === STATUS.PROCESSING,
-			isFinished: [
-				STATUS.ERROR,
-				STATUS.FAILED,
-				STATUS.SUCCESS,
-			].includes( paymentData.currentStatus ),
-			hasError: paymentData.currentStatus === STATUS.ERROR,
-			hasFailed: paymentData.currentStatus === STATUS.FAILED,
-			isSuccessful: paymentData.currentStatus === STATUS.SUCCESS,
-			isDoingExpressPayment:
-				paymentData.currentStatus !== STATUS.PRISTINE &&
-				isExpressPaymentMethodActive,
+			isPristine: paymentData.currentStatus === PRISTINE,
+			isStarted: paymentData.currentStatus === STARTED,
+			isProcessing: paymentData.currentStatus === PROCESSING,
+			isFinished: [ ERROR, FAILED, SUCCESS ].includes(
+				paymentData.currentStatus
+			),
+			hasError: paymentData.currentStatus === ERROR,
+			hasFailed: paymentData.currentStatus === FAILED,
+			isSuccessful: paymentData.currentStatus === SUCCESS,
 		} ),
-		[ paymentData.currentStatus, isExpressPaymentMethodActive ]
+		[ paymentData.currentStatus ]
 	);
 
-	// Update the active (selected) payment method when it is empty, or invalid.
-	useEffect( () => {
-		const paymentMethodKeys = Object.keys( paymentData.paymentMethods );
-		const allPaymentMethodKeys = [
-			...paymentMethodKeys,
-			...Object.keys( paymentData.expressPaymentMethods ),
-		];
-		if ( ! paymentMethodsInitialized || ! paymentMethodKeys.length ) {
-			return;
-		}
-
-		setActivePaymentMethod( ( currentActivePaymentMethod ) => {
-			// If there's no active payment method, or the active payment method has
-			// been removed (e.g. COD vs shipping methods), set one as active.
-			// Note: It's possible that the active payment method might be an
-			// express payment method. So registered express payment methods are
-			// included in the check here.
-			if (
-				! currentActivePaymentMethod ||
-				! allPaymentMethodKeys.includes( currentActivePaymentMethod )
-			) {
-				setPaymentStatus().pristine();
-				return Object.keys( paymentData.paymentMethods )[ 0 ];
-			}
-			return currentActivePaymentMethod;
-		} );
-	}, [
-		paymentMethodsInitialized,
-		paymentData.paymentMethods,
-		paymentData.expressPaymentMethods,
-		setActivePaymentMethod,
-		setPaymentStatus,
-	] );
+	const setPaymentStatus = useCallback(
+		(): PaymentStatusDispatchers => ( {
+			started: ( paymentMethodData ) => {
+				dispatch(
+					started( {
+						paymentMethodData,
+					} )
+				);
+			},
+			processing: () => dispatch( statusOnly( PROCESSING ) ),
+			completed: () => dispatch( statusOnly( COMPLETE ) ),
+			error: ( errorMessage ) => dispatch( error( errorMessage ) ),
+			failed: (
+				errorMessage,
+				paymentMethodData,
+				billingData = undefined
+			) => {
+				if ( billingData ) {
+					setBillingData( billingData );
+				}
+				dispatch(
+					failed( {
+						errorMessage: errorMessage || '',
+						paymentMethodData: paymentMethodData || {},
+					} )
+				);
+			},
+			success: (
+				paymentMethodData,
+				billingData = undefined,
+				shippingData = undefined
+			) => {
+				if ( billingData ) {
+					setBillingData( billingData );
+				}
+				if (
+					typeof shippingData !== undefined &&
+					shippingData?.address
+				) {
+					setShippingAddress( shippingData.address );
+				}
+				dispatch(
+					success( {
+						paymentMethodData,
+					} )
+				);
+			},
+		} ),
+		[ dispatch, setBillingData, setShippingAddress ]
+	);
 
 	// flip payment to processing if checkout processing is complete, there are no errors, and payment status is started.
 	useEffect( () => {
@@ -222,9 +298,9 @@ export const PaymentMethodDataProvider = ( {
 	// When checkout is returned to idle, set payment status to pristine but only if payment status is already not finished.
 	useEffect( () => {
 		if ( checkoutIsIdle && ! currentStatus.isSuccessful ) {
-			setPaymentStatus().pristine();
+			dispatch( statusOnly( PRISTINE ) );
 		}
-	}, [ checkoutIsIdle, currentStatus.isSuccessful, setPaymentStatus ] );
+	}, [ checkoutIsIdle, currentStatus.isSuccessful ] );
 
 	// if checkout has an error and payment is not being made with a saved token and payment status is success, then let's sync payment status back to pristine.
 	useEffect( () => {
@@ -233,15 +309,48 @@ export const PaymentMethodDataProvider = ( {
 			currentStatus.isSuccessful &&
 			! paymentData.hasSavedToken
 		) {
-			setPaymentStatus().pristine();
+			dispatch( statusOnly( PRISTINE ) );
 		}
 	}, [
 		checkoutHasError,
 		currentStatus.isSuccessful,
 		paymentData.hasSavedToken,
-		setPaymentStatus,
 	] );
 
+	// Set active (selected) payment method as needed.
+	useEffect( () => {
+		const paymentMethodKeys = Object.keys( paymentData.paymentMethods );
+		const allPaymentMethodKeys = [
+			...paymentMethodKeys,
+			...Object.keys( paymentData.expressPaymentMethods ),
+		];
+		if ( ! paymentMethodsInitialized || ! paymentMethodKeys.length ) {
+			return;
+		}
+
+		setActive( ( currentActivePaymentMethod ) => {
+			// If there's no active payment method, or the active payment method has
+			// been removed (e.g. COD vs shipping methods), set one as active.
+			// Note: It's possible that the active payment method might be an
+			// express payment method. So registered express payment methods are
+			// included in the check here.
+			if (
+				! currentActivePaymentMethod ||
+				! allPaymentMethodKeys.includes( currentActivePaymentMethod )
+			) {
+				dispatch( statusOnly( PRISTINE ) );
+				return Object.keys( paymentData.paymentMethods )[ 0 ];
+			}
+			return currentActivePaymentMethod;
+		} );
+	}, [
+		paymentMethodsInitialized,
+		paymentData.paymentMethods,
+		paymentData.expressPaymentMethods,
+		setActive,
+	] );
+
+	// emit events.
 	useEffect( () => {
 		// Note: the nature of this event emitter is that it will bail on any
 		// observer that returns a response that !== true. However, this still
@@ -342,9 +451,8 @@ export const PaymentMethodDataProvider = ( {
 		paymentMethodsInitialized,
 		expressPaymentMethodsInitialized,
 		setExpressPaymentError,
-		isExpressPaymentMethodActive,
 		shouldSavePayment: paymentData.shouldSavePaymentMethod,
-		setShouldSavePayment: dispatchActions.setShouldSavePayment,
+		setShouldSavePayment,
 	};
 
 	return (

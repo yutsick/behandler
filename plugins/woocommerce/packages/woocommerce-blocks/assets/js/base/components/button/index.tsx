@@ -4,8 +4,6 @@
 import { Button as WPButton } from 'wordpress-components';
 import type { ReactNode } from 'react';
 import classNames from 'classnames';
-import Spinner from '@woocommerce/base-components/spinner';
-
 /**
  * Internal dependencies
  */
@@ -37,7 +35,12 @@ const Button = ( {
 
 	return (
 		<WPButton className={ buttonClassName } { ...props }>
-			{ showSpinner && <Spinner /> }
+			{ showSpinner && (
+				<span
+					className="wc-block-components-button__spinner"
+					aria-hidden="true"
+				/>
+			) }
 			<span className="wc-block-components-button__text">
 				{ children }
 			</span>

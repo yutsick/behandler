@@ -338,7 +338,7 @@ class WooSubscriptionsNotes {
 		$note->add_action(
 			'enable-autorenew',
 			__( 'Enable Autorenew', 'woocommerce' ),
-			'https://woocommerce.com/my-account/my-subscriptions/?utm_medium=product'
+			'https://woocommerce.com/my-account/my-subscriptions/'
 		);
 		$note->set_content( $note_content );
 		$note->set_content_data( $note_content_data );

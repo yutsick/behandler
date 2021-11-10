@@ -7,9 +7,8 @@ import classnames from 'classnames';
 import {
 	ValidationInputError,
 	useValidationContext,
-	useCheckoutContext,
 } from '@woocommerce/base-context';
-import { withInstanceId } from '@wordpress/compose';
+import { withInstanceId } from '@woocommerce/base-hocs/with-instance-id';
 import { isString } from '@woocommerce/types';
 
 /**
@@ -65,8 +64,6 @@ const ValidatedTextInput = ( {
 		getValidationErrorId,
 	} = useValidationContext();
 
-	const { isBeforeProcessing } = useCheckoutContext();
-
 	const textInputId =
 		typeof id !== 'undefined' ? id : 'textinput-' + instanceId;
 	const errorIdString = errorId !== undefined ? errorId : textInputId;
@@ -117,14 +114,6 @@ const ValidatedTextInput = ( {
 		}
 	}, [ isPristine, setIsPristine, validateOnMount, validateInput ] );
 
-	/**
-	 * @todo Remove extra validation call after refactoring the validation system.
-	 */
-	useEffect( () => {
-		if ( isBeforeProcessing ) {
-			validateInput();
-		}
-	}, [ isBeforeProcessing, validateInput ] );
 	// Remove validation errors when unmounted.
 	useEffect( () => {
 		return () => {
@@ -157,10 +146,7 @@ const ValidatedTextInput = ( {
 			} }
 			feedback={
 				showError && (
-					<ValidationInputError
-						errorMessage={ passedErrorMessage }
-						propertyName={ errorIdString }
-					/>
+					<ValidationInputError propertyName={ errorIdString } />
 				)
 			}
 			ref={ inputRef }

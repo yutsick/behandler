@@ -8,7 +8,7 @@ let blockAttributes = {
 		type: 'number',
 		default: 2,
 	},
-	showProductLink: {
+	productLink: {
 		type: 'boolean',
 		default: true,
 	},

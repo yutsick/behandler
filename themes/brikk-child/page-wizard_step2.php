@@ -87,7 +87,7 @@ global $step, $register;
 
     </div>
 </div>
-<script> 
+<script>
 
 var $files = document.querySelector('#files');
 var $gal_id = document.querySelector('#rz_gallery_id');

@@ -847,48 +847,31 @@ h3 {
   display: inline-block;
   width: 80%;
 }
-.explore-behandler .rz-checkbox{
-  width: 100%;
-}
-.switch span, .explore-behandler .rz-checkbox span {
+
+.switch span {
   width: 35px;
   height: 8px;
-
 }
 
-.explore-behandler .rz-checkbox input:checked+span:after{
-  display: none !important;
-}
 /* Hide default HTML checkbox */
-.switch input, .explore-behandler .rz-checkbox input {
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
-.explore-behandler .rz-checkbox em{
-  display: none !important;
-}
 
 /* The slider */
-.explore-behandler .rz-checkbox span{
-  width: 35px !important;
-  height: 8px !important;
-  right: 0 !important;
-  left: inherit !important;
-  border: transparent !important;
-  top:20px;
-}
-.slider, .explore-behandler .rz-transition {
+.slider {
   position: absolute;
   cursor: pointer;
   right: 0;
   bottom: 7px;
-  background-color: #ccc !important;
+  background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
-.slider:before, .explore-behandler .rz-transition::before {
+.slider:before {
   position: absolute;
   content: "";
   height: 16px;
@@ -899,15 +882,15 @@ h3 {
   transition: .4s;
 }
 
-input:checked+.slider, input:checked+.rz-transition {
+input:checked+.slider {
   background-color: rgba(245, 89, 81, 0.38);
 }
 
-input:focus+.slider, input:focus+.rz-transition{
+input:focus+.slider {
   box-shadow: 0 0 1px rgba(245, 89, 81, 0.38);
 }
 
-input:checked+.slider:before, input:checked+.rz-transition:before  {
+input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -917,20 +900,18 @@ input:checked+.slider:before, input:checked+.rz-transition:before  {
   padding: 1.5rem!important;;
 }
 /* Rounded sliders */
-.slider.round, .explore-behandler .rz-checkbox .rz-transition {
-  border-radius: 34px !important;
+.slider.round {
+  border-radius: 34px;
 }
 
-.slider.round:before, .explore-behandler .rz-checkbox .rz-transition:before  {
+.slider.round:before {
   border-radius: 50%;
 }
 
-p.toggle, .explore-behandler .rz-checkbox {
+p.toggle {
   margin: 0;
   padding: 1.5rem 0;
 }
-
-
 
 p.toggle:hover {
   background: #FEEEEE;
