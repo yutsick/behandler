@@ -1,1 +1,12 @@
-ai1wm-backups/
+ai1wm-backups/*
+!ai1wm-backups/
+backups-dup-lite/*
+!backups-dup-lite/
+languages/*
+!languages/
+uploads/*
+!uploads/
+themes/*
+!themes/brikk-child/
+.DS_Store
+.gitignore
