@@ -1,0 +1,33 @@
+<div class="rz-field-terms">
+ <div class="rz-terms-taxonomy">
+ <?php 
+
+ $component->render([
+ 'type' => 'use_field',
+ 'id' => null,
+ 'name' => $props['name'],
+ 'value' => isset( $term_values->taxonomy ) ? $term_values->taxonomy : $props['value'],
+ 'group' => 'taxonomy',
+ 'is_wrapped' => false,
+ ]);
+
+ ?>
+ </div>
+ <div class="rz-terms-terms <?php if( $terms ): ?> rz-active <?php endif; ?>">
+ <?php 
+
+ $default = $props['multiple'] ? [] : '';
+
+ $component->render([
+ 'type' => 'select',
+ 'id' => null,
+ 'name' => esc_html__('Select Terms', 'routiz'),
+ 'value' => isset( $term_values->term ) ? $term_values->term : $default,
+ 'options' => $terms,
+ 'is_wrapped' => false,
+ ]);
+
+ ?>
+ </div>
+ <input type="text" class="rz-terms-input rz-none" name="<?php echo static::e($props['id']); ?>" value="<?php echo static::e(is_object( $props['value'] ) ? json_encode( $props['value'] ) : $props['value']); ?>">
+</div>

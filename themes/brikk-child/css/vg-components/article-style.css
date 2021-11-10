@@ -1,0 +1,155 @@
+.case {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+
+.article {
+    width: calc(100% - 280px);
+    padding-right: 117px;
+}
+
+.article_head h1 {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 43px;
+    color: #361D32;
+}
+
+.article_tags {
+    margin-top: 32px;
+    display: flex;
+}
+
+.article_tags_author {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 130%;
+    text-transform: uppercase;
+    color: #9A8E98;
+    max-width: 74px;
+    margin-right: 25px;
+}
+
+.article_tags_text {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.article_tags_text a {
+    padding: 13px 20px;
+    background: #F55951;
+    border: 1px solid #F55951;
+    box-sizing: border-box;
+    border-radius: 50px;
+
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.article_tags_text a:last-child {
+    margin-right: 0;
+}
+
+.article_text {
+    margin: 56px 0;
+    padding: 0 100px;
+}
+
+.article_text iframe {
+    margin: 56px 0;
+    width: 100%;
+}
+
+.article_links {
+    display: flex;
+    align-items: center;
+}
+
+.article_links_head {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+    text-transform: uppercase;
+    color: #9A8E98;
+    width: 74px;
+    margin-right: 25px;
+}
+
+.article_links_link {
+    display: flex;
+}
+
+.article_links_link a {
+    text-decoration: none;
+    margin-right: 16px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.article_links_link a:last-child {
+    margin-right: 0;
+}
+
+
+.article_container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.short_article {
+    width: calc(33.3333% - 12px);
+    margin-right: 18px;
+    border: 1px solid #FEEEEE;
+    margin-bottom: 18px;
+    padding-bottom: 20px;
+}
+
+.short_article:nth-child(3n) {
+    margin-right: 0;
+}
+
+.short_article_img img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.short_article_head h4 {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    color: #361D32;
+    margin-top: 16px;
+    padding: 0 16px;
+    min-height: 72px;
+}
+
+.short_article_except p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+    color: #361D32;
+    padding: 0 16px;
+}
+
+.short_article_link a {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #F55951;
+    text-decoration: none;
+    padding: 0 16px;
+}
+
+.short_article_link a img {
+    margin-left: 16px;
+}

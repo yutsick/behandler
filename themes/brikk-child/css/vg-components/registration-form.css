@@ -1,0 +1,165 @@
+.contain-registration {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    height: auto;
+    min-height: calc(100vh - 80px);
+}
+
+a.history-back {
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    text-align: right;
+
+    /* CDC6CC */
+
+    color: #CDC6CC;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    margin-left: 24px;
+}
+
+a.history-back svg {
+    margin-right: 10px;
+}
+
+.registration-imag {
+    width: 42%;
+    background-color: #543C52;
+    background-image: url('/wp-content/themes/brikk-child/images/bg-registration.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    height: auto;
+    min-height: 100vh;
+    max-height: 100vh;
+}
+
+.registration-form {
+    width: 58%;
+    height: auto;
+    min-height: 100%;
+
+    padding: 21px 117px;
+}
+
+.regis-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.regis-top-link {
+    position: relative;
+    top: 5px;
+}
+
+.regis-top-link a {
+    position: relative;
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    color: #9A8E98;
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+}
+
+.regis-top-link a svg {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+}
+
+
+.u-column1.col-1 {
+    margin-top: 67px;
+}
+
+.rz-button.rz-button-accent.w-100 {
+    width: 100%;
+    height: 56px;
+}
+
+.woocommerce-LostPassword.lost_password {
+    text-align: right;
+}
+
+.eller_title {
+    display: flex;
+    justify-content: center;
+
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+
+    /* CDC6CC */
+
+    color: #CDC6CC;
+    margin: 40px 0;
+}
+
+.eller_button a {
+    position: relative;
+    width: 100%;
+    height: 56px;
+    border-radius: 56px;
+    background-color: #F5F4F5;
+    text-align: center;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.eller_button a svg {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+}
+
+.u-column1.col-1 h2 {
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 43px;
+
+    /* 361D32 */
+
+    color: #361D32;
+}
+
+p.regis-text {
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+    /* identical to box height, or 21px */
+
+
+    /* 361D32 */
+
+    color: #361D32;
+
+    margin-top: 24px;
+    margin-bottom: 32px;
+}

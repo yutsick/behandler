@@ -1,0 +1,30 @@
+2021-11-01T00:09:11+00:00 CRITICAL syntax error, unexpected ']', expecting ')' у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php доступно 23
+
+2021-11-01T01:04:03+00:00 CRITICAL Uncaught Error: Call to undefined function get_post_meta_db() in D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php:7
+Stack trace:
+#0 D:\OpenServer\domains\behandler\wp-includes\template-loader.php(106): include()
+#1 D:\OpenServer\domains\behandler\wp-blog-header.php(19): require_once('D:\\OpenServer\\d...')
+#2 D:\OpenServer\domains\behandler\index.php(17): require('D:\\OpenServer\\d...')
+#3 {main}
+  thrown у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php доступно 7
+
+2021-11-01T01:04:59+00:00 CRITICAL Uncaught Error: Call to undefined function get_post_meta_db() in D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php:7
+Stack trace:
+#0 D:\OpenServer\domains\behandler\wp-includes\template-loader.php(106): include()
+#1 D:\OpenServer\domains\behandler\wp-blog-header.php(19): require_once('D:\\OpenServer\\d...')
+#2 D:\OpenServer\domains\behandler\index.php(17): require('D:\\OpenServer\\d...')
+#3 {main}
+  thrown у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php доступно 7
+
+2021-11-01T01:09:31+00:00 CRITICAL Uncaught Error: Call to undefined function update_meta() in D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php:34
+Stack trace:
+#0 D:\OpenServer\domains\behandler\wp-includes\template-loader.php(106): include()
+#1 D:\OpenServer\domains\behandler\wp-blog-header.php(19): require_once('D:\\OpenServer\\d...')
+#2 D:\OpenServer\domains\behandler\index.php(17): require('D:\\OpenServer\\d...')
+#3 {main}
+  thrown у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php доступно 34
+
+2021-11-01T01:13:04+00:00 CRITICAL syntax error, unexpected ',' у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php доступно 34
+
+2021-11-01T01:16:24+00:00 CRITICAL Can't use function return value in write context у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php доступно 11
+

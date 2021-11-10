@@ -1,0 +1,12 @@
+2021-10-17T15:14:45+00:00 CRITICAL Maximum execution time of 60 seconds exceeded у D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc\src\form\modules\module.php доступно 384
+
+2021-10-17T16:55:32+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO), expecting ')' у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\woocommerce\myaccount\form-edit-account.php доступно 101
+
+2021-10-17T17:20:20+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO) у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\woocommerce\myaccount\form-edit-account.php доступно 156
+
+2021-10-17T17:54:38+00:00 CRITICAL Maximum execution time of 60 seconds exceeded у D:\OpenServer\domains\behandler\wp-content\plugins\advanced-custom-fields-pro\includes\locations\class-acf-location-user-form.php доступно 3
+
+2021-10-17T17:54:39+00:00 CRITICAL Maximum execution time of 60 seconds exceeded у D:\OpenServer\domains\behandler\wp-includes\blocks.php доступно 202
+
+2021-10-17T17:54:52+00:00 CRITICAL Maximum execution time of 60 seconds exceeded у D:\OpenServer\domains\behandler\wp-admin\includes\user.php доступно 663
+

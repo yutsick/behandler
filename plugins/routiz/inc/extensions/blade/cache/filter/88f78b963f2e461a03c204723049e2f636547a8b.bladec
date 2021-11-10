@@ -1,0 +1,20 @@
+<div class="rz-form-group rz-col-12">
+
+ <?php if( $name ): ?>
+ <div class="rz-heading">
+ <label class="rz-ellipsis">
+ <?php echo $name; ?>
+
+ </label>
+ </div>
+ <?php endif; ?>
+
+ <input
+ type="text"
+ name="<?php echo static::e($id); ?>"
+ value="<?php echo static::e($value); ?>"
+ placeholder="<?php echo static::e($placeholder); ?>">
+
+ <i class="fas fa-location-arrow"></i>
+
+</div>

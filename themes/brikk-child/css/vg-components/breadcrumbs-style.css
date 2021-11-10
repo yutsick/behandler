@@ -1,0 +1,23 @@
+.kama_breadcrumbs {
+    margin-top: 40px;
+}
+
+.kama_breadcrumbs span a {
+    font-size: 14px;
+    line-height: 17px;
+    color: #CDC6CC;
+    text-decoration: none;
+}
+
+.kb_sep {
+    margin: 0 8px;
+}
+
+.kb_title {
+    font-size: 14px;
+    line-height: 17px;
+    color: #361D32;
+}
+.author .kama_breadcrumbs{
+    color: #fff;
+}

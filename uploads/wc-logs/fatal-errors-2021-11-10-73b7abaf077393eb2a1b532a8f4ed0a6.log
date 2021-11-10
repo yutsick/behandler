@@ -1,0 +1,4 @@
+2021-11-10T15:19:26+00:00 CRITICAL Maximum execution time of 60 seconds exceeded у D:\OpenServer\domains\behandler\wp-includes\class-wp-theme.php доступно 1204
+
+2021-11-10T15:20:22+00:00 CRITICAL Maximum execution time of 60 seconds exceeded у D:\OpenServer\domains\behandler\wp-includes\Requests\Transport\cURL.php доступно 165
+

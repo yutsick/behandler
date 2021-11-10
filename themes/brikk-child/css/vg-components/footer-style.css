@@ -1,0 +1,32 @@
+.footer {
+    width: 100%;
+    background: #361D32;
+    margin-top: 104px;
+    position: absolute;
+    z-index: 2;
+}
+
+.foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    min-height: 80px;
+}
+
+.foot_copy {
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.foot_soci a {
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.foot_soci a:first-child {
+    margin-left: 0;
+}

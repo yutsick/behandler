@@ -1,0 +1,24 @@
+2021-10-31T21:55:07+00:00 CRITICAL Illegal offset type у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php доступно 4
+
+2021-10-31T22:33:56+00:00 CRITICAL Uncaught Error: Unsupported operand types in D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php:15
+Stack trace:
+#0 D:\OpenServer\domains\behandler\wp-includes\template-loader.php(106): include()
+#1 D:\OpenServer\domains\behandler\wp-blog-header.php(19): require_once('D:\\OpenServer\\d...')
+#2 D:\OpenServer\domains\behandler\index.php(17): require('D:\\OpenServer\\d...')
+#3 {main}
+  thrown у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php доступно 15
+
+2021-10-31T22:38:41+00:00 CRITICAL syntax error, unexpected '$geo' (T_VARIABLE), expecting ')' у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php доступно 15
+
+2021-10-31T22:39:15+00:00 CRITICAL syntax error, unexpected ',' у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php доступно 14
+
+2021-10-31T22:39:25+00:00 CRITICAL syntax error, unexpected '$geo' (T_VARIABLE) у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php доступно 14
+
+2021-10-31T23:30:15+00:00 CRITICAL Uncaught Error: Call to undefined function get_lat() in D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php:9
+Stack trace:
+#0 D:\OpenServer\domains\behandler\wp-includes\template-loader.php(106): include()
+#1 D:\OpenServer\domains\behandler\wp-blog-header.php(19): require_once('D:\\OpenServer\\d...')
+#2 D:\OpenServer\domains\behandler\index.php(17): require('D:\\OpenServer\\d...')
+#3 {main}
+  thrown у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\page-test.php доступно 9
+

@@ -1,0 +1,42 @@
+.sidebar {
+    width: 280px;
+    margin-top: 32px;
+}
+
+.sidebar_head h2 {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 26px;
+    color: #361D32;
+}
+
+.sidebar_link {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar_link a {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    text-decoration: none;
+}
+
+.sidebar_link a:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar_link a img {
+    margin-right: 16px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.sidebar_link a span {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #361D32;
+}

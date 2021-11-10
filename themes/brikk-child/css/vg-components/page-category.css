@@ -1,0 +1,185 @@
+.contain-page {
+    position: relative;
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto 0;
+}
+
+.rz-explore-map {
+    background-color: #f9f9f9;
+    height: 694px;
+    border-radius: 0;
+}
+
+a#listing_switch {
+    width: 210px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1px solid #FEEEEE;
+    border-radius: 50px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #361D32;
+    text-decoration: none;
+
+    position: fixed;
+    right: calc(50% - 585px);
+    z-index: 4;
+    top: 120px;
+}
+
+#listing_switch_text {
+    width: 65px;
+    margin-right: 16px;
+}
+
+.listing_switch_icon {
+    width: 96px;
+    height: 34px;
+    background: #FFFFFF;
+    border: 1px solid #361D32;
+    box-sizing: border-box;
+    border-radius: 50px;
+    margin-right: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listing_switch_icon_table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 34px;
+    background-color: transparent;
+    border-radius: 34px;
+}
+
+.listing_switch_icon_maps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 34px;
+    background-color: #361D32;
+    border-radius: 34px;
+}
+
+.listing_switch_icon.active {
+    border: 1px solid #F55951;
+}
+
+.listing_switch_icon.active .listing_switch_icon_table {
+    background-color: #F55951;
+}
+
+.listing_switch_icon.active .listing_switch_icon_maps {
+    background-color: transparent;
+}
+
+.contain-page-sid .rz-search-filter-inner {
+    padding: 1rem 0 0;
+}
+
+.contain-page-sid .rz-search-footer {
+    padding: 1rem 0 1.5rem;
+}
+
+.routiz .contain-page-sid .rz-explore-listings {
+    padding: 1.4rem 0 1.5rem;
+}
+
+.contain-page-map {
+   
+    width: calc(30%);
+    
+    position: fixed;
+    top: 75px;
+   
+    left: 64%;
+    z-index: 1;
+   
+}
+
+.contain-page-map.in-active {
+    display: none;
+}
+
+.contain-page-sid {
+    max-width: calc(100% - 400px);
+}
+
+.contain-page-sid.active {
+    max-width: 100%;
+}
+
+.rz-mod {
+    min-width: 200px;
+}
+
+.contain-page .rz-taxonomy-heading .rz--inner {
+    padding: 1.5rem 0;
+}
+
+@media (max-width: 1199px) {
+    .rz-is-explore .brk-mobile-header, .single-rz_listing .brk-mobile-header {
+        display: flex;
+        top: 0px;
+        width: 100%;
+        position: absolute;
+    }
+
+    .contain-page {
+        max-width: 960px;
+    }
+
+    a#listing_switch {
+        right: 15px;
+    }
+
+   
+}
+
+@media (max-width: 991px) {
+    /*.rz-is-explore .brk-mobile-header, .single-rz_listing .brk-mobile-header {*/
+    /*    display: none;*/
+    /*}*/
+
+    .contain-page-map {
+        display: none;
+    }
+
+    a#listing_switch {
+        display: none;
+    }
+
+    .contain-page-sid {
+        max-width: 100%;
+    }
+
+    .routiz .contain-page-sid .rz-explore-listings {
+        padding: 1.4rem 1rem 1.5rem;
+    }
+
+    .rz--expand-search-filters .rz-search-filter--inline .rz--content {
+        padding: 0 1rem;
+    }
+
+    .routiz .rz-search-filter--inline {
+        position: relative;
+    }
+
+    .rz-search-filter.rz-search-filter--inline {
+        position: relative;
+    }
+
+}

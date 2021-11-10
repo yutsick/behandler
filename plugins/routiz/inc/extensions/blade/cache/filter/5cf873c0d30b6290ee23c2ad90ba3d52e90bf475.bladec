@@ -1,0 +1,33 @@
+<?php 
+ global $rz_explore, $rz_autocomplete_placeholder;
+ $rz_autocomplete_placeholder = $placeholder; // TODO: get rid of this
+
+ if( is_admin() && ! wp_doing_ajax() ) {
+ return;
+ }
+
+ ?>
+
+<div class="rz-form-group rz-col-12">
+
+ <div class="rz-heading">
+ <label class="rz-ellipsis"><?php echo static::e($name); ?></label>
+ </div>
+
+ <div class="rz-quick<?php if( $rz_explore->request->has('search_term') ) { echo ' rz-is-typed'; } ?>">
+
+ <?php Rz()->the_template( 'routiz/search/hiddens' ); ?>
+
+ <div class="rz-quick-input">
+ <i class="rz-quick-preloader fas fa-sync fa-spin"></i>
+ <input class="rz-transition" name="search_term" type="text" placeholder="<?php echo apply_filters( 'routiz/quick/placeholder', $rz_autocomplete_placeholder ); ?>" value="<?php echo $rz_explore->request->has('search_term') ? $rz_explore->request->get('search_term') : ''; ?>">
+ <a href="#" class="rz-icon-clear fas fa-times"></a>
+ </div>
+
+ <div class="rz-autocomplete rz-is-empty">
+ <ul class="rz-listed"><!-- autocomplete rows --></ul>
+ </div>
+
+ </div>
+
+</div>

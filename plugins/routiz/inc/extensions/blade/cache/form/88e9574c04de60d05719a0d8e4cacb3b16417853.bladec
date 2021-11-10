@@ -1,0 +1,3 @@
+<div class="">
+ <input class="rz-button <?php echo static::e($button->class); ?>" <?php echo $button->id; ?> type="submit" value="<?php echo static::e($name); ?>">
+</div>

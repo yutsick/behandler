@@ -1,0 +1,922 @@
+@import "../fonts/stylesheet.css";
+@import "vg-components/main-style.css";
+@import "vg-components/breadcrumbs-style.css";
+@import "vg-components/article-style.css";
+@import "vg-components/sidebar-style.css";
+@import "vg-components/pagination-style.css";
+@import "vg-components/page-category.css";
+@import "vg-components/footer-style.css";
+@import "vg-components/registration-form.css";
+
+.required {
+    color: #F55951;
+}
+
+/**/
+.about__main {
+    background-color: #361D32;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    padding: 16px 0 56px;
+}
+
+.color-w .kama_breadcrumbs span.kb_title {
+    color: white;
+}
+
+.about__main_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+.about__main_info-head h1 {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 43px;
+    color: #FFFFFF;
+    margin-top: 174px;
+}
+
+.about__main_info-text {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+    color: #FFFFFF;
+    width: 100%;
+    max-width: 656px;
+    margin-top: 24px;
+}
+
+.about__description {
+    padding: 104px 0;
+    width: 100%;
+    max-width: 774px;
+    margin: 0 auto;
+}
+
+.about__description_head h2 {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 36px;
+    color: #361D32;
+}
+
+.about__description_text {
+    margin-top: 24px;
+}
+
+.about__description_text p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+    color: #361D32;
+    margin-bottom: 24px;
+}
+
+.about__description_text p:last-child {
+    margin-bottom: 0;
+}
+
+.about__advantage {
+    background: #543C52;
+    padding: 104px 0;
+}
+
+.about__advantage_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.advantage__item {
+    width: 25%;
+    max-width: 250px;
+    position: relative;
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.advantage__item_numb {
+    position: absolute;
+    z-index: 0;
+    font-weight: bold;
+    font-size: 152px;
+    color: #F55951;
+    opacity: .2;
+}
+
+.advantage__item_icon {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    z-index: 1;
+}
+
+.advantage__item_text {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 24px;
+    padding: 0 16px;
+}
+
+.advantage__item_text span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 24px;
+    display: block;
+    padding: 0 16px;
+}
+
+.paper__white {
+    padding: 104px 0;
+}
+
+.paper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.paper__info {
+    width: calc(100% - 576px);
+    padding-right: 59px;
+}
+
+.paper__image {
+    width: 50%;
+    max-width: 576px;
+}
+
+.paper__pinks {
+    padding: 104px 0;
+    background: #FEEEEE;
+}
+
+.paper__pinks .paper {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+
+.paper__pinks .paper__info {
+    width: calc(100% - 576px);
+    padding-left: 59px;
+}
+
+.paper__info_head h2 {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 36px;
+    color: #361D32;
+}
+
+.paper__info_text {
+    margin-top: 16px;
+}
+
+.paper__info_text p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+    color: #361D32;
+}
+
+.price__info {
+    padding: 104px 0 0;
+}
+
+.price__info_head {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.price__info_head h2 {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 43px;
+    color: #361D32;
+}
+
+.price__info_text {
+    width: 100%;
+    max-width: 1000px;
+    margin: 24px auto 0;
+}
+
+.price__info_text p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+    color: #361D32;
+    width: 100%;
+    max-width: 742px;
+}
+
+.contain-rate {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.price__info_rate {
+    width: calc(33.3333% - 22px);
+    margin-right: 32px;
+    border: 1px solid #FEEEEE;
+    padding: 32px 24px 16px;
+}
+
+.price__info_rate:nth-child(3n) {
+    margin-right: 0;
+}
+
+.rate__head h4 {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    color: #361D32;
+}
+
+.rate__text {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+    color: #361D32;
+    min-height: 84px;
+}
+
+.rate__numb {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 29px;
+}
+
+.rate__numb_big {
+    font-weight: bold;
+    font-size: 56px;
+    line-height: 130%;
+    color: #F55951;
+    margin-right: 16px;
+}
+
+.rate__numb_smn-i {
+    font-weight: bold;
+    font-size: 22.3089px;
+    line-height: 130%;
+    color: #F55951;
+}
+
+.rate__numb_smn-o {
+    font-size: 14px;
+    line-height: 130%;
+    color: #CDC6CC;
+}
+
+.price__info_make {
+    margin-top: 8px;
+}
+
+.price__info_make ul {
+    margin: 0;
+    padding: 0;
+}
+
+.price__info_make ul li {
+    list-style-type: none;
+    padding-left: 24px;
+    height: 48px;
+    position: relative;
+
+    font-size: 14px;
+    line-height: 130%;
+    color: #361D32;
+}
+
+.rz-plans .rz-plan .rz-content ul li.chevron::before,
+.price__info_make ul li.chevron::before {
+    content: url("/wp-content/themes/brikk-child/images/ico-li-chevron.svg");
+    position: absolute;
+    top: -2px;
+    left: -7px;
+}
+
+.rz-plans .rz-plan .rz-content ul li.branch::before,
+.price__info_make ul li.branch::before {
+    content: url("/wp-content/themes/brikk-child/images/ico-li-branch.svg");
+    position: absolute;
+    top: -4px;
+    left: -7px;
+}
+
+
+.rz-plans input:checked ~ .rz-plan .rz-content .price__info_make ul li {
+    color: white !important;
+}
+
+.rz-plans input:checked ~ .rz-plan .rz-content ul li.chevron::before {
+    content: url("/wp-content/themes/brikk-child/images/ico-li-chevron-w.svg");
+}
+
+.rz-plans input:checked ~ .rz-plan .rz-content ul li.branch::before {
+    content: url("/wp-content/themes/brikk-child/images/ico-li-branch-w.svg");
+}
+
+.contact__us {
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto 0;
+    background: #543C52;
+    padding: 86px;
+}
+
+.contact__us_head h2 {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 36px;
+    color: #FFFFFF;
+}
+
+.contact__us_text {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+    color: #FFFFFF;
+    width: 100%;
+    max-width: 484px;
+}
+
+.contact__us form {
+    margin-top: 32px;
+}
+
+.b-form .form-row,
+.contact__us .form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact__us .form-group,
+.b-form .form-group {
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.contact__us .form-row .form-group:nth-child(1),
+.b-form .form-row .form-group:nth-child(1) {
+    margin-right: 16px;
+}
+
+.contact__us .form-row .form-group:nth-child(2),
+.b-form .form-row .form-group:nth-child(2) {
+    margin-left: 16px;
+}
+
+#in-name {
+    position: relative;
+    height: 56px;
+    border-radius: 0;
+    padding: 16px 16px 16px 48px;
+    background-color: #fff;
+    background-image: url("/wp-content/themes/brikk-child/images/ico-form-user.svg");
+    background-repeat: no-repeat;
+    background-position: 12px 16px;
+}
+
+
+#in-mail {
+    position: relative;
+    height: 56px;
+    border-radius: 0;
+    padding: 16px 16px 16px 48px;
+    background-color: #fff;
+    background-image: url("/wp-content/themes/brikk-child/images/ico-form-mail.svg");
+    background-repeat: no-repeat;
+    background-position: 12px 16px;
+}
+
+#in-text {
+    width: 100%;
+    height: auto;
+    max-height: 104px;
+    border-radius: 0;
+    padding: 16px;
+}
+
+textarea.form-control {
+    resize: none;
+}
+
+.form-group.justify-end {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0;
+}
+
+.btn-button-send {
+    width: 183px;
+    height: 57px;
+    border-radius: 57px;
+    background: transparent;
+    border: 1px solid #F55951;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+    padding: .5em 1em;
+    background-color: #f9f1f1;
+    color: #46b450;
+    border: 0;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+/*Form*/
+.form__head {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 120%;
+    color: #FFFFFF;
+    margin-left: 10px;
+}
+
+.form__slag {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 120%;
+    color: #F55951;
+    margin-left: 10px;
+}
+
+.form__description {
+    font-size: 16px;
+    line-height: 150%;
+    color: #FFFFFF;
+    margin-left: 10px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+
+.s-steps-item a {
+    display: none;
+}
+
+.s-steps-item:last-child a {
+    display: block;
+}
+
+.last-article {
+    z-index: 1;
+    position: relative;
+}
+
+.s-last-articles .btn-bordered {
+    position: relative;
+    z-index: 1;
+}
+
+.brk-is-sticky .brk-header {
+    background-color: #F1E8E6;
+}
+
+.brk-header .brk-header-container > * {
+    padding: 16px 0;
+}
+
+/*Fix CSS*/
+.brk-header .brk-header-container .brk-site-actions {
+    margin-left: inherit;
+}
+
+.brk-header .brk-header-container {
+    justify-content: space-between;
+}
+
+.brk-nav ul li a {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.brk-nav.brk-nav-main ul li {
+    position: relative;
+    margin: 0 20px;
+}
+
+.brk-is-sticky ~ .brk-bg.rz-button-accent,
+.brk-is-sticky ~ .rz-button.rz-button-accent {
+    color: #fff;
+}
+
+.brk-bg.rz-button-accent,
+.rz-button.rz-button-accent {
+    color: #fff;
+    border-radius: 43px;
+    border: 1px solid #F55951;
+    background-color: #F55951;
+}
+
+.brk-bg::before,
+.rz-button::before {
+    background: none;
+}
+
+.brk-bg.rz-button-accent::after,
+.rz-button.rz-button-accent::after {
+    background: none;
+}
+
+.s-featured-slider .slick-list.draggable {
+    margin: 0 -9px;
+}
+
+.i-pr {
+    /*margin: 0 9px;*/
+    border: 1px solid #FAACA8;
+}
+
+.rz-listing-cover .rz-listing-cover-inner {
+    position: relative;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+    z-index: 2;
+    transition: all .2s;
+}
+
+.rz-listing-image {
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.rz-title {
+    padding: 0 16px;
+}
+
+.rz-listing-details.rz-listing-details-content {
+    padding: 0 16px;
+}
+
+.rz-button.rz-button-accent.rz-small {
+    border-radius: 37px !important;
+}
+
+.brk-submission .brk--row {
+    max-width: 100%;
+}
+
+.rz-plans .rz-plan {
+    position: relative;
+    transition: all .3s;
+    padding: 2rem 1.5rem;
+    background-color: #fff;
+    font-family: "ARS Maquette Pro", sans-serif;
+    border-radius: 0;
+    box-shadow: none;
+    z-index: 1;
+    cursor: pointer;
+    border: 1px solid #FEEEEE;
+}
+
+.rz-plan-title {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 43px;
+    color: #361D32;
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+.rz-plan-description {
+    width: 100%;
+    max-width: 873px;
+    margin-bottom: 32px;
+    color: #361D32;
+}
+
+.rz-plans input:checked + .rz-plan {
+    background-color: #F55951 !important;
+    color: #fff !important;
+    box-shadow: none;
+    z-index: 3;
+}
+
+.rz-button.rz-button-accent.select-plan {
+    background: #fff;
+    height: 56px;
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #F55951;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rz-plans input:checked + .rz-plan .rz-button {
+    background: #fff;
+    color: #F55951;
+}
+
+.rz-price p span.woocommerce-Price-amount.amount bdi {
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 56px;
+    line-height: 130%;
+    color: #F55951;
+}
+
+.rz-price p span.woocommerce-Price-amount.amount bdi span.woocommerce-Price-currencySymbol {
+    font-size: 22px;
+    line-height: 130%;
+}
+
+.rz-plans input:checked + .rz-plan .rz-price p span.woocommerce-Price-amount.amount bdi {
+    color: #ffffff;
+}
+
+.rz-plans .rz-plan .rz-heading .rz--name.select-name {
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    color: #361D32;
+}
+
+.rz-plans input:checked + .rz-plan .rz-heading .rz--name.select-name {
+    color: #FFFFFF;
+}
+
+.rz-plans .rz-plan .rz--desc.select-desc {
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+    color: #361D32;
+}
+
+.rz-plans input:checked + .rz-plan .rz--desc.select-desc {
+    color: #FFFFFF;
+}
+
+.rz-mod-action {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: none;
+    border: 1px solid #FAACA8;
+    background-color: #fff;
+    border-radius: 0;
+}
+
+.rz-appointment-table .rz--item {
+    border-bottom: 1px solid #FAACA8;
+}
+
+.rz-mod-action-booking_appointments .rz-action-footer {
+    border-top: 1px solid #FAACA8;
+}
+
+.brk--main h2.brk--title {
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 58px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.brk--main h3.brk--bottom-text {
+    font-family: "ARS Maquette Pro", sans-serif !important;
+    font-style: normal;
+    font-weight: 300 !important;
+    font-size: 16px !important;
+    line-height: 130% !important;
+    text-align: center;
+    color: #FFFFFF;
+    width: 100%;
+    max-width: 693px;
+    margin: 0 auto;
+}
+
+.behandler-status {
+    padding: 0 16px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.behandler-status-icon {
+    margin-right: 4px;
+}
+
+.behandler-status-text {
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #361D32;
+    opacity: 0.5;
+    margin-bottom: 2px;
+}
+
+.card-details-bottom-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border-top: 1px solid #FAACA8;
+}
+
+.card-details-bottom-button-contact {
+    width: calc(50% - 1px);
+    border-right: 1px solid #FAACA8;
+}
+
+.card-details-bottom-button-contact a {
+    padding: 8px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #361D32;
+}
+
+.card-details-bottom-button-contact a img {
+    margin-right: 8px;
+}
+
+
+.card-details-bottom-button-booking {
+    width: 50%;
+}
+
+.card-details-bottom-button-booking a {
+    padding: 8px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #F55951;
+}
+
+.card-details-bottom-button-booking a img {
+    margin-right: 8px;
+}
+
+.rz-listing-details.rz-listing-details-content {
+    border-top: none;
+    margin-bottom: 19px;
+    height: auto;
+    min-height: 44px;
+}
+
+.rz-listing-details.rz-listing-details-content ul li span {
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #543C52;
+}
+
+.behandler-author-name .rz--heading .rz--main .rz-title h4 {
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #361D32;
+    margin-bottom: 0;
+}
+
+
+
+
+.rz-button-accent.w-100 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #F55951;
+    background-color: #F55951;
+    height: 56px;
+    border-radius: 56px;
+
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-bottom: 16px;
+}
+
+
+.rz-button-white.w-100 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #361D32;
+    background-color: white;
+    height: 56px;
+    border-radius: 56px;
+
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+
+    color: #361D32;
+    text-decoration: none;
+    margin-bottom: 16px;
+}
+.cvr-api{
+    background:url('../images/logo_cvr_api.png') no-repeat 5px 4px;
+  }
+  
+  /*Behandler profil*/
+.about__main.author{
+    min-height: 160px;
+}
+
+.author-big-text{
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 700;
+    
+}
+.red-text{
+    color: #F55951;
+}
+.rz-button-border{
+    background-color: transparent;
+    color: #000;
+    border-radius: 50px;
+    padding: 13px 40px;
+    font-size: 16px;
+    border: solid 1px #361D32;
+}
+.rz-button-border:hover{
+    background: #361D32;
+    color: #fff;
+}
+.author-avatar{
+   width: 150px;
+   height: 150px;
+   border-radius: 50%;
+   background:#CDC6CC; 
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 90px;
+   margin-top: -60px;
+}

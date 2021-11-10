@@ -1,0 +1,48 @@
+html {
+    overflow-x: hidden;
+}
+
+html body {
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    padding-top: 74px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-weight: 700;
+}
+
+p {
+    font-family: "ARS Maquette Pro", sans-serif;
+    font-weight: normal;
+}
+
+.brk-row {
+    max-width: 1170px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.display-none {
+    display: none;
+}
+
+.rz--name {
+    color: #361D32;
+}
+
+.rz-form-group .rz-heading label{
+    color: #361D32;
+}
+
+.rz-link {
+    color: #361D32;
+}

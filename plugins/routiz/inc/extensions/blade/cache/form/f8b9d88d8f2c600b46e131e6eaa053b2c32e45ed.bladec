@@ -1,0 +1,7 @@
+<a href="<?php echo static::e($uri); ?>" class="rz-button <?php echo static::e($html->class); ?>" <?php if( $html->id ): ?> id="<?php echo static::e($html->id); ?>" <?php endif; ?>>
+ <span><?php echo static::e($name); ?></span>
+ <?php if( $html->preloader ): ?>
+ <?php echo static::e(Rz()->the_template('routiz/globals/preloader')); ?>
+
+ <?php endif; ?>
+</a>

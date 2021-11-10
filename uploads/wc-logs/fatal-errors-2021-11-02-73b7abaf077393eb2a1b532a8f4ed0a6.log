@@ -1,0 +1,30 @@
+2021-11-02T17:14:06+00:00 CRITICAL Maximum execution time of 60 seconds exceeded у D:\OpenServer\domains\behandler\wp-content\plugins\woocommerce\packages\woocommerce-blocks\src\BlockTypes\AllProducts.php доступно 32
+
+2021-11-02T18:36:11+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function get_author_posts_url(), 0 passed in D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\templates\explore\listing\listing.php on line 35 and at least 1 expected in D:\OpenServer\domains\behandler\wp-includes\author-template.php:344
+Stack trace:
+#0 D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\templates\explore\listing\listing.php(35): get_author_posts_url()
+#1 D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc\utils\helper.php(111): include('D:\\OpenServer\\d...')
+#2 D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc\utils\helper.php(81): Routiz\Inc\Utils\Helper->get_template()
+#3 D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\templates\routiz\explore\listings.php(63): Routiz\Inc\Utils\Helper->the_template()
+#4 D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc\utils\helper.php(111): include('D:\\OpenServer\\d...')
+#5 D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc у D:\OpenServer\domains\behandler\wp-includes\author-template.php доступно 344
+
+2021-11-02T18:36:28+00:00 CRITICAL Uncaught Error: Call to undefined function get_the_author_posts_url() in D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\templates\explore\listing\listing.php:35
+Stack trace:
+#0 D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc\utils\helper.php(111): include()
+#1 D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc\utils\helper.php(81): Routiz\Inc\Utils\Helper->get_template()
+#2 D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\templates\routiz\explore\listings.php(63): Routiz\Inc\Utils\Helper->the_template()
+#3 D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc\utils\helper.php(111): include('D:\\OpenServer\\d...')
+#4 D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc\utils\helper.php(81): Routiz\Inc\Utils\Helper->get_template()
+#5 D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\templates\routiz\explore\explore.php(26): Routiz\Inc\Utils\Helper->the_template()
+#6 D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc\uti у D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\templates\explore\listing\listing.php доступно 35
+
+2021-11-02T18:37:04+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function get_author_posts_url(), 0 passed in D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\templates\explore\listing\listing.php on line 35 and at least 1 expected in D:\OpenServer\domains\behandler\wp-includes\author-template.php:344
+Stack trace:
+#0 D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\templates\explore\listing\listing.php(35): get_author_posts_url()
+#1 D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc\utils\helper.php(111): include('D:\\OpenServer\\d...')
+#2 D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc\utils\helper.php(81): Routiz\Inc\Utils\Helper->get_template()
+#3 D:\OpenServer\domains\behandler\wp-content\themes\brikk-child\templates\routiz\explore\listings.php(63): Routiz\Inc\Utils\Helper->the_template()
+#4 D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc\utils\helper.php(111): include('D:\\OpenServer\\d...')
+#5 D:\OpenServer\domains\behandler\wp-content\plugins\routiz\inc у D:\OpenServer\domains\behandler\wp-includes\author-template.php доступно 344
+
