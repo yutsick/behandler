@@ -122,7 +122,7 @@ defined( 'ABSPATH' ) || exit;
 
 
 		<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-			<a href="" class="rz-button rz-button-regular rz-mb-3"><img src="<?php echo get_stylesheet_directory_uri() ;?>/images/ico-calendar.svg"> Gå til kalenderen</a>
+			<a href="" class="rz-button rz-button-regular rz-mb-3" data-modal="modal_listing"><img src="<?php echo get_stylesheet_directory_uri() ;?>/images/ico-calendar.svg"> Gå til kalenderen</a>
 
 			<input type="text" name="time" value="<?php echo esc_attr(get_the_author_meta('time', get_current_user_id())); ?>" class="regular-text" placeholder="Time(r)*"/>
 		</p>
