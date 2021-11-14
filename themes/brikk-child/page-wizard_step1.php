@@ -35,13 +35,18 @@ global $step;
                         <?php 
                         
                             
-                            $args = array(
-                                'post_type' => 'rz_listing',
-                                'author' => get_current_user_id(),
-                            );
-                            $query = new WP_Query( $args );
-                        
-                            // Цикл
+                           $args = array(
+								'post_type' => 'rz_listing',
+								'author' => wp_get_current_user() -> ID,
+
+								'meta_query' => [ [
+									'key'	=>	'rz_listing_type',
+									'value'	=>	'624',
+								] ],
+							
+							);
+							$query = new WP_Query( $args );
+                            
                             if ( $query->have_posts() ) {
                                 while ( $query->have_posts() ) {
                                     $query->the_post();
@@ -74,18 +79,14 @@ global $step;
                                 <?php
                                 
                                 }
+                                wp_reset_postdata();
                             } 
 
                         ?>
                     </div>
                     <!-- Include submission form -->
                     <?php include 'page-add-listing.php'?>
-                    <!-- <div class="add-listing">
-                        <div class="add-listing-inner">
-                            <div class="icon"><img src="<?php echo get_stylesheet_directory_uri();?>/images/medical.png" alt=""></div>
-                            <p>Klik for at tilføje en ny <br>behandlingsmulighed</p>
-                        </div>
-                    </div> -->
+              
               
 
                     <form method="post" action="/form_wizard_step/" class="woocommerce-form woocommerce-form-register register" >

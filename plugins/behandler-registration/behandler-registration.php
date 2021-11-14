@@ -8,7 +8,7 @@
   Author URI: https://betasprint.com
  */
 
-add_action('show_user_profile', 'add_extra_social_links2');
+add_action('show_user_profile', 'add_extra_social_links2'); 
 add_action('edit_user_profile', 'add_extra_social_links2');
 function add_extra_social_links2($user)
 {
@@ -294,16 +294,25 @@ function wizard_steps($step){
 }
 
 function wizard_step_first($user){ ?>
+<?php $time = esc_attr(get_the_author_meta('time', $user->ID)); ?>
     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
         <th><label for="time">Hvor lang tid forinden kan man maskimalt booke tid?</label></th>
-        <td><select name="time" id="" value="<?php echo esc_attr(get_the_author_meta('time', $user->ID)); ?>" class="regular-text">
-            <option value="Ingen forberedelsestid">Ingen forberedelsestid</option>
-            <option value="15 minutter">15 minutter</option>
-            <option value="30 minutter">30 minutter</option>
-            <option value="1 time">1 time</option>
-            <option value="1 time">2 timer</option>
-            <option value="1 døgn">1 døgn</option>
-        </select></td>
+        <td>
+            <select name="time" id="" class="regular-text">
+                <?php 
+
+                $options = array("Ingen forberedelsestid","15 minutter","30 minutter","1 time","2 time","1 døgn");
+
+                foreach ($options as $option){?>
+                    <option value="<?php echo $option; ?>" 
+                    <?php echo ( esc_attr(get_the_author_meta('time', $user->ID)) == $option) ? "selected" : ""; ?>>
+                    <?php echo $option; ?></option>
+
+                <?php 
+                }
+                ?>
+            </select>
+        </td>
         <!-- <td><input type="text" name="time" value="<?php echo esc_attr(get_the_author_meta('time', $user->ID)); ?>" class="regular-text"/></td> -->
     </p>
     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide toggle">

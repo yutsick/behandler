@@ -124,8 +124,24 @@ defined( 'ABSPATH' ) || exit;
 		<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
 			<a href="" class="rz-button rz-button-regular rz-mb-3" data-modal="modal_listing"><img src="<?php echo get_stylesheet_directory_uri() ;?>/images/ico-calendar.svg"> Gå til kalenderen</a>
 
-			<input type="text" name="time" value="<?php echo esc_attr(get_the_author_meta('time', get_current_user_id())); ?>" class="regular-text" placeholder="Time(r)*"/>
+			<!-- <input type="text" name="time" value="<?php echo esc_attr(get_the_author_meta('time', get_current_user_id())); ?>" class="regular-text" placeholder="Time(r)*"/>  -->
+
+			            <select name="time" id="" class="regular-text">
+                <?php 
+
+                $options = array("Ingen forberedelsestid","15 minutter","30 minutter","1 time","2 time","1 døgn");
+
+                foreach ($options as $option){?>
+                    <option value="<?php echo $option; ?>" 
+                    <?php echo ( esc_attr(get_the_author_meta('time', $user->ID)) == $option) ? "selected" : ""; ?>>
+                    <?php echo $option; ?></option>
+
+                <?php 
+                }
+                ?>
+            </select>
 		</p>
+		<button class="rz-button rz-button-accent rz-mt-5">Gem indstillinger</button>
 	</div>
 	<div class="bg-white rz-mt-3 rz-p-3 tab-content_style">
 		<h3>Tilbud</h3>
@@ -133,12 +149,18 @@ defined( 'ABSPATH' ) || exit;
 
 		<div class="tab-content_style-cards">
 			<?php 
-				
-					
+
 				$args = array(
-					'post_type' => 'rz_listing',
-					'author' => wp_get_current_user()->user_login,
-				);
+								'post_type' => 'rz_listing',
+								'author' => get_current_user_id(),
+
+								'meta_query' => [ [
+									'key'	=>	'rz_listing_type',
+									'value'	=>	'624',
+								] ],
+							
+							);
+							
 				$query = new WP_Query( $args );
 				
 				// Цикл
@@ -184,6 +206,7 @@ defined( 'ABSPATH' ) || exit;
 						<?php
 						
 						}
+						wp_reset_postdata();
 					} 
 					?> 
 
@@ -318,7 +341,49 @@ defined( 'ABSPATH' ) || exit;
 	<div class="bg-white rz-mt-3 rz-p-3 tab-content_style">
 		<h3>Specialeområde(r)</h3>
 		<p>Hvis du specialiserer dig inden for en bestemt behandlingsmetode eller målgruppe, kan du skrive det ind her.</p>
-		<input type="text" name="doctor-type" value="<?php echo esc_attr(get_the_author_meta('doctor-type', get_current_user_id())); ?>" class="regular-text icon-search" placeholder="Doctor-type*"/>
+		 <!-- <input type="text" name="doctor-type" value="<?php echo esc_attr(get_the_author_meta('rz_doctor-type', get_current_user_id())); ?>" class="regular-text icon-search" placeholder="Doctor-type*"/>  -->
+					<?php 
+
+					$options = get_terms(array(
+						'post_type'	=>	'rz_listing',
+						'taxonomy'	=>	'rz_doctor-type',
+						'hide_empty' => false,
+					));
+
+
+					$behandlerID = esc_attr(esc_attr(get_the_author_meta('behandlerID', $user->ID)));
+					$behandler_listing = get_post($behandlerID);	
+					$doctor_types = get_post_meta($behandler_listing->ID,'rz_doctor-type');
+					
+					foreach ($doctor_types as $doctor_type){
+						$term = get_term($doctor_type);
+						//print_r($term);
+						//echo $term->name.',';
+						$doctor_options[] = $term->name;
+					}
+					//print_r ($doctor_options);
+					?>
+		<!-- Dropdown speciale -->
+				<th><label for="time">Hvor lang tid forinden kan man maskimalt booke tid?</label></th>
+        <td>
+            <select name="doctor-type" id="" class="regular-text" multiple>
+                <?php 
+
+                // $options = array("Ingen forberedelsestid","15 minutter","30 minutter","1 time","2 time","1 døgn");
+							
+
+                foreach ($options as $option){?>
+                     <option value="<?php echo $option->name; ?>" 
+                     <?php echo ( in_array($option->name, $doctor_options)) ? "selected" : ""; ?>>
+                     <?php echo $option->name; ?></option>
+
+                 <?php 
+                 }
+                ?>
+            </select>
+        </td>
+			<!-- End dropdown  -->
+
 		<div class="cheeps-box-container">
 			<div class="cheeps-box">
 				<button class="cheeps-box__btn" type="button" data-name="Androlog">Androlog</button>	<button class="cheeps-box__btn" type="button" data-name="Sexopatolog">Sexopatolog</button>		

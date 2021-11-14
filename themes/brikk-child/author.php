@@ -231,7 +231,13 @@
 								
 							$args = array(
 								'post_type' => 'rz_listing',
-								'author' => $title,
+								'author' => $author->ID,
+
+								'meta_query' => [ [
+									'key'	=>	'rz_listing_type',
+									'value'	=>	'624',
+								] ],
+							
 							);
 							$query = new WP_Query( $args );
 							
@@ -240,6 +246,7 @@
 								while ( $query->have_posts() ) {
 									$query->the_post();
 									$fields = get_post_custom();
+									//print_r($fields);
 								?>
 								<div class="rz-col-4 rz-col-sm-12 rz-mb-3">
 									<div class="list_card">
@@ -272,6 +279,7 @@
 									<?php
 									
 									}
+									wp_reset_postdata();
 								} 
 
 							?>
