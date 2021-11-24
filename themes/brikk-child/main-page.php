@@ -4,7 +4,15 @@ Template Name: Main Page
 Template Post Type: page
 */
 ?>
-<?php global $rz_explore; ?>
+<?php global $rz_explore; 
+$args = array(
+    'post_type' => 'rz_listing',
+    'meta_query' => [ [
+        'key'	=>	'rz_listing_type',
+        'value'	=>	'3440',
+    ] ],
+);
+?>
 
 <?php get_header(); ?>
 <main class="brk-main">
@@ -58,10 +66,11 @@ Template Post Type: page
                         <?php endif; ?>
                     </div>
                     <div class="s-featured-slider">
-                        <?php if ($rz_explore->query()->posts->have_posts()): ?>
-                            <?php while ($rz_explore->query()->posts->have_posts()): $rz_explore->query()->posts->the_post(); ?>
+                        <?php $query = new WP_Query( $args ); ?>
+                        <?php if ($query->have_posts()): ?>
+                            <?php while ($query->have_posts()): $query->the_post(); ?>
                                 <li class="rz-listing-item <?php Rz()->listing_class(); ?>">
-                                    <?php Rz()->the_template('routiz/explore/listing/listing'); ?>
+                                    <?php Rz()->the_template('routiz/explore/listing/listing'); ?> 
                                 </li>
                             <?php endwhile;
                             wp_reset_postdata(); ?>
