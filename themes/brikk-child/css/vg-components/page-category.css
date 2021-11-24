@@ -30,7 +30,7 @@ a#listing_switch {
     color: #361D32;
     text-decoration: none;
 
-    position: absolute;
+    position: fixed;
     right: calc(50% - 585px);
     z-index: 4;
     top: 100px;
