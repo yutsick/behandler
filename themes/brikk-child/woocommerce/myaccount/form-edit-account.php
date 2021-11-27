@@ -19,59 +19,59 @@ defined( 'ABSPATH' ) || exit;
 
 // do_action( 'woocommerce_before_edit_account_form' ); ?>
 
-<form style="display: none;" class="woocommerce-EditAccountForm edit-account" action="" method="post" <?php do_action( 'woocommerce_edit_account_form_tag' ); ?> >
+<form  style="display: none;" class="woocommerce-EditAccountForm edit-account" action="" method="post" <?php do_action( 'woocommerce_edit_account_form_tag' ); ?> >
 
-	<?php do_action( 'woocommerce_edit_account_form_start' ); ?>
-	<p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
-		<label for="account_first_name"><?php esc_html_e( 'First name', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_first_name" id="account_first_name" autocomplete="given-name" value="<?php echo esc_attr( $user->first_name ); ?>" />
-	</p>
-	<p class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
-		<label for="account_last_name"><?php esc_html_e( 'Last name', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_last_name" id="account_last_name" autocomplete="family-name" value="<?php echo esc_attr( $user->last_name ); ?>" />
-	</p>
-	<div class="clear"></div>
-
-	<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-		<label for="account_display_name"><?php esc_html_e( 'Display name', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_display_name" id="account_display_name" value="<?php echo esc_attr( $user->display_name ); ?>" /> <span><em><?php esc_html_e( 'This will be how your name will be displayed in the account section and in reviews', 'woocommerce' ); ?></em></span>
-	</p>
-	<div class="clear"></div>
-
-	<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-		<label for="account_email"><?php esc_html_e( 'Email address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-		<input type="email" class="woocommerce-Input woocommerce-Input--email input-text" name="account_email" id="account_email" autocomplete="email" value="<?php echo esc_attr( $user->user_email ); ?>" />
-	</p>
-
-	<fieldset>
-		<legend><?php esc_html_e( 'Password change', 'woocommerce' ); ?></legend>
+		<?php do_action( 'woocommerce_edit_account_form_start' ); ?>
+		<p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
+			<label for="account_first_name"><?php esc_html_e( 'First name', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+			<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_first_name" id="account_first_name" autocomplete="given-name" value="<?php echo esc_attr( $user->first_name ); ?>" />
+		</p>
+		<p class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
+			<label for="account_last_name"><?php esc_html_e( 'Last name', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+			<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_last_name" id="account_last_name" autocomplete="family-name" value="<?php echo esc_attr( $user->last_name ); ?>" />
+		</p>
+		<div class="clear"></div>
 
 		<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-			<label for="password_current"><?php esc_html_e( 'Current password (leave blank to leave unchanged)', 'woocommerce' ); ?></label>
-			<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_current" id="password_current" autocomplete="off" />
+			<label for="account_display_name"><?php esc_html_e( 'Display name', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+			<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_display_name" id="account_display_name" value="<?php echo esc_attr( $user->display_name ); ?>" /> <span><em><?php esc_html_e( 'This will be how your name will be displayed in the account section and in reviews', 'woocommerce' ); ?></em></span>
 		</p>
+		<div class="clear"></div>
+
 		<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-			<label for="password_1"><?php esc_html_e( 'New password (leave blank to leave unchanged)', 'woocommerce' ); ?></label>
-			<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_1" id="password_1" autocomplete="off" />
+			<label for="account_email"><?php esc_html_e( 'Email address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+			<input type="email" class="woocommerce-Input woocommerce-Input--email input-text" name="account_email" id="account_email" autocomplete="email" value="<?php echo esc_attr( $user->user_email ); ?>" />
 		</p>
-		<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-			<label for="password_2"><?php esc_html_e( 'Confirm new password', 'woocommerce' ); ?></label>
-			<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_2" id="password_2" autocomplete="off" />
+
+		<fieldset>
+			<legend><?php esc_html_e( 'Password change', 'woocommerce' ); ?></legend>
+
+			<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="password_current"><?php esc_html_e( 'Current password (leave blank to leave unchanged)', 'woocommerce' ); ?></label>
+				<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_current" id="password_current" autocomplete="off" />
+			</p>
+			<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="password_1"><?php esc_html_e( 'New password (leave blank to leave unchanged)', 'woocommerce' ); ?></label>
+				<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_1" id="password_1" autocomplete="off" />
+			</p>
+			<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="password_2"><?php esc_html_e( 'Confirm new password', 'woocommerce' ); ?></label>
+				<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_2" id="password_2" autocomplete="off" />
+			</p>
+		</fieldset>
+		<div class="clear"></div>
+
+		<?php do_action( 'woocommerce_edit_account_form' ); ?>
+
+		<p>
+			<?php wp_nonce_field( 'save_account_details', 'save-account-details-nonce' ); ?>
+			<button type="submit" class="woocommerce-Button button" name="save_account_details" value="<?php esc_attr_e( 'Save changes', 'woocommerce' ); ?>"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
+			<input type="hidden" name="action" value="save_account_details" />
 		</p>
-	</fieldset>
-	<div class="clear"></div>
 
-	<?php do_action( 'woocommerce_edit_account_form' ); ?>
+		<?php//  do_action( 'woocommerce_edit_account_form_end' ); ?>
 
-	<p>
-		<?php wp_nonce_field( 'save_account_details', 'save-account-details-nonce' ); ?>
-		<button type="submit" class="woocommerce-Button button" name="save_account_details" value="<?php esc_attr_e( 'Save changes', 'woocommerce' ); ?>"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
-		<input type="hidden" name="action" value="save_account_details" />
-	</p>
-
-	<?php do_action( 'woocommerce_edit_account_form_end' ); ?>
 </form>
-
 <?php // do_action( 'woocommerce_after_edit_account_form' ); ?>
 
 <section class="breadcrumbs">
@@ -113,35 +113,39 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <!-- Tab content -->
 <div id="Bookingindstillinger" class="tab-content active">
-	<div class="bg-white rz-p-3 tab-content_style">
-		<h3>Tidsplan</h3>
-		<p>Nedenfor kan du indstille hvilke dage og tidsrum du holder åbent. Din kalender vil automatisk være utilgængelig uden for de valgte tidsrum.</p>
-		<p>Du kan også vælge at gøre din kalender utilgængelig for bookinger i toppen ved at klikke på hængelåsen. Dette vil spærre en hel dag.</p>
+	<form action="/form_wizard_step/" method="post">
+		<input type="hidden" name = "location" value = "/my-account/edit-account/">
+		<div class="bg-white rz-p-3 tab-content_style">
+			<h3>Tidsplan</h3>
+			
+			<p>Nedenfor kan du indstille hvilke dage og tidsrum du holder åbent. Din kalender vil automatisk være utilgængelig uden for de valgte tidsrum.</p>
+			<p>Du kan også vælge at gøre din kalender utilgængelig for bookinger i toppen ved at klikke på hængelåsen. Dette vil spærre en hel dag.</p>
+			<p class="accent">Indstil hvor lang tid i forvejen dine klienter kan booke hos dig</p>
+			<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+				<a href="" class="rz-button rz-button-regular rz-mb-3" data-modal="modal_listing"><img src="<?php echo get_stylesheet_directory_uri() ;?>/images/ico-calendar.svg"> Gå til kalenderen</a>
+					<select name="time" id="" class="regular-text">
 
-		<p class="accent">Indstil hvor lang tid i forvejen dine klienter kan booke hos dig</p>
+							<?php 
 
+							$options = array("Ingen forberedelsestid","15 minutter","30 minutter","1 time","2 time","1 døgn");
+							foreach ($options as $option){?>
 
-		<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-			<a href="" class="rz-button rz-button-regular rz-mb-3" data-modal="modal_listing"><img src="<?php echo get_stylesheet_directory_uri() ;?>/images/ico-calendar.svg"> Gå til kalenderen</a>
+									<option value="<?php echo $option; ?>" 
+									<?php echo ( esc_attr(get_the_author_meta('time', $user->ID)) == $option) ? "selected" : ""; ?>>
+									<?php echo $option; ?></option>
 
-			<!-- <input type="text" name="time" value="<?php echo esc_attr(get_the_author_meta('time', get_current_user_id())); ?>" class="regular-text" placeholder="Time(r)*"/>  -->
+							<?php 
+							}
+							?>
+				</select>
+			</p>
 
-			            <select name="time" id="" class="regular-text">
-                <?php 
+			<?php wp_nonce_field(); ?>
+															
+			<input type="hidden" value="save_time" name="save_time">	
+			<button type="submit" class="rz-button rz-button-accent rz-mt-5" name="" value="<?php esc_attr_e( 'Gem indstillinger', 'woocommerce' ); ?>"><?php esc_html_e( 'Gem indstillinger', 'woocommerce' ); ?></button>
 
-                $options = array("Ingen forberedelsestid","15 minutter","30 minutter","1 time","2 time","1 døgn");
-
-                foreach ($options as $option){?>
-                    <option value="<?php echo $option; ?>" 
-                    <?php echo ( esc_attr(get_the_author_meta('time', $user->ID)) == $option) ? "selected" : ""; ?>>
-                    <?php echo $option; ?></option>
-
-                <?php 
-                }
-                ?>
-            </select>
-		</p>
-		<button class="rz-button rz-button-accent rz-mt-5">Gem indstillinger</button>
+		</form>
 	</div>
 	<div class="bg-white rz-mt-3 rz-p-3 tab-content_style">
 		<h3>Tilbud</h3>
@@ -334,8 +338,6 @@ defined( 'ABSPATH' ) || exit;
 							</div>
 						</div>
 					</div>
-				<?
-				?>
 		</div>			
 	</div>
 	<div class="bg-white rz-mt-3 rz-p-3 tab-content_style">
@@ -357,20 +359,15 @@ defined( 'ABSPATH' ) || exit;
 					
 					foreach ($doctor_types as $doctor_type){
 						$term = get_term($doctor_type);
-						//print_r($term);
-						//echo $term->name.',';
 						$doctor_options[] = $term->name;
 					}
-					//print_r ($doctor_options);
+					
 					?>
 		<!-- Dropdown speciale -->
-				<th><label for="time">Hvor lang tid forinden kan man maskimalt booke tid?</label></th>
+				
         <td>
             <select name="doctor-type" id="" class="regular-text" multiple>
                 <?php 
-
-                // $options = array("Ingen forberedelsestid","15 minutter","30 minutter","1 time","2 time","1 døgn");
-							
 
                 foreach ($options as $option){?>
                      <option value="<?php echo $option->name; ?>" 
@@ -434,7 +431,6 @@ defined( 'ABSPATH' ) || exit;
 			</label>
 		</div>
 	</div>
-	
 </div>
 
 <div id="Generelle_Indstillinger" class="tab-content">

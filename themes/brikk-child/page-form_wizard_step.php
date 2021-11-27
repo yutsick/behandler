@@ -63,9 +63,19 @@ if (!empty($_POST['add_post'])) {
 global $register;
 $register = true;
 
+
+
+
+/** Edit account */
+
+if (!empty($_POST['save_time'])) {
+  $listingID = get_user_meta($user_id, 'behandlerID', true);
+  update_post_meta($listingID,'rz_time',sanitize_text_field($_POST['time']));
+  update_user_meta($user_id, 'time', sanitize_text_field($_POST['time']));
+}
+
 if( isset( $_POST['location'] ) && $location = $_POST['location'] ){
   wp_safe_redirect( $location);
   exit();
 }
-
 ?>
