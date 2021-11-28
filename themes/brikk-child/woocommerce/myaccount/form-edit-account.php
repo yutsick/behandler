@@ -218,7 +218,7 @@ defined( 'ABSPATH' ) || exit;
 						<div class="rz-submission-content label-inside">
 							<div class="add-listing" data-modal="modal_listing">
 								<div class="add-listing-inner">
-									<div class="icon"><img src="http://behandler/wp-content/themes/brikk-child/images/medical.png"></div>
+									<div class="icon"><img src="<?php echo get_stylesheet_directory_uri();?>/images/medical.png"></div>
 									<p>Tilføj en ny<br>behandlingsmulighed</p>
 								</div>
 							</div>
