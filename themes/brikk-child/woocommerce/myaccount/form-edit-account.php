@@ -17,7 +17,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// do_action( 'woocommerce_before_edit_account_form' ); ?>
+// do_action( 'woocommerce_before_edit_account_form' ); 
+	$listingID = get_user_meta(get_current_user_id(), 'behandlerID', true);
+?>
 
 <form  style="display: none;" class="woocommerce-EditAccountForm edit-account" action="" method="post" <?php do_action( 'woocommerce_edit_account_form_tag' ); ?> >
 
@@ -436,28 +438,37 @@ defined( 'ABSPATH' ) || exit;
 <div id="Generelle_Indstillinger" class="tab-content">
 	<div class="bg-white rz-p-3 tab-content_style">
   		<h3>Om klinikken</h3>
-	  	<form action="">
-		  	<textarea name="" class="text-limit" id="" cols="30" rows="30" maxlength="600">
-Jeg er uddannet i akupunkter, healing og zoneterapi og har hjulpet mine patienter med diverse udfordringer over de sidste syv år.
+	  	<form action="/form_wizard_step/" method="post">
+				<input type="hidden" name = "location" value = "/my-account/edit-account/">
 
-Før vores session starter, vil jeg forsøge at forstå kernen af dit problem, hvorefter vi kan tilrettelægge den rigtige behandlingsplan. 
-
-Med en behandling hos mig får du altid en empatisk og ærlig seance. Jeg værdsætter kommunikation, hygiejne og pålidelighed.</textarea>
+		  	<textarea name="about" class="text-limit" id="" cols="30" rows="30" maxlength="600" value=""><?php  
+				
+					echo get_post_meta($listingID,'rz_about')[0];?>
+				</textarea>
 			<p class="text-limit-result"></p>
-			<button class="rz-button rz-button-accent">Gem indstillinger</button>
+			<?php wp_nonce_field(); ?>
+															 
+			<input type="hidden" value="save_about" name="save_about">	
+			<button type="submit" class="rz-button rz-button-accent">Gem indstillinger</button>
 		</form>
 	</div>
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
 		<h3>Indstillinger</h3>
-
-		<div class="tab-content_style__edit-avatar">
-			<img class="tab-content_style__current-avatar-img" src="http://2031578.bthost2.web.hosting-test.net/wp-content/uploads/2021/10/Rectangle-53.jpg">
-		</div>
+		<form action="/form_wizard_step/" method="post">
 
 		<?php 
-			$client = 'business';
-			include 'form-register.php';
+			include 'profile_edit.php';
 		?>
+		<input type="hidden" name = "location" value = "/my-account/edit-account/">
+		<p class="woocommerce-form-row form-row btn-group rz-mt-3">
+				<?php wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ); ?>
+			
+
+				
+			<button type="reset" class="rz-button rz-button-regular  rz-mr-2">Nulstil</button>					 
+			<button type="submit" class="rz-button rz-button-accent">Gem indstillinger</button>
+			</p>
+		</form>
 	</div>
 
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
@@ -618,3 +629,31 @@ Med en behandling hos mig får du altid en empatisk og ærlig seance. Jeg værds
 		</div>
 	</div>
 </div>
+<script>
+var $gal_id = document.querySelector('#rz_main_photo_id');
+var el = document.querySelector('#main_photo');
+
+const config = {
+    childList: true
+};
+	const callback = function(mutationsList, observer) {
+    for (let mutation of mutationsList) {
+			
+        if (mutation.type === 'childList') {
+					
+            var $picId = [];
+            $images_data = document.querySelectorAll('#main_photo>.rz-image-prv-wrapper');
+						
+            var i;
+            for (var i = 0; i < $images_data.length; i++){
+                var $id = $images_data[i].getAttribute("data-id");   
+                $picId.push( $id);
+            }
+             $gal_id.value = $picId; 
+        } 
+    }
+};
+
+const observer = new MutationObserver(callback);
+observer.observe(el, config);
+</script>

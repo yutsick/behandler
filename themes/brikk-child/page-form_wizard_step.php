@@ -1,7 +1,7 @@
 <?php 
-
+$user = wp_get_current_user();
 $user_id = get_current_user_id(); 
-
+// print_r($_POST);
 /*Second wizard step*/
 
 if ($_POST['step'] == 'first'){
@@ -72,6 +72,69 @@ if (!empty($_POST['save_time'])) {
   $listingID = get_user_meta($user_id, 'behandlerID', true);
   update_post_meta($listingID,'rz_time',sanitize_text_field($_POST['time']));
   update_user_meta($user_id, 'time', sanitize_text_field($_POST['time']));
+}
+
+if (!empty($_POST['save_about'])) {
+  $listingID = get_user_meta($user_id, 'behandlerID', true);
+  update_post_meta($listingID,'rz_about',sanitize_text_field($_POST['about']));
+
+}
+
+if (!empty($_POST['rz_main_photo_id'][0])) {
+  $listingID = get_user_meta($user_id, 'behandlerID', true);
+  $id_attach = '['.json_encode(array('id'=>$_POST['rz_main_photo_id'][0])).']';
+  $listingID = get_user_meta($user_id, 'behandlerID', true);
+  update_post_meta($listingID,'rz_avatar',$id_attach);
+
+}
+
+if (!empty($_POST['first_name'])) {
+  $listingID = get_user_meta($user_id, 'behandlerID', true);
+  update_post_meta($listingID,'rz_fornavn',sanitize_text_field($_POST['first_name']));
+  update_user_meta($user_id, 'first_name', sanitize_text_field($_POST['first_name']));
+}
+
+if (!empty($_POST['last_name'])) {
+  $listingID = get_user_meta($user_id, 'behandlerID', true);
+  update_post_meta($listingID,'rz_efternavn',sanitize_text_field($_POST['last_name']));
+  update_user_meta($user_id, 'last_name', sanitize_text_field($_POST['last_name']));
+}
+
+// location
+
+if (!empty($_POST['rz_location'])) {
+  $listingID = get_user_meta($user_id, 'behandlerID', true);
+  delete_post_meta( $listingID, 'rz_location');
+   $loc = $_POST['rz_location'];
+    foreach ($loc as $key => $value){
+        add_post_meta($listingID,'rz_location',$value);
+     }
+}
+// end location
+
+if (!empty($_POST['email'])) {
+  $listingID = get_user_meta($user_id, 'behandlerID', true);
+  update_post_meta($listingID,'rz_email',sanitize_text_field($_POST['email']));
+  update_user_meta($user_id, 'email', sanitize_text_field($_POST['email']));
+}
+
+if (!empty($_POST['telephone'])) {
+  $listingID = get_user_meta($user_id, 'behandlerID', true);
+  update_post_meta($listingID,'rz_telephone',sanitize_text_field($_POST['telephone']));
+  update_user_meta($user_id, 'telephone', sanitize_text_field($_POST['telephone']));
+}
+
+if (!empty($_POST['site_url'])) {
+  $listingID = get_user_meta($user_id, 'behandlerID', true);
+
+  update_post_meta($listingID,'rz_site_url',$_POST['site_url']);
+  $user->data->user_url = $_POST['site_url'];
+  wp_update_user($user);
+}
+
+if( !empty( $_POST['password']) && ($_POST['password'] == $_POST['password2'])){
+  $new_pass = trim( wp_unslash( $_POST['password'] ) );
+  wp_set_password ($new_pass,$user_id);
 }
 
 if( isset( $_POST['location'] ) && $location = $_POST['location'] ){
