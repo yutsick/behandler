@@ -1,5 +1,6 @@
 <?php
 /**
+ * *test
  * Login Form
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/myaccount/form-login.php.

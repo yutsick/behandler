@@ -444,9 +444,11 @@ function add_doctorListing($user_id){
         add_post_meta($my_behandler_id,'rz_location',$value);
      }
 
-    update_field('rz_photo_main', $_POST['rz_photo_main'], $my_behandler_id);
-    update_field('rz_gallery', $_POST['rz_photo_main'], $my_behandler_id);
+    //update_field('rz_avatar', $_POST['rz_avatar'], $my_behandler_id);
+    //update_field('rz_gallery', $_POST['rz_avatar'], $my_behandler_id);
 
 
 }
+
+
 

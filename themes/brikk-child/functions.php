@@ -93,3 +93,14 @@ function wpa_author_template( $template = '' ){
     return $template;
 }
 add_filter( 'author_template', 'wpa_author_template' );
+
+
+add_action("wp_ajax_ajax_certificate", "my_ajax_action_callback");// для фронтенда 
+add_action( 'wp_ajax_ajax_certificate', 'my_ajax_action_callbackmy_ajax_action_callback' );
+function my_ajax_action_callback(){ // функция которая вызывается
+    if (!empty($_POST['ajax_certificate'])) {
+    echo $_POST['rz_course_year'].':'.$_POST['rz_course_name'];
+  
+    }
+  wp_die();
+ }
