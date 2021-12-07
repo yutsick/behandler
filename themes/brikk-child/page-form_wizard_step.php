@@ -1,6 +1,7 @@
 <?php 
 $user = wp_get_current_user();
 $user_id = get_current_user_id(); 
+//echo $_POST['rz_course_year'].':'.$_POST['rz_course_name'];
 // print_r($_POST);
 /*Second wizard step*/
 
@@ -136,6 +137,13 @@ if( !empty( $_POST['password']) && ($_POST['password'] == $_POST['password2'])){
   $new_pass = trim( wp_unslash( $_POST['password'] ) );
   wp_set_password ($new_pass,$user_id);
 }
+
+/** Add certificate */
+if (!empty($_POST['ajax_certificate'])) {
+echo $_POST['rz_course_year'].':'.$_POST['rz_course_name'];
+//die;
+}
+
 
 if( isset( $_POST['location'] ) && $location = $_POST['location'] ){
   wp_safe_redirect( $location);

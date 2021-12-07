@@ -21,7 +21,7 @@ function openCity(evt, cityName) {
 
 
 //Textarea limit
-function maxLength(el) {    
+function maxLength(el) {
     if (!('maxLength' in el)) {
         var max = el.attributes.maxLength.value;
         el.onkeypress = function () {
@@ -32,5 +32,33 @@ function maxLength(el) {
 
 document.querySelectorAll('.text-limit').forEach(el => {
     maxLength(el);
+});
+
+//AJAX requests
+jQuery(function ($) {
+    $('[data-id = "add_certificate"]').click(function (event) {
+
+        //event.preventDefault();
+        let rz_course_name = $('[name=rz_course-name]').val();
+        let rz_course_year = $('[name=rz_course-year]').val();
+        //alert('ffff' + rz_course_name + rz_course_year);
+        $.ajax({
+            //url: '/wp-admin/admin-ajax.php',
+            url: '/form_wizard_step/',
+            method: 'post',
+            data: {
+                //action: 'ajax_certificate',
+                ajax_certificate: true,
+                rz_course_name: rz_course_name,
+                rz_course_year: rz_course_year
+
+            },
+            success: function (response) {
+                //console.log('fff' + response);
+                //alert(response);
+                $('#certificate-test').html(response);
+            }
+        });
+    });
 });
 

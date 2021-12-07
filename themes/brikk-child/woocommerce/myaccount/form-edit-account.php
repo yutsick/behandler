@@ -240,7 +240,7 @@ defined( 'ABSPATH' ) || exit;
 											<form method="post" action="/form_wizard_step/">
 												<section class="rz-submission-step rz-active" data-id="fields" data-group="0">
 													<input type="hidden" name="add_post" value="add_post" />
-													<input type="hidden" name="location" value="//" />
+													<input type="hidden" name="location" value="/" />
 													<div class="rz-grid">
 													<div class="rz-form-group rz-field rz-col-12 rz-relative rz-field-ready" data-type="text" data-storage="request" data-disabled="no" data-heading="Navn på behandlingen*" data-id="doctors-name">
 														<input type="text" name="rz_doctors-name" value="" class="" placeholder=" "/>
@@ -471,6 +471,8 @@ defined( 'ABSPATH' ) || exit;
 		</form>
 	</div>
 
+	<!-- Certificates -->
+	<?php include('certificate-modal.php'); ?>
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
 		<h3>Certifikater, kurser og erfaring</h3>
 		
@@ -503,8 +505,8 @@ defined( 'ABSPATH' ) || exit;
 				</div>
 			</div>	
 		</div>
-
-		<button class="rz-button rz-button-accent">Tilføj nyt certifikat</button>
+		 <div id="certificate-test"></div>
+		<button class="rz-button rz-button-accent" data-modal="modal_certificate">Tilføj nyt certifikat</button>
 	</div>
 
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
