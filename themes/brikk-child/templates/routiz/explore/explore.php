@@ -21,7 +21,7 @@ global $rz_explore;
     <div class="contain-page-map">
         <?php Rz()->the_template('routiz/explore/map/map'); ?>
     </div>
-    <div class="contain-page-sid">
+    <div class="contain-page-sid" id="find-behandler">
         <?php Rz()->the_template('routiz/explore/filters'); ?>
         <?php Rz()->the_template('routiz/explore/listings'); ?>
     </div>
