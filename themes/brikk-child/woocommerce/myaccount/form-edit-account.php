@@ -444,7 +444,10 @@ Før vores session starter, vil jeg forsøge at forstå kernen af dit problem, h
 
 Med en behandling hos mig får du altid en empatisk og ærlig seance. Jeg værdsætter kommunikation, hygiejne og pålidelighed.</textarea>
 			<p class="text-limit-result"></p>
-			<button class="rz-button rz-button-accent">Gem indstillinger</button>
+			<?php wp_nonce_field(); ?>
+															 
+			<input type="hidden" value="save_about" name="save_about">	
+			<button type="submit" class="rz-button rz-button-accent">Gem indstillinger</button>
 		</form>
 	</div>
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">

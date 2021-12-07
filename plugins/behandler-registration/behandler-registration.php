@@ -439,7 +439,7 @@ function add_doctorListing($user_id){
     $my_behandler_id = wp_insert_post( $listing_postarr );
     update_user_meta($user_id, 'behandlerID', $my_behandler_id);
 
-   $loc = $_POST['rz_location'];
+   $loc = $_POST['rz_location']; 
     foreach ($loc as $key => $value){
         add_post_meta($my_behandler_id,'rz_location',$value);
      }

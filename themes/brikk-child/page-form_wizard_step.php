@@ -1,7 +1,11 @@
 <?php 
 
 $user_id = get_current_user_id(); 
+<<<<<<< HEAD
 
+=======
+// print_r($_POST);
+>>>>>>> 3838a54... minor account changes
 /*Second wizard step*/
 
 if ($_POST['step'] == 'first'){
