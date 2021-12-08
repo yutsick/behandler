@@ -1,16 +1,7 @@
 <?php 
 $user = wp_get_current_user();
 $user_id = get_current_user_id(); 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-// print_r($_POST);
->>>>>>> 3838a54... minor account changes
-=======
-//echo $_POST['rz_course_year'].':'.$_POST['rz_course_name'];
-// print_r($_POST);
->>>>>>> main
 /*Second wizard step*/
 
 if ($_POST['step'] == 'first'){
@@ -147,9 +138,29 @@ if( !empty( $_POST['password']) && ($_POST['password'] == $_POST['password2'])){
 }
 
 /** Add certificate */
-if (!empty($_POST['ajax_certificate'])) {
-echo $_POST['rz_course_year'].':'.$_POST['rz_course_name'];
-//die;
+
+ if (!empty($_POST['ajax_certificate'])) {
+  
+ $listingID = get_user_meta($user_id, 'behandlerID', true);
+ $course_year = $_POST['rz_course_year'];
+ $course_name = $_POST['rz_course_name'];
+if (get_post_meta($listingID, 'rz_certificates')[0]){
+  $cert = json_decode(get_post_meta($listingID, 'rz_certificates')[0],true);
+  $cert_add[$course_year] = $course_name;
+  array_push($cert,$cert_add);
+} else{
+  $cert_add[$course_year] = $course_name;
+  $cert[] = $cert_add;
+};
+
+ 
+ 
+
+ update_post_meta($listingID, 'rz_certificates',json_encode($cert));
+ //echo json_encode($cert);
+ //echo $course_year;
+ print_r($cert);
+die();
 }
 
 

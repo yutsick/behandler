@@ -38,7 +38,7 @@ document.querySelectorAll('.text-limit').forEach(el => {
 jQuery(function ($) {
     $('[data-id = "add_certificate"]').click(function (event) {
 
-        //event.preventDefault();
+        event.preventDefault();
         let rz_course_name = $('[name=rz_course-name]').val();
         let rz_course_year = $('[name=rz_course-year]').val();
         //alert('ffff' + rz_course_name + rz_course_year);
@@ -54,7 +54,7 @@ jQuery(function ($) {
 
             },
             success: function (response) {
-                //console.log('fff' + response);
+                console.log('fff' + response);
                 //alert(response);
                 $('#certificate-test').html(response);
             }

@@ -1,7 +1,7 @@
 <?php
-/**test
+/**
  * Edit account form
- *test 2
+ *
  * This template can be overridden by copying it to yourtheme/woocommerce/myaccount/form-edit-account.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
@@ -505,6 +505,9 @@ defined( 'ABSPATH' ) || exit;
 				</div>
 			</div>	
 		</div>
+		<?php $cert = get_post_meta($listingID, 'rz_certificates');
+		print_r( json_decode($cert[0]));
+		?>
 		 <div id="certificate-test"></div>
 		<button class="rz-button rz-button-accent" data-modal="modal_certificate">Tilføj nyt certifikat</button>
 	</div>
