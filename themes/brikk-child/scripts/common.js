@@ -101,13 +101,6 @@ jQuery(document).ready(function () {
      }
   });
 
-  $('.cheeps-box__btn').on('click', (evt) => {
-    evt.target.remove();
-  });
-
-  $('.cheeps-box__btn_clear').on('click', (evt) => {
-    evt.target.closest('.cheeps-box').remove();
-  });
 
 
   //Textarea limit display
@@ -124,6 +117,106 @@ jQuery(document).ready(function () {
   textLimitDisplay($('.text-limit-150'));
 
 
+
+  function chipsSelectOpen(input) {
+    $(input).on('click', function(evt) {
+      evt.stopPropagation();
+      evt.preventDefault();
+
+      if($(this).parent().find('.input-select-chips__select').children().length > 0) {
+        $(this).parent().find('.input-select-chips__select').addClass('opened');
+      };
+
+      chipsSpanListener();
+
+      chipsSelectClose(input);
+    });
+  }
+  chipsSelectOpen('.input-select-chips__input');
+
+
+  function chipsSelectClose(input) {
+    $(document).one('click', function closeSelect(e) {
+      if($('.input-select-chips__input').has(e.target).length === 0 || $('.input-select-chips__input + .input-select-chips__cheeps-box-container').has(e.target).length === 0) {
+        $(input).parent().find('.input-select-chips__select').removeClass('opened');
+      } else if ($('.input-select-chips__select').hasClass('opened')) {
+        $(document).one('click', closeSelect);
+      }
+    });
+  }
+
+
+  function chipsSpanListener() {
+    $('.input-select-chips__select span').on('click', function(evt) {
+      evt.preventDefault();
+
+      if($(this).parent().parent().find('.cheeps-box').length > 0) {
+        chipsAdd($(this), $(this).text());
+      } else {
+        chipsBoxCreate($(this));
+        chipsAdd($(this), $(this).text());
+      }
+    });
+  }
+
+  function chipsBoxCreate(span) {
+    span.parent().parent().find('.input-select-chips__cheeps-box-container').append( '<div class="cheeps-box"><button class="cheeps-box__btn_clear" type="clear" style="order:999">Ryd Alt</button></div>' );
+
+    chipsRemoveAllListener('.cheeps-box__btn_clear');
+  };
+
+  function chipsAdd(input, value) {
+    input.parent().parent().find('.cheeps-box').append(`<button class="cheeps-box__btn" type="button" data-name="${value}">${value}</button>`);
+    input.parent().parent().find('.input-select-chips__select').removeClass('opened');
+
+    chipsRemoveListener('.cheeps-box__btn');
+
+    $(input).remove();
+  };
+
+  function chipsRemoveListener(btn) {
+    $(btn).on('click', function() {
+
+      chipsReturnInSelect($(this)); 
+
+      if($(this).parent().children().length === 2) {
+        $(this).closest('.cheeps-box').remove();
+      } else {
+        $(this).remove();
+      }
+    });
+  };
+
+  function chipsReturnInSelect(btn) {
+    btn.parent().parent().parent().find('.input-select-chips__select').append(`<span data-value="${btn.attr('data-name')}">${btn.attr('data-name')}</span>`);
+    chipsSpanListener();
+
+    filterAlph(btn.parent().parent().parent().find('.input-select-chips__select'));
+  }
+
+  function filterAlph(list) {
+    let options = list.children('span');                    // Collect options         
+    options.detach().sort(function(a,b) {               // Detach from select, then Sort
+        let at = $(a).text();
+        let bt = $(b).text();         
+        return (at > bt)?1:((at < bt)?-1:0);            // Tell the sort function how to order
+    });
+    options.appendTo(list); 
+  }
+
+  function chipsRemoveAllListener(btn) {
+    $(btn).on('click', function() {
+      $(this).closest('.cheeps-box').children('.cheeps-box__btn').each(function (i, el) {
+        if(!$(this).hasClass('cheeps-box__btn_clear')) {
+          chipsReturnInSelect($(this));
+        }
+      });
+
+      $(this).closest('.cheeps-box').remove();
+    });
+
+
+  };
 
 });
 

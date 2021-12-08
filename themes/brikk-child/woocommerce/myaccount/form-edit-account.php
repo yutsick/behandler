@@ -265,20 +265,7 @@ defined( 'ABSPATH' ) || exit;
 															</label>
 															<!-- input -->
 															<textarea class="rz-upload-input rz-none" type="text" name="rz_gallery" placeholder=""></textarea>
-
 															
-																
-															<!--                             
-															<label for="rz-upload-rz_gallery" class="rz-button rz-light rz-upload-button">
-																<span>Upload</span>
-																<span><i class="fas fa-arrow-up rz-ml-1"></i></span>
-
-																<div class="rz-preloader">
-																	<i class="fas fa-sync"></i>
-																</div>
-
-															</label> -->
-
 															<!-- file -->
 															<div class="rz-none">
 																<input class="rz-upload-file" type="file" id="rz-upload-rz_gallery" multiple="true">
@@ -408,24 +395,14 @@ defined( 'ABSPATH' ) || exit;
 																<div class="rz-repeater-content rz-grid">
 																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none" data-type="text" data-storage="field" data-disabled="no" data-heading="Name" data-id="name">
 																		<div class="rz-heading">
-
-																			<label class="">
-																				Name
-																			</label>
-
-
+																			Name
 																		</div>
 
 																		<input type="text" name="name" value="Custom Period" placeholder="" class="" form="&quot;fake-form-readonly&quot;">
 																	</div>
 																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none" data-type="key" data-storage="field" data-disabled="no" data-heading="Unique ID" data-id="key">
 																		<div class="rz-heading">
-
-																			<label class="">
-																				Unique ID
-																			</label>
-
-
+																			Unique ID
 																		</div>
 
 																		<div class="rz-input-group rz-input-group-custom">
@@ -441,7 +418,7 @@ defined( 'ABSPATH' ) || exit;
 																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready" data-type="select" data-storage="field" data-disabled="no" data-heading="Start Time" data-id="start_time">
 
 																		<div class="rz-select rz-select-single rz-relative">
-																			<select name="start_time" class="">
+																			<select name="start_time" class="" id="start_time">
 																				<option value="0">12:01 am</option>
 																				<option value="3600">1:00 am</option>
 																				<option value="7200">2:00 am</option>
@@ -468,7 +445,7 @@ defined( 'ABSPATH' ) || exit;
 																				<option value="82800">11:00 pm</option>
 																				<option value="86400">12:00 am</option>
 																			</select>
-																			<label class="">
+																			<label for="start_time" class="">
 																				Start Time
 																			</label>
 																		</div>
@@ -479,7 +456,7 @@ defined( 'ABSPATH' ) || exit;
 																		
 
 																		<div class="rz-select rz-select-single rz-relative">
-																			<select name="end_time"  class="">
+																			<select name="end_time" id="end_time"  class="">
 																				<option value="0">12:01 am</option>
 																				<option value="3600">1:00 am</option>
 																				<option value="7200">2:00 am</option>
@@ -506,7 +483,7 @@ defined( 'ABSPATH' ) || exit;
 																				<option value="82800">11:00 pm</option>
 																				<option value="86400">12:00 am</option>
 																			</select>
-																			<label class="">
+																			<label for="end_time" class="">
 																				End Time
 																			</label>
 																		</div>
@@ -515,7 +492,7 @@ defined( 'ABSPATH' ) || exit;
 																	<div class="rz-form-group rz-field rz-col-12 rz-field-ready" data-type="select" data-storage="field" data-disabled="no" data-heading="Appointment Duration" data-id="duration">
 																		
 																		<div class="rz-select rz-select-single rz-relative">
-																			<select name="duration" class="">
+																			<select name="duration" id="duration" class="">
 																				<option value="1800" selected>30m</option>
 																				<option value="2700" >45m</option>
 																				<option value="3600">60m</option>
@@ -523,27 +500,27 @@ defined( 'ABSPATH' ) || exit;
 																				<option value="7200">120m</option>
 																				<!--<option value="custom">Custom</option>-->
 																			</select>
-																			<label class="">
+																			<label for="duration" class="">
 																				Appointment Duration
 																			</label>
 																		</div>
 
 																	</div>
 																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer rz-relative" data-dependency="{&quot;id&quot;:&quot;duration&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;}" data-type="text" data-storage="field" data-disabled="no" data-heading="Custom Appointment Duration Lenght" data-id="custom_duration_length">
-																		<input type="text" name="custom_duration_length" value="" placeholder=" " class="">
-																		<label class="">
+																		<input type="text" name="custom_duration_length" id="custom_duration_length" value="" placeholder=" " class="">
+																		<label for="custom_duration_length" class="">
 																				Custom Appointment Duration Lenght
 																		</label>
 																	</div>
 																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer" data-dependency="{&quot;id&quot;:&quot;duration&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;}" data-type="select" data-storage="field" data-disabled="no" data-heading="Custom Appointment Duration Entity" data-id="custom_duration_entity">
 																
 																		<div class="rz-select rz-select-single rz-relative">
-																			<select name="custom_duration_entity"  class="">
+																			<select name="custom_duration_entity" id="custom_duration_entity"  class="">
 																				<option value="60">Minutes</option>
 																				<option value="3600">Hours</option>
 																				<option value="86400">Days</option>
 																			</select>
-																			<label class="">
+																			<label for="custom_duration_entity" class="">
 																				Custom Appointment Duration Entity
 																			</label>
 																		</div>
@@ -551,21 +528,14 @@ defined( 'ABSPATH' ) || exit;
 
 																	</div>
 																	<div class="rz-form-group rz-field rz-col-12 rz-field-ready" data-type="select" data-storage="field" data-disabled="no" data-heading="Time Between Appointment" data-id="interval">
-																		
-
-																		
-
-
-																	
-
 																		<div class="rz-select rz-select-single rz-relative">
-																			<select name="interval" class="">
+																			<select name="interval" id="interval" class="">
 																				<option value="300">5m</option>
 																				<option value="600">10m</option>
 																				<option value="none" selected="">None</option>
 																				<!--<option value="custom">Custom</option>-->
 																			</select>
-																			<label class="">
+																			<label for="interval" class="">
 																				Time Between Appointment
 																			</label>
 																		</div>
@@ -573,20 +543,20 @@ defined( 'ABSPATH' ) || exit;
 																	</div>
 																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer rz-relative" data-dependency="{&quot;id&quot;:&quot;interval&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;}" data-type="text" data-storage="field" data-disabled="no" data-heading="Custom Time Between Appointment Lenght" data-id="custom_interval_length">
 
-																		<input type="text" name="custom_interval_length" value="" placeholder=" " class="" >
-																		<label class="">
+																		<input type="text" name="custom_interval_length" id="custom_interval_length" value="" placeholder=" " class="" >
+																		<label for="custom_interval_length" class="">
 																				Custom Time Between Appointment Lenght
 																		</label>
 																	</div>
 																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer" data-dependency="{&quot;id&quot;:&quot;interval&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;}" data-type="select" data-storage="field" data-disabled="no" data-heading="Custom Time Between Appointment Entity" data-id="custom_interval_entity">
 																		
 																		<div class="rz-select rz-select-single rz-relative">
-																			<select name="custom_interval_entity"  class="">
+																			<select name="custom_interval_entity" id="custom_interval_entity"  class="">
 																				<option value="60">Minutes</option>
 																				<option value="3600">Hours</option>
 																				<option value="86400">Days</option>
 																			</select>
-																			<label class="">
+																			<label for="custom_interval_entity" class="">
 																				Custom Time Between Appointment Entity
 																			</label>
 																		</div>
@@ -594,12 +564,7 @@ defined( 'ABSPATH' ) || exit;
 																	</div>
 																	<div class="rz-form-group rz-field rz-col-12 rz-field-ready rz-none" data-type="checkbox" data-storage="field" data-disabled="no" data-heading="Recurring Period" data-id="recurring">
 																		<div class="rz-heading">
-
-																			<label class="">
-																				Recurring Period
-																			</label>
-
-
+																			Recurring Period
 																		</div>
 
 																		<label class="rz-checkbox rz-no-select">
@@ -612,24 +577,14 @@ defined( 'ABSPATH' ) || exit;
 																	</div>
 																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer" data-dependency="{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:false}" data-type="text" data-storage="field" data-disabled="no" data-heading="Start Date" data-id="start">
 																		<div class="rz-heading">
-
-																			<label class="">
-																				Start Date
-																			</label>
-
-
+																			Start Date
 																		</div>
 
 																		<input type="text" name="start" value="" placeholder="YYYY-MM-DD" class="" >
 																	</div>
 																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer" data-dependency="{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:false}" data-type="text" data-storage="field" data-disabled="no" data-heading="End Date" data-id="end">
 																		<div class="rz-heading">
-
-																			<label class="">
-																				End Date
-																			</label>
-
-
+																			End Date
 																		</div>
 
 																		<input type="text" name="end" value="" placeholder="YYYY-MM-DD" class="" >
@@ -707,68 +662,68 @@ defined( 'ABSPATH' ) || exit;
 	<div class="bg-white rz-mt-3 rz-p-3 tab-content_style">
 		<h3>Specialeområde(r)</h3>
 		<p>Hvis du specialiserer dig inden for en bestemt behandlingsmetode eller målgruppe, kan du skrive det ind her.</p>
-		 <!-- <input type="text" name="doctor-type" value="<?php echo esc_attr(get_the_author_meta('rz_doctor-type', get_current_user_id())); ?>" class="regular-text icon-search" placeholder="Doctor-type*"/>  -->
+
+		<div class="input-select-chips">
+			<input type="text" name="doctor-type" value="<?php echo esc_attr(get_the_author_meta('rz_doctor-type', get_current_user_id())); ?>" class="regular-text icon-search input-select-chips__input" placeholder="Doctor-type*"/> 
+						<?php 
+
+							$options = get_terms(array(
+								'post_type'	=>	'rz_listing',
+								'taxonomy'	=>	'rz_doctor-type',
+								'hide_empty' => false,
+							));
+
+
+							$behandlerID = esc_attr(esc_attr(get_the_author_meta('behandlerID', $user->ID)));
+							$behandler_listing = get_post($behandlerID);	
+							$doctor_types = get_post_meta($behandler_listing->ID,'rz_doctor-type');
+							
+							foreach ($doctor_types as $doctor_type){
+								$term = get_term($doctor_type);
+								$doctor_options[] = $term->name;
+							}
+						
+						?>
+			<!-- Dropdown speciale -->
+				<div id="" class="regular-text input-select-chips__select">
 					<?php 
 
-					$options = get_terms(array(
-						'post_type'	=>	'rz_listing',
-						'taxonomy'	=>	'rz_doctor-type',
-						'hide_empty' => false,
-					));
-
-
-					$behandlerID = esc_attr(esc_attr(get_the_author_meta('behandlerID', $user->ID)));
-					$behandler_listing = get_post($behandlerID);	
-					$doctor_types = get_post_meta($behandler_listing->ID,'rz_doctor-type');
-					
-					foreach ($doctor_types as $doctor_type){
-						$term = get_term($doctor_type);
-						$doctor_options[] = $term->name;
-					}
-					
+						foreach ($options as $option){?>
+							<span data-value="<?php echo $option->name; ?>"><?php echo $option->name; ?></span>
+						<?php 
+						}
 					?>
-		<!-- Dropdown speciale -->
-				
-        <td>
-            <select name="doctor-type" id="" class="regular-text" multiple>
-                <?php 
-
-                foreach ($options as $option){?>
-                     <option value="<?php echo $option->name; ?>" 
-                     <?php echo ( in_array($option->name, $doctor_options)) ? "selected" : ""; ?>>
-                     <?php echo $option->name; ?></option>
-
-                 <?php 
-                 }
-                ?>
-            </select>
-        </td>
+				</div>
 			<!-- End dropdown  -->
 
-		<div class="cheeps-box-container">
-			<div class="cheeps-box">
-				<button class="cheeps-box__btn" type="button" data-name="Androlog">Androlog</button>	<button class="cheeps-box__btn" type="button" data-name="Sexopatolog">Sexopatolog</button>		
-				<button class="cheeps-box__btn" type="button" data-name="Androlog">Androlog</button>	<button class="cheeps-box__btn" type="button" data-name="Sexopatolog">Sexopatolog</button>		
-				<button class="cheeps-box__btn" type="button" data-name="Sexolog">Sexolog</button>	<button class="cheeps-box__btn" type="button" data-name="Sexopatolog">Sexopatolog</button>		
-				<button class="cheeps-box__btn" type="button" data-name="Sexolog">Sexolog</button>
+			<div class="input-select-chips__cheeps-box-container cheeps-box-container">
 
-				<button class="cheeps-box__btn_clear" type="clear">Ryd Alt</button>
 			</div>
 		</div>
+
 	</div>
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
 		<h3>Ydelser og Symptombehandling</h3>
 		<p>Her kan du definere hvilke specifikke typer ydelser du tilbyder. Du kan også skrive hvilke symptomer dine behandlinger kan afhjælpe.</p>
-		<input type="text" name="symptom" value="<?php echo esc_attr(get_the_author_meta('symptom', get_current_user_id())); ?>" class="regular-text icon-search" placeholder="Søg"/>
-		<div class="cheeps-box-container">
-			<div class="cheeps-box">
-				<button class="cheeps-box__btn" type="button" data-name="Stress">Stress</button>	<button class="cheeps-box__btn" type="button" data-name="Nakkesmerter">Nakkesmerter</button>		
-				<button class="cheeps-box__btn" type="button" data-name="Uro i kroppen">Uro i kroppen</button>	<button class="cheeps-box__btn" type="button" data-name="Sexopatolog">Sexopatolog</button>		
-				<button class="cheeps-box__btn" type="button" data-name="Livssyn">Livssyn</button>	
 
-				<button class="cheeps-box__btn_clear" type="clear">Ryd Alt</button>
+		<div class="input-select-chips">
+			<input type="text" name="symptom" value="<?php echo esc_attr(get_the_author_meta('symptom', get_current_user_id())); ?>" class="regular-text icon-search input-select-chips__input" placeholder="Søg"/>
+
+			<!-- Dropdown speciale -->
+			<div id="" class="regular-text input-select-chips__select">
+				<span data-value="Sexopatolog">Sexopatolog</span>
+				<span data-value="Baton">Baton</span>
+				<span data-value="Anton">Anton</span>
+				<span data-value="Karton">Karton</span>
+				<span data-value="Boston">Boston</span>
 			</div>
-		</div>			
+			<!-- End dropdown  -->
+			<div class="input-select-chips__cheeps-box-container cheeps-box-container">
+
+			</div>		
+		</div>
+
+			
 	</div>
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
 		<h3>Notifikationer og Bero</h3>
@@ -893,13 +848,13 @@ defined( 'ABSPATH' ) || exit;
 		
 		<form action="">
 			<p class="input-box">
-				<input type="text" id="hvilkenskole" value="" require>
+				<input type="text" name="hvilkenskole" id="hvilkenskole" value="" placeholder=" " required>
 				<label for="hvilkenskole">Hvilken skole studererer du på?<span style="color: #F55951;">*</span></label>
 			</p>
 
 			<p class="input-box">
-				<input type="text" id="hvilkenskole" value="" require>
-				<label for="hvilkenskole">Hvornår er din uddannelse færdig?<span style="color: #F55951;">*</span></label>
+				<input type="text" id="hvornarer" value="" placeholder=" " required>
+				<label for="hvornarer">Hvornår er din uddannelse færdig?<span style="color: #F55951;">*</span></label>
 			</p>
 		</form>
 
