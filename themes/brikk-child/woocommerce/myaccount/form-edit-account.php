@@ -492,23 +492,27 @@ defined( 'ABSPATH' ) || exit;
 		</div>
 
 		<br>
-		
-		<div class="tab-content_style__presentation-input">
-			<div class="tab-content_style__presentation-input-content">
-				<div class="tab-content_style__presentation-input-text">
-					<span class="tab-content_style__presentation-input-name">Den Danske Akupunktørskole</span> <span class="tab-content_style__presentation-input-year">(2001)</span>
-				</div>
+		<div id="certificate-test">
+		<?php $certs = json_decode(get_post_meta($listingID, 'rz_certificates')[0],true);
+		foreach ($certs as $cert){ 
+			foreach($cert as $cert_year=>$cert_name){?>
+				<div class="tab-content_style__presentation-input">
+					<div class="tab-content_style__presentation-input-content">
+						<div class="tab-content_style__presentation-input-text">
+							<span class="tab-content_style__presentation-input-name"><?php echo $cert_name; ?></span> <span class="tab-content_style__presentation-input-year">(<?php echo $cert_year; ?>) </span>
+						</div>
 
-				<div class="tab-content_style__presentation-input-btn-group">
-					<button type="button" class="tab-content_style__presentation-input-btn_edit">Edit</button>
-					<button type="button" class="tab-content_style__presentation-input-btn_delete">Delete</button>
+						<div class="tab-content_style__presentation-input-btn-group">
+							<button type="button" class="tab-content_style__presentation-input-btn_edit">Edit</button>
+							<button type="button" class="tab-content_style__presentation-input-btn_delete">Delete</button>
+						</div>
+					</div>	
 				</div>
-			</div>	
-		</div>
-		<?php $cert = get_post_meta($listingID, 'rz_certificates');
-		print_r( json_decode($cert[0]));
+		<?php 
+			}
+		}
 		?>
-		 <div id="certificate-test"></div>
+		</div>
 		<button class="rz-button rz-button-accent" data-modal="modal_certificate">Tilføj nyt certifikat</button>
 	</div>
 

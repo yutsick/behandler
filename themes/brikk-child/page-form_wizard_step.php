@@ -144,26 +144,21 @@ if( !empty( $_POST['password']) && ($_POST['password'] == $_POST['password2'])){
  $listingID = get_user_meta($user_id, 'behandlerID', true);
  $course_year = $_POST['rz_course_year'];
  $course_name = $_POST['rz_course_name'];
+
 if (get_post_meta($listingID, 'rz_certificates')[0]){
   $cert = json_decode(get_post_meta($listingID, 'rz_certificates')[0],true);
   $cert_add[$course_year] = $course_name;
   array_push($cert,$cert_add);
-} else{
+} else {
   $cert_add[$course_year] = $course_name;
   $cert[] = $cert_add;
 };
 
- 
- 
-
- update_post_meta($listingID, 'rz_certificates',json_encode($cert));
- //echo json_encode($cert);
- //echo $course_year;
- print_r($cert);
+update_post_meta($listingID, 'rz_certificates',json_encode($cert));
 die();
 }
 
-
+/** Forward to location */
 if( isset( $_POST['location'] ) && $location = $_POST['location'] ){
   wp_safe_redirect( $location);
   exit();
