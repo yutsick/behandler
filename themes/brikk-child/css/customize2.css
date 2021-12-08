@@ -477,6 +477,9 @@
   text-decoration: none;
   transition: 0.3s ease; }
 
+.rz-heading {
+  margin-bottom: 10px; }
+
 .form-group {
   width: 100%;
   display: flex;

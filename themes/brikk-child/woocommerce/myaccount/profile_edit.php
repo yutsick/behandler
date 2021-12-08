@@ -1,8 +1,5 @@
 <?php 
-<<<<<<< HEAD
-=======
-//test
->>>>>>> main
+// test
 $all_user_meta = array_map(
 	function( $a ){
 		return $a[0];
