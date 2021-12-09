@@ -162,10 +162,14 @@
 .tab-content_style input[type="tel"],
 .tab-content_style input.input-text,
 .tab-content_style form .password-input input,
-.tab-content_style form .form-row input.input-text {
+.tab-content_style form .form-row input.input-text,
+.tab-content_style select.regular-text {
   background: #F5F4F5;
   border: none;
-  padding: 0 16px; }
+  padding: 0 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
 .tab-content_style textarea {
   background: #F5F4F5;
   border: none;
@@ -477,6 +481,9 @@
   text-decoration: none;
   transition: 0.3s ease; }
 
+.rz-heading {
+  margin-bottom: 10px; }
+
 .form-group {
   width: 100%;
   display: flex;
@@ -488,6 +495,37 @@
     .form-group_input-min-number input,
     .form-group_input-min-number input[type=number] {
       width: 95px; }
+
+.input-select-chips {
+  position: relative; }
+  .input-select-chips__select {
+    position: absolute;
+    top: 56px;
+    z-index: 1;
+    width: 100%;
+    background: #F5F4F5;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    padding: 10px 0;
+    border-top: 1px solid #c5c5c5; }
+    .input-select-chips__select span {
+      display: block;
+      padding: 5px 16px;
+      cursor: pointer; }
+    .input-select-chips__select.opened {
+      visibility: visible;
+      opacity: 1;
+      height: auto;
+      max-height: 300px;
+      overflow-y: scroll; }
+      .input-select-chips__select.opened + .input-select-chips__cheeps-box-container {
+        z-index: 0; }
+  .input-select-chips__input {
+    z-index: 2;
+    position: relative; }
 
 @media screen and (max-width: 1200px) {
   .admin-bar .brk-mobile-header {

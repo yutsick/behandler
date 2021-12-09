@@ -71,7 +71,8 @@ defined( 'ABSPATH' ) || exit;
 			<input type="hidden" name="action" value="save_account_details" />
 		</p>
 
-		<?php//  do_action( 'woocommerce_edit_account_form_end' ); ?>
+		<?php 
+		//  do_action( 'woocommerce_edit_account_form_end' ); ?>
 
 </form>
 <?php // do_action( 'woocommerce_after_edit_account_form' ); ?>
@@ -243,12 +244,52 @@ defined( 'ABSPATH' ) || exit;
 													<input type="hidden" name="location" value="/" />
 													<div class="rz-grid">
 													<div class="rz-form-group rz-field rz-col-12 rz-relative rz-field-ready" data-type="text" data-storage="request" data-disabled="no" data-heading="Navn på behandlingen*" data-id="doctors-name">
-														<input type="text" name="rz_doctors-name" value="" class="" placeholder=" "/>
-														<label class="">
+														<input type="text" name="rz_doctors-name" id="rz_doctors-name" value="" class="" placeholder=" "/>
+														<label for="rz_doctors-name" class="">
 														Navn på behandlingen*
 														<i class="rz-required"></i>
 														</label>
 													</div>
+
+													<div class="rz-form-group rz-field rz-col-12" data-multiple="true" data-upload-type="image" data-type="upload" data-storage="request" data-disabled="no" data-heading="Upload gallery" data-id="gallery">
+														<div class="rz-upload">
+															<!-- button -->
+															<label for="rz-upload-rz_gallery" class="rz-flex">
+																	<div class="add-listing">
+																		<div class="add-listing-inner">
+																			<div class="icon"><img src="<?php echo get_stylesheet_directory_uri();?>/images/camera.png" alt=""></div>
+																			<p>Klik for at tilføje foto</p>
+																			
+																		</div>
+																	</div>
+															</label>
+															<!-- input -->
+															<textarea class="rz-upload-input rz-none" type="text" name="rz_gallery" placeholder=""></textarea>
+															
+															<!-- file -->
+															<div class="rz-none">
+																<input class="rz-upload-file" type="file" id="rz-upload-rz_gallery" multiple="true">
+															</div>
+
+															<!-- field info -->
+															<div class="rz-field-info">
+																<span>Maximum upload file size: 50 MB.</span>
+																<span>Drag to reorder.</span>
+															</div>
+															<div class="rz-preloader">
+																	<i class="fas fa-sync"></i>
+															</div>
+
+															<!-- image preview -->
+															<div class="rz-image-preview rz-no-select">
+															</div>
+
+															<!-- error output -->
+															<div class="rz-error-output"></div>
+
+														</div>
+													</div>
+
 													<div class="rz-form-group form-group form-group_space-between rz-col-12">
 														<div class="">
 															<label>
@@ -278,22 +319,22 @@ defined( 'ABSPATH' ) || exit;
 																<div class="rz-form-group rz-field rz-col-12 rz-field-ready rz-relative rz-mt-2" data-type="text" data-storage="field" data-disabled="no" data-heading="Start Date" data-id="start">
 
 
-																	<input type="text" name="start_discount" class="" placeholder=" ">
-																	<label class="">
+																	<input type="text" name="start_discount" id="start_discount" class="" placeholder=" ">
+																	<label for="start_discount" class="">
 																		Startdato (DD/MM)
 																		<i class="rz-required"></i>
 																	</label>
 																</div>
 																<div class="rz-form-group rz-field rz-col-12 rz-field-ready rz-relative" data-type="text" data-storage="field" data-disabled="no" data-heading="End Date" data-id="end">
-																	<input type="text" name="end_discount" class="" placeholder=" ">
-																	<label class="">
+																	<input type="text" name="end_discount" id="end_discount2" class="" placeholder=" ">
+																	<label for="end_discount2" class="">
 																		Udløbsdato DD/MM
 																		<i class="rz-required"></i>
 																	</label>
 																</div>
 																<div class="rz-form-group rz-field rz-col-12 rz-field-ready rz-relative" data-type="text" data-storage="field" data-disabled="no" data-heading="End Date" data-id="end">
-																	<input type="text" name="end_discount" class="" placeholder=" ">
-																	<label class="">
+																	<input type="text" name="end_discount" id="end_discount" class="" placeholder=" ">
+																	<label for="end_discount" class="">
 																		Tidsrum (lad denne være blank for heldagstilbud)
 																		<i class="rz-required"></i>
 																	</label>
@@ -316,15 +357,291 @@ defined( 'ABSPATH' ) || exit;
 															</div>
 														</div>
 
-														<div class="rz-form-group rz-field rz-col-12 rz-relative rz-field-ready rz-mt-2" data-type="textarea" data-storage="request" data-disabled="no" data-heading="Beskrivelse af behandlingen*" data-id="post_content">
-															<textarea maxlength="150" type="text" name="post_content" class="text-limit-150"></textarea>
-															<label class="">
+														<div class="rz-field rz-col-12 rz-relative" data-type="text" data-storage="request" data-disabled="no" data-heading="Specialeområde(r)*" data-id="doctor-type">
+															<input type="text" name="rz_doctor-type" id="rz_doctor-type" value=""  class="" placeholder=" ">
+															<label for="rz_doctor-type" class="">
+																Specialeområde(r)*
+																<i class="rz-required"></i>
+															</label>
+														</div>
+
+														<div class="rz-field rz-col-12 rz-relative rz-field-ready rz-mt-2" data-type="textarea" data-storage="request" data-disabled="no" data-heading="Beskrivelse af behandlingen*" data-id="post_content">
+															<textarea id="post_content2" maxlength="150" type="text" name="post_content" class="text-limit-150" placeholder=" "></textarea>
+															<label for="post_content2" class="">
 															Beskrivelse af behandlingen*
 															<i class="rz-required"></i>
 															</label>
 															<p class="text-limit-result">392/600</p>
 															
 														</div>
+													</div>
+
+													<div class="rz-grid">
+														<div class="rz-form-group rz-field rz-col-12 rz-none" data-type="checkbox" data-storage="request" data-disabled="no" data-heading="Allow instant booking" data-id="instant">
+															<input type='hidden' name="rz_instant" value="1">
+														</div>
+														<div class="rz-field rz-col-12" data-type="repeater" data-storage="request" data-disabled="no" data-heading="Add Availability" data-id="time_availability">
+															<div class="rz-heading">
+															Add Availability
+															</div>
+
+
+															<div class="rz-repeater  rz-repeater-collect ">
+
+																<textarea type="text" class="rz-repeater-value rz-none" name="rz_time_availability"></textarea>
+
+																<input type="hidden" class="rz-repeater-schema" value="{&quot;period&quot;:{&quot;name&quot;:&quot;Period&quot;,&quot;heading&quot;:&quot;name&quot;,&quot;fields&quot;:{&quot;name&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;Name&quot;,&quot;value&quot;:&quot;Custom Period&quot;,&quot;col&quot;:6},&quot;key&quot;:{&quot;type&quot;:&quot;key&quot;,&quot;name&quot;:&quot;Unique ID&quot;,&quot;value&quot;:&quot;custom-period&quot;,&quot;defined&quot;:false,&quot;col&quot;:6},&quot;start_time&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Start Time&quot;,&quot;options&quot;:{&quot;0&quot;:&quot;12:01 am&quot;,&quot;3600&quot;:&quot;1:00 am&quot;,&quot;7200&quot;:&quot;2:00 am&quot;,&quot;10800&quot;:&quot;3:00 am&quot;,&quot;14400&quot;:&quot;4:00 am&quot;,&quot;18000&quot;:&quot;5:00 am&quot;,&quot;21600&quot;:&quot;6:00 am&quot;,&quot;25200&quot;:&quot;7:00 am&quot;,&quot;28800&quot;:&quot;8:00 am&quot;,&quot;32400&quot;:&quot;9:00 am&quot;,&quot;36000&quot;:&quot;10:00 am&quot;,&quot;39600&quot;:&quot;11:00 am&quot;,&quot;43200&quot;:&quot;12:00 pm&quot;,&quot;46800&quot;:&quot;1:00 pm&quot;,&quot;50400&quot;:&quot;2:00 pm&quot;,&quot;54000&quot;:&quot;3:00 pm&quot;,&quot;57600&quot;:&quot;4:00 pm&quot;,&quot;61200&quot;:&quot;5:00 pm&quot;,&quot;64800&quot;:&quot;6:00 pm&quot;,&quot;68400&quot;:&quot;7:00 pm&quot;,&quot;72000&quot;:&quot;8:00 pm&quot;,&quot;75600&quot;:&quot;9:00 pm&quot;,&quot;79200&quot;:&quot;10:00 pm&quot;,&quot;82800&quot;:&quot;11:00 pm&quot;,&quot;86400&quot;:&quot;12:00 am&quot;},&quot;value&quot;:28800,&quot;allow_empty&quot;:false,&quot;col&quot;:6},&quot;end_time&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;End Time&quot;,&quot;options&quot;:{&quot;0&quot;:&quot;12:01 am&quot;,&quot;3600&quot;:&quot;1:00 am&quot;,&quot;7200&quot;:&quot;2:00 am&quot;,&quot;10800&quot;:&quot;3:00 am&quot;,&quot;14400&quot;:&quot;4:00 am&quot;,&quot;18000&quot;:&quot;5:00 am&quot;,&quot;21600&quot;:&quot;6:00 am&quot;,&quot;25200&quot;:&quot;7:00 am&quot;,&quot;28800&quot;:&quot;8:00 am&quot;,&quot;32400&quot;:&quot;9:00 am&quot;,&quot;36000&quot;:&quot;10:00 am&quot;,&quot;39600&quot;:&quot;11:00 am&quot;,&quot;43200&quot;:&quot;12:00 pm&quot;,&quot;46800&quot;:&quot;1:00 pm&quot;,&quot;50400&quot;:&quot;2:00 pm&quot;,&quot;54000&quot;:&quot;3:00 pm&quot;,&quot;57600&quot;:&quot;4:00 pm&quot;,&quot;61200&quot;:&quot;5:00 pm&quot;,&quot;64800&quot;:&quot;6:00 pm&quot;,&quot;68400&quot;:&quot;7:00 pm&quot;,&quot;72000&quot;:&quot;8:00 pm&quot;,&quot;75600&quot;:&quot;9:00 pm&quot;,&quot;79200&quot;:&quot;10:00 pm&quot;,&quot;82800&quot;:&quot;11:00 pm&quot;,&quot;86400&quot;:&quot;12:00 am&quot;},&quot;value&quot;:64800,&quot;allow_empty&quot;:false,&quot;col&quot;:6},&quot;duration&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Appointment Duration&quot;,&quot;options&quot;:{&quot;1800&quot;:&quot;30m&quot;,&quot;2700&quot;:&quot;45m&quot;,&quot;3600&quot;:&quot;60m&quot;,&quot;5400&quot;:&quot;90m&quot;,&quot;7200&quot;:&quot;120m&quot;,&quot;custom&quot;:&quot;Custom&quot;},&quot;value&quot;:&quot;60m&quot;,&quot;allow_empty&quot;:false,&quot;style&quot;:&quot;v2&quot;},&quot;custom_duration_length&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;Custom Appointment Duration Lenght&quot;,&quot;dependency&quot;:{&quot;id&quot;:&quot;duration&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;},&quot;col&quot;:6},&quot;custom_duration_entity&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Custom Appointment Duration Entity&quot;,&quot;options&quot;:{&quot;60&quot;:&quot;Minutes&quot;,&quot;3600&quot;:&quot;Hours&quot;,&quot;86400&quot;:&quot;Days&quot;},&quot;value&quot;:&quot;m&quot;,&quot;allow_empty&quot;:false,&quot;dependency&quot;:{&quot;id&quot;:&quot;duration&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;},&quot;col&quot;:6},&quot;interval&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Time Between Appointment&quot;,&quot;options&quot;:{&quot;none&quot;:&quot;None&quot;,&quot;300&quot;:&quot;5m&quot;,&quot;600&quot;:&quot;10m&quot;,&quot;custom&quot;:&quot;Custom&quot;},&quot;value&quot;:&quot;none&quot;,&quot;allow_empty&quot;:false,&quot;style&quot;:&quot;v2&quot;},&quot;custom_interval_length&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;Custom Time Between Appointment Lenght&quot;,&quot;dependency&quot;:{&quot;id&quot;:&quot;interval&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;},&quot;col&quot;:6},&quot;custom_interval_entity&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;name&quot;:&quot;Custom Time Between Appointment Entity&quot;,&quot;options&quot;:{&quot;60&quot;:&quot;Minutes&quot;,&quot;3600&quot;:&quot;Hours&quot;,&quot;86400&quot;:&quot;Days&quot;},&quot;value&quot;:&quot;m&quot;,&quot;allow_empty&quot;:false,&quot;dependency&quot;:{&quot;id&quot;:&quot;interval&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;},&quot;col&quot;:6},&quot;recurring&quot;:{&quot;type&quot;:&quot;checkbox&quot;,&quot;name&quot;:&quot;Recurring Period&quot;},&quot;start&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;Start Date&quot;,&quot;placeholder&quot;:&quot;YYYY-MM-DD&quot;,&quot;col&quot;:6,&quot;dependency&quot;:{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:false}},&quot;end&quot;:{&quot;type&quot;:&quot;text&quot;,&quot;name&quot;:&quot;End Date&quot;,&quot;placeholder&quot;:&quot;YYYY-MM-DD&quot;,&quot;col&quot;:6,&quot;dependency&quot;:{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:false}},&quot;recurring_availability&quot;:{&quot;type&quot;:&quot;checklist&quot;,&quot;name&quot;:&quot;Repeat Availability&quot;,&quot;options&quot;:{&quot;1&quot;:&quot;Monday&quot;,&quot;2&quot;:&quot;Tuesday&quot;,&quot;3&quot;:&quot;Wednesday&quot;,&quot;4&quot;:&quot;Thursday&quot;,&quot;5&quot;:&quot;Friday&quot;,&quot;6&quot;:&quot;Saturday&quot;,&quot;7&quot;:&quot;Sunday&quot;},&quot;dependency&quot;:{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:true}},&quot;price&quot;:{&quot;type&quot;:&quot;number&quot;,&quot;name&quot;:&quot;Custom Price&quot;,&quot;description&quot;:&quot;Leave empty if you want to use the base price&quot;,&quot;min&quot;:0,&quot;step&quot;:0.01,&quot;col&quot;:6},&quot;price_weekend&quot;:{&quot;type&quot;:&quot;number&quot;,&quot;name&quot;:&quot;Custom Weekend Price&quot;,&quot;description&quot;:&quot;Leave empty if you want to use the base weekend price&quot;,&quot;min&quot;:0,&quot;step&quot;:0.01,&quot;col&quot;:6},&quot;limit&quot;:{&quot;type&quot;:&quot;number&quot;,&quot;name&quot;:&quot;Limit Guests&quot;,&quot;description&quot;:&quot;Number only. Leave empty for unlimited.&quot;,&quot;min&quot;:0,&quot;step&quot;:1}}}}">
+
+																<div class="rz-repeater-content rz-grid">
+																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none" data-type="text" data-storage="field" data-disabled="no" data-heading="Name" data-id="name">
+																		<div class="rz-heading">
+																			Name
+																		</div>
+
+																		<input type="text" name="name" value="Custom Period" placeholder="" class="" form="&quot;fake-form-readonly&quot;">
+																	</div>
+																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none" data-type="key" data-storage="field" data-disabled="no" data-heading="Unique ID" data-id="key">
+																		<div class="rz-heading">
+																			Unique ID
+																		</div>
+
+																		<div class="rz-input-group rz-input-group-custom">
+																			<div class="rz-flex">
+																				<input type="text" value="custom-period" placeholder="">
+
+																			</div>
+																		</div>
+
+
+																		<input type="hidden" name="key" value="custom-period" form="&quot;fake-form-readonly&quot;">
+																	</div>
+																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready" data-type="select" data-storage="field" data-disabled="no" data-heading="Start Time" data-id="start_time">
+
+																		<div class="rz-select rz-select-single rz-relative">
+																			<select name="start_time" class="" id="start_time">
+																				<option value="0">12:01 am</option>
+																				<option value="3600">1:00 am</option>
+																				<option value="7200">2:00 am</option>
+																				<option value="10800">3:00 am</option>
+																				<option value="14400">4:00 am</option>
+																				<option value="18000">5:00 am</option>
+																				<option value="21600">6:00 am</option>
+																				<option value="25200">7:00 am</option>
+																				<option value="28800" selected>8:00 am</option>
+																				<option value="32400">9:00 am</option>
+																				<option value="36000">10:00 am</option>
+																				<option value="39600">11:00 am</option>
+																				<option value="43200">12:00 pm</option>
+																				<option value="46800">1:00 pm</option>
+																				<option value="50400">2:00 pm</option>
+																				<option value="54000">3:00 pm</option>
+																				<option value="57600">4:00 pm</option>
+																				<option value="61200">5:00 pm</option>
+																				<option value="64800">6:00 pm</option>
+																				<option value="68400">7:00 pm</option>
+																				<option value="72000">8:00 pm</option>
+																				<option value="75600">9:00 pm</option>
+																				<option value="79200">10:00 pm</option>
+																				<option value="82800">11:00 pm</option>
+																				<option value="86400">12:00 am</option>
+																			</select>
+																			<label for="start_time" class="">
+																				Start Time
+																			</label>
+																		</div>
+
+																	</div>
+																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12  rz-field-ready" data-type="select" data-storage="field" data-disabled="no" data-heading="End Time" data-id="end_time">
+																		
+																		
+
+																		<div class="rz-select rz-select-single rz-relative">
+																			<select name="end_time" id="end_time"  class="">
+																				<option value="0">12:01 am</option>
+																				<option value="3600">1:00 am</option>
+																				<option value="7200">2:00 am</option>
+																				<option value="10800">3:00 am</option>
+																				<option value="14400">4:00 am</option>
+																				<option value="18000">5:00 am</option>
+																				<option value="21600">6:00 am</option>
+																				<option value="25200">7:00 am</option>
+																				<option value="28800">8:00 am</option>
+																				<option value="32400">9:00 am</option>
+																				<option value="36000">10:00 am</option>
+																				<option value="39600">11:00 am</option>
+																				<option value="43200">12:00 pm</option>
+																				<option value="46800">1:00 pm</option>
+																				<option value="50400">2:00 pm</option>
+																				<option value="54000">3:00 pm</option>
+																				<option value="57600">4:00 pm</option>
+																				<option value="61200">5:00 pm</option>
+																				<option value="64800" selected>6:00 pm</option>
+																				<option value="68400">7:00 pm</option>
+																				<option value="72000">8:00 pm</option>
+																				<option value="75600">9:00 pm</option>
+																				<option value="79200">10:00 pm</option>
+																				<option value="82800">11:00 pm</option>
+																				<option value="86400">12:00 am</option>
+																			</select>
+																			<label for="end_time" class="">
+																				End Time
+																			</label>
+																		</div>
+
+																	</div>
+																	<div class="rz-form-group rz-field rz-col-12 rz-field-ready" data-type="select" data-storage="field" data-disabled="no" data-heading="Appointment Duration" data-id="duration">
+																		
+																		<div class="rz-select rz-select-single rz-relative">
+																			<select name="duration" id="duration" class="">
+																				<option value="1800" selected>30m</option>
+																				<option value="2700" >45m</option>
+																				<option value="3600">60m</option>
+																				<option value="5400">90m</option>
+																				<option value="7200">120m</option>
+																				<!--<option value="custom">Custom</option>-->
+																			</select>
+																			<label for="duration" class="">
+																				Appointment Duration
+																			</label>
+																		</div>
+
+																	</div>
+																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer rz-relative" data-dependency="{&quot;id&quot;:&quot;duration&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;}" data-type="text" data-storage="field" data-disabled="no" data-heading="Custom Appointment Duration Lenght" data-id="custom_duration_length">
+																		<input type="text" name="custom_duration_length" id="custom_duration_length" value="" placeholder=" " class="">
+																		<label for="custom_duration_length" class="">
+																				Custom Appointment Duration Lenght
+																		</label>
+																	</div>
+																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer" data-dependency="{&quot;id&quot;:&quot;duration&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;}" data-type="select" data-storage="field" data-disabled="no" data-heading="Custom Appointment Duration Entity" data-id="custom_duration_entity">
+																
+																		<div class="rz-select rz-select-single rz-relative">
+																			<select name="custom_duration_entity" id="custom_duration_entity"  class="">
+																				<option value="60">Minutes</option>
+																				<option value="3600">Hours</option>
+																				<option value="86400">Days</option>
+																			</select>
+																			<label for="custom_duration_entity" class="">
+																				Custom Appointment Duration Entity
+																			</label>
+																		</div>
+																		
+
+																	</div>
+																	<div class="rz-form-group rz-field rz-col-12 rz-field-ready" data-type="select" data-storage="field" data-disabled="no" data-heading="Time Between Appointment" data-id="interval">
+																		<div class="rz-select rz-select-single rz-relative">
+																			<select name="interval" id="interval" class="">
+																				<option value="300">5m</option>
+																				<option value="600">10m</option>
+																				<option value="none" selected="">None</option>
+																				<!--<option value="custom">Custom</option>-->
+																			</select>
+																			<label for="interval" class="">
+																				Time Between Appointment
+																			</label>
+																		</div>
+
+																	</div>
+																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer rz-relative" data-dependency="{&quot;id&quot;:&quot;interval&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;}" data-type="text" data-storage="field" data-disabled="no" data-heading="Custom Time Between Appointment Lenght" data-id="custom_interval_length">
+
+																		<input type="text" name="custom_interval_length" id="custom_interval_length" value="" placeholder=" " class="" >
+																		<label for="custom_interval_length" class="">
+																				Custom Time Between Appointment Lenght
+																		</label>
+																	</div>
+																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer" data-dependency="{&quot;id&quot;:&quot;interval&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:&quot;custom&quot;}" data-type="select" data-storage="field" data-disabled="no" data-heading="Custom Time Between Appointment Entity" data-id="custom_interval_entity">
+																		
+																		<div class="rz-select rz-select-single rz-relative">
+																			<select name="custom_interval_entity" id="custom_interval_entity"  class="">
+																				<option value="60">Minutes</option>
+																				<option value="3600">Hours</option>
+																				<option value="86400">Days</option>
+																			</select>
+																			<label for="custom_interval_entity" class="">
+																				Custom Time Between Appointment Entity
+																			</label>
+																		</div>
+
+																	</div>
+																	<div class="rz-form-group rz-field rz-col-12 rz-field-ready rz-none" data-type="checkbox" data-storage="field" data-disabled="no" data-heading="Recurring Period" data-id="recurring">
+																		<div class="rz-heading">
+																			Recurring Period
+																		</div>
+
+																		<label class="rz-checkbox rz-no-select">
+																			<input type="checkbox" value="1" checked>
+																			<span class="rz-transition"></span>
+																			<em>Yes</em>
+																		</label>
+
+																		<input type="hidden" name="recurring" value="1">
+																	</div>
+																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer" data-dependency="{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:false}" data-type="text" data-storage="field" data-disabled="no" data-heading="Start Date" data-id="start">
+																		<div class="rz-heading">
+																			Start Date
+																		</div>
+
+																		<input type="text" name="start" value="" placeholder="YYYY-MM-DD" class="" >
+																	</div>
+																	<div class="rz-form-group rz-field rz-col-6 rz-col-sm-12 rz-field-ready rz-none rz-no-pointer" data-dependency="{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:false}" data-type="text" data-storage="field" data-disabled="no" data-heading="End Date" data-id="end">
+																		<div class="rz-heading">
+																			End Date
+																		</div>
+
+																		<input type="text" name="end" value="" placeholder="YYYY-MM-DD" class="" >
+																	</div>
+																	<div class="rz-field rz-col-12 rz-field-ready" data-dependency="{&quot;id&quot;:&quot;recurring&quot;,&quot;compare&quot;:&quot;=&quot;,&quot;value&quot;:true}" data-type="checklist" data-storage="field" data-disabled="no" data-heading="Repeat Availability" data-id="recurring_availability">
+																		<div class="rz-heading">
+																			Repeat Availability
+																		</div>
+
+																		<div class="rz-checklist">
+																			<label class="rz-checkbox rz-no-select">
+																				<input type="checkbox" name="recurring_availability[]" value="1">
+																				<span class="rz-transition"></span>
+																				<em>Monday</em>
+																			</label>
+																			<label class="rz-checkbox rz-no-select">
+																				<input type="checkbox" name="recurring_availability[]" value="2">
+																				<span class="rz-transition"></span>
+																				<em>Tuesday</em>
+																			</label>
+																			<label class="rz-checkbox rz-no-select">
+																				<input type="checkbox" name="recurring_availability[]" value="3">
+																				<span class="rz-transition"></span>
+																				<em>Wednesday</em>
+																			</label>
+																			<label class="rz-checkbox rz-no-select">
+																				<input type="checkbox" name="recurring_availability[]" value="4">
+																				<span class="rz-transition"></span>
+																				<em>Thursday</em>
+																			</label>
+																			<label class="rz-checkbox rz-no-select">
+																				<input type="checkbox" name="recurring_availability[]" value="5">
+																				<span class="rz-transition"></span>
+																				<em>Friday</em>
+																			</label>
+																			<label class="rz-checkbox rz-no-select">
+																				<input type="checkbox" name="recurring_availability[]" value="6">
+																				<span class="rz-transition"></span>
+																				<em>Saturday</em>
+																			</label>
+																			<label class="rz-checkbox rz-no-select">
+																				<input type="checkbox" name="recurring_availability[]" value="7">
+																				<span class="rz-transition"></span>
+																				<em>Sunday</em>
+																			</label>
+																		</div>
+
+																		<input name="recurring_availability[]" type="hidden" value="" disabled="">
+																	</div>
+																
+																</div>
+																
+															</div>
+
+														</div>
+
+
 													</div>
 												</section>
 											</form>
@@ -345,68 +662,68 @@ defined( 'ABSPATH' ) || exit;
 	<div class="bg-white rz-mt-3 rz-p-3 tab-content_style">
 		<h3>Specialeområde(r)</h3>
 		<p>Hvis du specialiserer dig inden for en bestemt behandlingsmetode eller målgruppe, kan du skrive det ind her.</p>
-		 <!-- <input type="text" name="doctor-type" value="<?php echo esc_attr(get_the_author_meta('rz_doctor-type', get_current_user_id())); ?>" class="regular-text icon-search" placeholder="Doctor-type*"/>  -->
+
+		<div class="input-select-chips">
+			<input type="text" name="doctor-type" value="<?php echo esc_attr(get_the_author_meta('rz_doctor-type', get_current_user_id())); ?>" class="regular-text icon-search input-select-chips__input" placeholder="Doctor-type*"/> 
+						<?php 
+
+							$options = get_terms(array(
+								'post_type'	=>	'rz_listing',
+								'taxonomy'	=>	'rz_doctor-type',
+								'hide_empty' => false,
+							));
+
+
+							$behandlerID = esc_attr(esc_attr(get_the_author_meta('behandlerID', $user->ID)));
+							$behandler_listing = get_post($behandlerID);	
+							$doctor_types = get_post_meta($behandler_listing->ID,'rz_doctor-type');
+							
+							foreach ($doctor_types as $doctor_type){
+								$term = get_term($doctor_type);
+								$doctor_options[] = $term->name;
+							}
+						
+						?>
+			<!-- Dropdown speciale -->
+				<div id="" class="regular-text input-select-chips__select">
 					<?php 
 
-					$options = get_terms(array(
-						'post_type'	=>	'rz_listing',
-						'taxonomy'	=>	'rz_doctor-type',
-						'hide_empty' => false,
-					));
-
-
-					$behandlerID = esc_attr(esc_attr(get_the_author_meta('behandlerID', $user->ID)));
-					$behandler_listing = get_post($behandlerID);	
-					$doctor_types = get_post_meta($behandler_listing->ID,'rz_doctor-type');
-					
-					foreach ($doctor_types as $doctor_type){
-						$term = get_term($doctor_type);
-						$doctor_options[] = $term->name;
-					}
-					
+						foreach ($options as $option){?>
+							<span data-value="<?php echo $option->name; ?>"><?php echo $option->name; ?></span>
+						<?php 
+						}
 					?>
-		<!-- Dropdown speciale -->
-				
-        <td>
-            <select name="doctor-type" id="" class="regular-text" multiple>
-                <?php 
-
-                foreach ($options as $option){?>
-                     <option value="<?php echo $option->name; ?>" 
-                     <?php echo ( in_array($option->name, $doctor_options)) ? "selected" : ""; ?>>
-                     <?php echo $option->name; ?></option>
-
-                 <?php 
-                 }
-                ?>
-            </select>
-        </td>
+				</div>
 			<!-- End dropdown  -->
 
-		<div class="cheeps-box-container">
-			<div class="cheeps-box">
-				<button class="cheeps-box__btn" type="button" data-name="Androlog">Androlog</button>	<button class="cheeps-box__btn" type="button" data-name="Sexopatolog">Sexopatolog</button>		
-				<button class="cheeps-box__btn" type="button" data-name="Androlog">Androlog</button>	<button class="cheeps-box__btn" type="button" data-name="Sexopatolog">Sexopatolog</button>		
-				<button class="cheeps-box__btn" type="button" data-name="Sexolog">Sexolog</button>	<button class="cheeps-box__btn" type="button" data-name="Sexopatolog">Sexopatolog</button>		
-				<button class="cheeps-box__btn" type="button" data-name="Sexolog">Sexolog</button>
+			<div class="input-select-chips__cheeps-box-container cheeps-box-container">
 
-				<button class="cheeps-box__btn_clear" type="clear">Ryd Alt</button>
 			</div>
 		</div>
+
 	</div>
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
 		<h3>Ydelser og Symptombehandling</h3>
 		<p>Her kan du definere hvilke specifikke typer ydelser du tilbyder. Du kan også skrive hvilke symptomer dine behandlinger kan afhjælpe.</p>
-		<input type="text" name="symptom" value="<?php echo esc_attr(get_the_author_meta('symptom', get_current_user_id())); ?>" class="regular-text icon-search" placeholder="Søg"/>
-		<div class="cheeps-box-container">
-			<div class="cheeps-box">
-				<button class="cheeps-box__btn" type="button" data-name="Stress">Stress</button>	<button class="cheeps-box__btn" type="button" data-name="Nakkesmerter">Nakkesmerter</button>		
-				<button class="cheeps-box__btn" type="button" data-name="Uro i kroppen">Uro i kroppen</button>	<button class="cheeps-box__btn" type="button" data-name="Sexopatolog">Sexopatolog</button>		
-				<button class="cheeps-box__btn" type="button" data-name="Livssyn">Livssyn</button>	
 
-				<button class="cheeps-box__btn_clear" type="clear">Ryd Alt</button>
+		<div class="input-select-chips">
+			<input type="text" name="symptom" value="<?php echo esc_attr(get_the_author_meta('symptom', get_current_user_id())); ?>" class="regular-text icon-search input-select-chips__input" placeholder="Søg"/>
+
+			<!-- Dropdown speciale -->
+			<div id="" class="regular-text input-select-chips__select">
+				<span data-value="Sexopatolog">Sexopatolog</span>
+				<span data-value="Baton">Baton</span>
+				<span data-value="Anton">Anton</span>
+				<span data-value="Karton">Karton</span>
+				<span data-value="Boston">Boston</span>
 			</div>
-		</div>			
+			<!-- End dropdown  -->
+			<div class="input-select-chips__cheeps-box-container cheeps-box-container">
+
+			</div>		
+		</div>
+
+			
 	</div>
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
 		<h3>Notifikationer og Bero</h3>
@@ -538,13 +855,13 @@ defined( 'ABSPATH' ) || exit;
 		
 		<form action="">
 			<p class="input-box">
-				<input type="text" id="hvilkenskole" value="" require>
+				<input type="text" name="hvilkenskole" id="hvilkenskole" value="" placeholder=" " required>
 				<label for="hvilkenskole">Hvilken skole studererer du på?<span style="color: #F55951;">*</span></label>
 			</p>
 
 			<p class="input-box">
-				<input type="text" id="hvilkenskole" value="" require>
-				<label for="hvilkenskole">Hvornår er din uddannelse færdig?<span style="color: #F55951;">*</span></label>
+				<input type="text" id="hvornarer" value="" placeholder=" " required>
+				<label for="hvornarer">Hvornår er din uddannelse færdig?<span style="color: #F55951;">*</span></label>
 			</p>
 		</form>
 
