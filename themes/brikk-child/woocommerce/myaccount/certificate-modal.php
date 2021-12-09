@@ -16,7 +16,7 @@
               <div class="rz-grid">
 
               <div class="rz-form-group rz-field rz-col-12 rz-relative rz-field-ready" data-type="text" data-storage="request" data-disabled="no" data-heading="Kursusnavn*" data-id="course-name">
-                <input type="text" name="rz_course-name" value="" class="" placeholder=" "/>
+                <input type="text" name="rz_course-name" value="" class="" placeholder=" " required/>
                 <label class="">
                 Kursusnavn*
                 <i class="rz-required"></i>
@@ -24,14 +24,14 @@
               </div>
 
               <div class="rz-form-group rz-field rz-col-12 rz-relative rz-field-ready" data-type="text" data-storage="request" data-disabled="no" data-heading="Kursets afslutningstid*" data-id="course-year">
-                <input type="number" min="1900" max="<?php echo date("Y"); ?>" name="rz_course-year" value="" class="" placeholder=" "/>
+                <input type="number" min="1900" max="<?php echo date("Y"); ?>" name="rz_course-year" value="" class="" placeholder=" " required/>
                 <label class="">
                 Kursets afslutningstid*
                 <i class="rz-required"></i>
                 </label>
               </div>
             </section>
-            <!-- <input type="hidden" name = "location" value = "/my-account/edit-account/"> -->
+            
           </form>
          
         <!-- END MODAl CONTENT -->

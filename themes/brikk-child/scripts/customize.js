@@ -41,24 +41,84 @@ jQuery(function ($) {
         event.preventDefault();
         let rz_course_name = $('[name=rz_course-name]').val();
         let rz_course_year = $('[name=rz_course-year]').val();
-        //alert('ffff' + rz_course_name + rz_course_year);
+
         $.ajax({
-            //url: '/wp-admin/admin-ajax.php',
             url: '/form_wizard_step/',
             method: 'post',
             data: {
-                //action: 'ajax_certificate',
                 ajax_certificate: true,
                 rz_course_name: rz_course_name,
                 rz_course_year: rz_course_year
-
             },
             success: function (response) {
-                console.log('fff' + response);
-                //alert(response);
+
+                $('[name = rz_course-name],[name=rz_course-year]').val('');
                 $('#certificate-test').html(response);
             }
         });
     });
+});
+
+
+
+
+
+jQuery(function cert_delete() {
+
+    let set = document.querySelector('#certificate-test');
+
+
+    let certToDel = new MutationObserver(function (mutations, observer) {
+        // fired when a mutation occurs
+        let $set = $('[data-id=delete_certificate]');
+        $($set).on('click', function () {
+            let n = $set.index(this);
+
+            $.ajax({
+                url: '/form_wizard_step/',
+                method: 'post',
+                data: {
+                    ajax_delete_certificate: true,
+                    rz_course_index: n
+                },//
+                success: function (response) {
+                    $('#certificate-test').html(response);
+
+                }
+            })
+        });
+        //console.log(mutations, observer);
+        // ...
+    });
+
+    // define what element should be observed by the observer
+    // and what types of mutations trigger the callback
+    certToDel.observe(set, {
+        //subtree: true,
+        //attributes: true,
+        childList: true
+        //...
+    });
+
+    let $set = $('[data-id=delete_certificate]');
+    $($set).on('click', function () {
+        let n = $set.index(this);
+        console.log(n);
+        $.ajax({
+            url: '/form_wizard_step/',
+            method: 'post',
+            data: {
+                ajax_delete_certificate: true,
+                rz_course_index: n
+            },//
+            success: function (response) {
+                $('#certificate-test').html(response);
+
+            }
+        })
+    });
+
+
+
 });
 

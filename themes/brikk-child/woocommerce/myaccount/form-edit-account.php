@@ -503,8 +503,8 @@ defined( 'ABSPATH' ) || exit;
 						</div>
 
 						<div class="tab-content_style__presentation-input-btn-group">
-							<button type="button" class="tab-content_style__presentation-input-btn_edit">Edit</button>
-							<button type="button" class="tab-content_style__presentation-input-btn_delete">Delete</button>
+							<button type="button" class="tab-content_style__presentation-input-btn_edit" data-id="edit_certificate">Edit</button>
+							<button type="button" class="tab-content_style__presentation-input-btn_delete" data-id="delete_certificate">Delete</button>
 						</div>
 					</div>	
 				</div>
@@ -646,6 +646,7 @@ const config = {
     childList: true
 };
 	const callback = function(mutationsList, observer) {
+		 
     for (let mutation of mutationsList) {
 			
         if (mutation.type === 'childList') {

@@ -139,6 +139,34 @@ if( !empty( $_POST['password']) && ($_POST['password'] == $_POST['password2'])){
 
 /** Add certificate */
 
+add_action('show_certificates','update_certs');
+function update_certs($cert){
+  $user_id = get_current_user_id(); 
+   $listingID = get_user_meta($user_id, 'behandlerID', true);
+
+  foreach ($cert as $certif){ 
+			foreach($certif as $cert_year=>$cert_name){
+       
+      $cert_html .= '
+				<div class="tab-content_style__presentation-input">
+					<div class="tab-content_style__presentation-input-content">
+						<div class="tab-content_style__presentation-input-text">
+							<span class="tab-content_style__presentation-input-name">'.$cert_name.'</span> <span class="tab-content_style__presentation-input-year">('.$cert_year.') </span>
+						</div>
+
+						<div class="tab-content_style__presentation-input-btn-group">
+							<button type="button" class="tab-content_style__presentation-input-btn_edit" data-id="edit_certificate">Edit</button>
+							<button type="button" class="tab-content_style__presentation-input-btn_delete" data-id="delete_certificate">Delete</button>
+						</div>
+					</div>	
+				</div>';
+        
+			}
+		}
+    
+    update_post_meta($listingID, 'rz_certificates',json_encode($cert));
+    echo $cert_html;
+};
  if (!empty($_POST['ajax_certificate'])) {
   
  $listingID = get_user_meta($user_id, 'behandlerID', true);
@@ -154,7 +182,25 @@ if (get_post_meta($listingID, 'rz_certificates')[0]){
   $cert[] = $cert_add;
 };
 
-update_post_meta($listingID, 'rz_certificates',json_encode($cert));
+do_action ('show_certificates', $cert,$listingID);
+
+die();
+}
+
+if (!empty($_POST['ajax_delete_certificate'])) {
+    
+ $listingID = get_user_meta($user_id, 'behandlerID', true);
+ 
+$cert = json_decode(get_post_meta($listingID, 'rz_certificates')[0],true);
+$sert_index_delete = $_POST['rz_course_index'];
+unset($cert[$sert_index_delete]);
+foreach ($cert as $cr){
+  $cert_new[]=$cr;
+} 
+//$cert = $cert_new;
+//print_r($cert);
+do_action ('show_certificates', $cert_new);
+
 die();
 }
 
