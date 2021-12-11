@@ -85,9 +85,18 @@ global $step;
                         ?>
                     </div>
                     <!-- Include submission form -->
-                    <?php include 'page-add-listing.php'?>
-              
-              
+             
+                    <div class="add-listing" data-modal="modal_listing">
+                        <div class="add-listing-inner">
+                            <div class="icon"><img src="<?php echo get_stylesheet_directory_uri();?>/images/medical.png"></div>
+                            <p>Tilføj en ny<br>behandlingsmulighed</p>
+                        </div>
+                    </div>
+                    <div class="tab-content_style">
+                                 <?php get_template_part('form-add-behandling'); ?>
+                    </div>
+                           
+                  
 
                     <form method="post" action="/form_wizard_step/" class="woocommerce-form woocommerce-form-register register" >
                         <input type="hidden" value="first" name="step">

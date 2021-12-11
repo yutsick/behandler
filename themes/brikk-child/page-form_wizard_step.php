@@ -42,13 +42,13 @@ if (!empty($_POST['add_post'])) {
     $listing_postarr = array(
     'post_type' => 'rz_listing',
     'post_title' => sanitize_text_field($_POST['rz_doctors-name']),
+    'post_content' => $_POST['post_content'],
     
     'meta_input' => [
     'rz_listing_type' => '624',
     'rz_doctors-name' => sanitize_text_field($_POST['rz_doctors-name']),
     'rz_doctor-type' => sanitize_text_field($_POST['rz_doctor-type']),
     'rz_price' => sanitize_text_field($_POST['rz_price']),
-    'post_content' => sanitize_text_field($_POST['post_content']),
     'rz_instant' => '1',
     ], 
     'post_status' => 'publish',
