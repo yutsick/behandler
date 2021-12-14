@@ -170,14 +170,14 @@ function update_certs($cert){
 };
 
 /** Add certificate */
- if (!empty($_POST['ajax_certificate']))  {
+ if (!empty($_POST['ajax_certificate']) )  {
   
  $listingID = get_user_meta($user_id, 'behandlerID', true);
  $course_year = $_POST['rz_course_year'];
  $course_name = $_POST['rz_course_name'];
- $cert_current = get_post_meta($listingID, 'rz_certificates')[0];
+ 
 
-if ($cert_current){
+if (get_post_meta($listingID, 'rz_certificates')[0]){
   $cert = json_decode(get_post_meta($listingID, 'rz_certificates')[0],true);
   $cert_add[$course_year] = $course_name;
   array_push($cert,$cert_add);
@@ -187,7 +187,6 @@ if ($cert_current){
 };
 
 do_action ('show_certificates', $cert,$listingID);
-
 die();
 }
 
@@ -210,7 +209,7 @@ die();
 }
 
 /**Edit certificate */
-if (!empty($_POST['ajax_edit_certificate']))  {
+if (!empty($_POST['ajax_edit_certificate']) )  {
     
 $listingID = get_user_meta($user_id, 'behandlerID', true);
 $course_year = $_POST['rz_course_year'];
@@ -219,13 +218,13 @@ $sert_index_edit = $_POST['rz_course_index'];
 
 $cert = json_decode(get_post_meta($listingID, 'rz_certificates')[0],true);
 
-$i = 0;
-$key = array_keys($cert[0]);
-$val = array_values($cert[0]);
-$key[$sert_index_edit] = $course_year;
-$val[$sert_index_edit] = $course_name;
-$cert[0] = array_combine($key,$val);
 
+$key = array_keys($cert[$sert_index_edit]);
+$val = array_values($cert[$sert_index_edit]);
+$key[0] = $course_year;
+$val[0] = $course_name;
+
+$cert[$sert_index_edit] = array_combine($key,$val);
 
 do_action ('show_certificates', $cert);
 

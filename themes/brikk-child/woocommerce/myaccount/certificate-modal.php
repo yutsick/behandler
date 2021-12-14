@@ -13,6 +13,7 @@
           <form>
             <section class="rz-submission-step rz-active" data-id="fields" data-group="0">
               <input id="cert_action" type="hidden" name="certificate" value="certificate" />
+              
               <div class="rz-grid">
 
               <div class="rz-form-group rz-field rz-col-12 rz-relative rz-field-ready" data-type="text" data-storage="request" data-disabled="no" data-heading="Kursusnavn*" data-id="course-name">

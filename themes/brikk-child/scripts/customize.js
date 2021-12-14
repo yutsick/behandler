@@ -34,40 +34,65 @@ document.querySelectorAll('.text-limit').forEach(el => {
     maxLength(el);
 });
 
+
+
 //AJAX requests
-jQuery(function ($) {
+function cert_add(cert_action, n) {
 
-    $('[data-id = "add_certificate"]').click(function (event) {
+    if (cert_action == 'edit') {
+        $('[data-id = "add_certificate"]').off('click');
+        $('[data-id = "add_certificate"]').on('click', function (event) {
 
-        event.preventDefault();
-        let rz_course_name = $('[name=rz_course-name]').val();
-        let rz_course_year = $('[name=rz_course-year]').val();
-        let cert_action = $('#cert_action').val();
-        $.ajax({
-            url: '/form_wizard_step/',
-            method: 'post',
-            data: {
-                ajax_certificate: true,
-                rz_course_name: rz_course_name,
-                rz_course_year: rz_course_year,
-                cert_action: cert_action
-            },
-            success: function (response) {
+            event.preventDefault();
+            let rz_course_name = $('[name=rz_course-name]').val();
+            let rz_course_year = $('[name=rz_course-year]').val();
 
-                $('[name = rz_course-name],[name=rz_course-year]').val('');
-                $('#certificate-test').html(response);
-            }
+
+            $.ajax({
+                url: '/form_wizard_step/',
+                method: 'post',
+                data: {
+                    ajax_edit_certificate: true,
+                    rz_course_index: n,
+                    rz_course_name: rz_course_name,
+                    rz_course_year: rz_course_year,
+                    cert_action: cert_action
+                },
+                success: function (response) {
+                    $('[name = rz_course-name],[name=rz_course-year]').val('');
+                    $('#certificate-test').html(response);
+
+                }
+            });
         });
-    });
 
+    } else {
+        $('[data-id = "add_certificate"]').off('click');
+        $('[data-id = "add_certificate"]').on('click', function (event) {
 
-    // let certAdd = new MutationObserver(function (mutations, observer) {
-    //     // fired when a mutation occurs
-    //     add_cert();
-    // });
+            event.preventDefault();
+            let rz_course_name = $('[name=rz_course-name]').val();
+            let rz_course_year = $('[name=rz_course-year]').val();
 
+            $.ajax({
+                url: '/form_wizard_step/',
+                method: 'post',
+                data: {
+                    ajax_certificate: true,
+                    rz_course_name: rz_course_name,
+                    rz_course_year: rz_course_year,
+                    cert_action: cert_action
+                },
+                success: function (response) {
+                    $('[name = rz_course-name],[name=rz_course-year]').val('');
+                    $('#certificate-test').html(response);
 
-});
+                }
+            });
+        });
+    }
+}
+
 
 jQuery(function cert_delete() {
 
@@ -76,7 +101,7 @@ jQuery(function cert_delete() {
         let $certToDelete = $('[data-id=delete_certificate]');
         $($certToDelete).on('click', function () {
             let n = $certToDelete.index(this);
-            console.log(n);
+
             $.ajax({
                 url: '/form_wizard_step/',
                 method: 'post',
@@ -100,8 +125,6 @@ jQuery(function cert_delete() {
     // define what element should be observed by the observer
     // and what types of mutations trigger the callback
     certToDel.observe(certBlock, {
-        //subtree: true,
-        //attributes: true,
         childList: true
 
     });
@@ -110,70 +133,34 @@ jQuery(function cert_delete() {
 
 jQuery(function edit_certificate() {
 
-    let $action = $('#cert_action');
-
+    let certBlock = document.querySelector('#certificate-test');
     function edit_cert() {
-        let $certToEdit = $('[data-id=edit_certificate]');
 
-        $($certToEdit).on('click', function (event) {
-            event.preventDefault();
-            $action.val('edit');
-            let n = $certToEdit.index(this);
-            console.log('gg' + n);
-
-            $('[data-id = "add_certificate"]').click(function (event) {
-
-                event.preventDefault();
-                let rz_course_name = $('[name=rz_course-name]').val();
-                let rz_course_year = $('[name=rz_course-year]').val();
-                let cert_action = $('#cert_action').val();
-                $.ajax({
-                    url: '/form_wizard_step/',
-                    method: 'post',
-                    data: {
-                        ajax_edit_certificate: true,
-                        rz_course_index: n,
-                        rz_course_name: rz_course_name,
-                        rz_course_year: rz_course_year,
-                        cert_action: cert_action
-                    },
-                    success: function (response) {
-
-                        $('[name = rz_course-name],[name=rz_course-year]').val('');
-                        $('#certificate-test').html(response);
-                    }
-                });
-            });
-
-
-            // $.ajax({
-            //     //url: '/form_wizard_step/',
-            //     method: 'post',
-            //     data: {
-            //         ajax_edit_certificate: true,
-            //         rz_course_index: n,
-            //         rz_course_name: rz_course_name,
-            //         rz_course_year: rz_course_year
-            //     },
-            //     success: function (response) {
-            //         $('#certificate-test').html(response);
-            //         edit_cert();
-            //     }
-            // })
+        let certToAdd = $("#add_certificate");
+        $(certToAdd).on('click', function () {
+            cert_add('add', null);
         });
-    }
 
-    // let certToEd = new MutationObserver(function (mutations, observer) {
-    //     // fired when a mutation occurs
-    //     edit_cert();
-    // });
+        let $certToEdit = $('[data-id=edit_certificate]');
+        $($certToEdit).on('click', function () {
 
-    // certToEd.observe(certBlockEdit, {
-    //     //subtree: true,
-    //     //attributes: true,
-    //     characterData: true
+            let n = $certToEdit.index(this);
+            cert_add('edit', n);
 
-    // });
+        });
+    };
+
+    let certEdit = new MutationObserver(function (mutations, observer) {
+        // fired when a mutation occurs
+        edit_cert();
+    });
+
+
+    certEdit.observe(certBlock, {
+        childList: true,
+        characterData: true
+
+    });
     edit_cert();
 
 });
