@@ -251,17 +251,32 @@ defined( 'ABSPATH' ) || exit;
 				<div id="" class="regular-text input-select-chips__select">
 					<?php 
 
-						foreach ($options as $option){?>
-							<span data-value="<?php echo $option->name; ?>"><?php echo $option->name; ?></span>
-						<?php 
+						foreach ($options as $option){
+							if ( !in_array($option->name, $doctor_options)) {
+							?>
+
+								<span data-value="<?php echo $option->name; ?>"><?php echo $option->name; ?></span>
+
+							<?php 
+							}
 						}
 					?>
 				</div>
 			<!-- End dropdown  -->
 
-			<div class="input-select-chips__cheeps-box-container cheeps-box-container">
+					<div class="input-select-chips__cheeps-box-container cheeps-box-container">
+							<?php if (!empty($options)){
+								echo  '<div class="cheeps-box">';
 
-			</div>
+								foreach ($options as $option){
+									echo ( in_array($option->name, $doctor_options)) ? 
+									'<button class="cheeps-box__btn" type="button" data-name="'.$option->name.'">'.$option->name.'</button>' : '';
+								}
+
+								echo '</div>';
+							}
+							?>		
+				</div>
 		</div>
 
 	</div>
@@ -374,26 +389,28 @@ defined( 'ABSPATH' ) || exit;
 		<br>
 		<div id="certificate-test">
 		<?php $certs = json_decode(get_post_meta($listingID, 'rz_certificates')[0],true);
-		foreach ($certs as $cert){ 
-			foreach($cert as $cert_year=>$cert_name){?>
-				<div class="tab-content_style__presentation-input">
-					<div class="tab-content_style__presentation-input-content">
-						<div class="tab-content_style__presentation-input-text">
-							<span class="tab-content_style__presentation-input-name"><?php echo $cert_name; ?></span> <span class="tab-content_style__presentation-input-year">(<?php echo $cert_year; ?>) </span>
-						</div>
+		if (!empty($certs)){
+			foreach ($certs as $cert){ 
+				foreach($cert as $cert_year=>$cert_name){?>
+					<div class="tab-content_style__presentation-input">
+						<div class="tab-content_style__presentation-input-content">
+							<div class="tab-content_style__presentation-input-text">
+								<span class="tab-content_style__presentation-input-name"><?php echo $cert_name; ?></span> <span class="tab-content_style__presentation-input-year">(<?php echo $cert_year; ?>) </span>
+							</div>
 
-						<div class="tab-content_style__presentation-input-btn-group">
-							<button type="button" class="tab-content_style__presentation-input-btn_edit" data-id="edit_certificate">Edit</button>
-							<button type="button" class="tab-content_style__presentation-input-btn_delete" data-id="delete_certificate">Delete</button>
-						</div>
-					</div>	
-				</div>
-		<?php 
+							<div class="tab-content_style__presentation-input-btn-group">
+								<button type="button" class="tab-content_style__presentation-input-btn_edit" data-id="edit_certificate" data-modal="modal_certificate">Edit</button>
+								<button type="button" class="tab-content_style__presentation-input-btn_delete" data-id="delete_certificate" >Delete</button>
+							</div>
+						</div>	
+					</div>
+			<?php 
+				}
 			}
 		}
 		?>
 		</div>
-		<button class="rz-button rz-button-accent" data-modal="modal_certificate">Tilføj nyt certifikat</button>
+		<button id="add_certificate" class="rz-button rz-button-accent" data-modal="modal_certificate">Tilføj nyt certifikat</button>
 	</div>
 
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
