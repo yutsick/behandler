@@ -387,7 +387,8 @@ defined( 'ABSPATH' ) || exit;
 		</div>
 
 		<br>
-		<div id="certificate-test">
+		<div id="certificate-test" class="rz-position-relative">
+				
 		<?php $certs = json_decode(get_post_meta($listingID, 'rz_certificates')[0],true);
 		if (!empty($certs)){
 			foreach ($certs as $cert){ 
@@ -409,6 +410,9 @@ defined( 'ABSPATH' ) || exit;
 			}
 		}
 		?>
+		<div class="rz-preloader rz-preloader-full">
+			<i class="fas fa-sync"></i>
+		</div>
 		</div>
 		<button id="add_certificate" class="rz-button rz-button-accent" data-modal="modal_certificate">Tilføj nyt certifikat</button>
 	</div>

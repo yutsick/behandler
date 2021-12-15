@@ -62,6 +62,12 @@ function cert_add(cert_action, n) {
                     $('[name = rz_course-name],[name=rz_course-year]').val('');
                     $('#certificate-test').html(response);
 
+                },
+                beforeSend: function () {
+                    $('.rz-preloader').fadeTo('fast', 1.0);
+                },
+                complete: function () {
+                    $('.rz-preloader').fadeTo('fast', 0.0);
                 }
             });
         });
@@ -87,6 +93,12 @@ function cert_add(cert_action, n) {
                     $('[name = rz_course-name],[name=rz_course-year]').val('');
                     $('#certificate-test').html(response);
 
+                },
+                beforeSend: function () {
+                    $('.rz-preloader').fadeTo('fast', 1.0);
+                },
+                complete: function () {
+                    $('.rz-preloader').fadeTo('fast', 0.0);
                 }
             });
         });
@@ -112,6 +124,12 @@ jQuery(function cert_delete() {
                 success: function (response) {
                     $('#certificate-test').html(response);
 
+                },
+                beforeSend: function () {
+                    $('.rz-preloader').fadeTo('fast', 1.0);
+                },
+                complete: function () {
+                    $('.rz-preloader').fadeTo('fast', 0.0);
                 }
             })
         });
@@ -153,8 +171,7 @@ jQuery(function edit_certificate() {
             $('[name=rz_course-name]').html($nameEdit);
             $('[name=rz_course-year]').val($yearEdit);
             $('[name=rz_course-year]').html($yearEdit);
-            //console.log($nameEdit.eq(n).text());
-            //console.log($yearEdit);
+
             cert_add('edit', n);
 
 

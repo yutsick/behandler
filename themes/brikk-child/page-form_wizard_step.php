@@ -160,7 +160,11 @@ function update_certs($cert){
 							<button type="button" class="tab-content_style__presentation-input-btn_delete" data-id="delete_certificate">Delete</button>
 						</div>
 					</div>	
-				</div>';
+				</div>
+        <div class="rz-preloader rz-preloader-full">
+			    <i class="fas fa-sync"></i>
+	    	</div>
+        ';
         
 			}
 		}
