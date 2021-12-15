@@ -145,7 +145,18 @@ jQuery(function edit_certificate() {
         $($certToEdit).on('click', function () {
 
             let n = $certToEdit.index(this);
+            let $nameEditFull = $('#certificate-test .tab-content_style__presentation-input-name');
+            let $yearEditFull = $('#certificate-test .tab-content_style__presentation-input-year');
+            let $yearEdit = $yearEditFull.eq(n).text().slice(1, -1);
+            let $nameEdit = $nameEditFull.eq(n).text();
+            $('[name=rz_course-name]').val($nameEdit);
+            $('[name=rz_course-name]').html($nameEdit);
+            $('[name=rz_course-year]').val($yearEdit);
+            $('[name=rz_course-year]').html($yearEdit);
+            //console.log($nameEdit.eq(n).text());
+            //console.log($yearEdit);
             cert_add('edit', n);
+
 
         });
     };

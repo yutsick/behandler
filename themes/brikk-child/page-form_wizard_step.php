@@ -152,7 +152,7 @@ function update_certs($cert){
 				<div class="tab-content_style__presentation-input">
 					<div class="tab-content_style__presentation-input-content">
 						<div class="tab-content_style__presentation-input-text">
-							<span class="tab-content_style__presentation-input-name">'.$cert_name.'</span> <span class="tab-content_style__presentation-input-year">('.$cert_year.') </span>
+							<span class="tab-content_style__presentation-input-name">'.$cert_name.'</span> <span class="tab-content_style__presentation-input-year">('.$cert_year.')</span>
 						</div>
 
 						<div class="tab-content_style__presentation-input-btn-group">
