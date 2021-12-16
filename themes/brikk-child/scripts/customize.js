@@ -64,10 +64,10 @@ function cert_add(cert_action, n) {
 
                 },
                 beforeSend: function () {
-                    $('.rz-preloader').fadeTo('fast', 1.0);
+                    $('#certificate-test .rz-preloader').fadeTo('fast', 1.0);
                 },
                 complete: function () {
-                    $('.rz-preloader').fadeTo('fast', 0.0);
+                    $('#certificate-test .rz-preloader').fadeTo('fast', 0.0);
                 }
             });
         });
@@ -95,10 +95,10 @@ function cert_add(cert_action, n) {
 
                 },
                 beforeSend: function () {
-                    $('.rz-preloader').fadeTo('fast', 1.0);
+                    $('#certificate-test .rz-preloader').fadeTo('fast', 1.0);
                 },
                 complete: function () {
-                    $('.rz-preloader').fadeTo('fast', 0.0);
+                    $('#certificate-test .rz-preloader').fadeTo('fast', 0.0);
                 }
             });
         });
@@ -126,10 +126,10 @@ jQuery(function cert_delete() {
 
                 },
                 beforeSend: function () {
-                    $('.rz-preloader').fadeTo('fast', 1.0);
+                    $('#certificate-test .rz-preloader').fadeTo('fast', 1.0);
                 },
                 complete: function () {
-                    $('.rz-preloader').fadeTo('fast', 0.0);
+                    $('#certificate-test .rz-preloader').fadeTo('fast', 0.0);
                 }
             })
         });
