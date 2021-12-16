@@ -1,7 +1,8 @@
 <?php 
 $user = wp_get_current_user();
 $user_id = get_current_user_id(); 
-
+// print_r($_POST);
+// die();
 /*Second wizard step*/
 
 if ($_POST['step'] == 'first'){
@@ -171,6 +172,8 @@ function update_certs($cert){
     
     update_post_meta($listingID, 'rz_certificates',json_encode($cert));
     echo $cert_html;
+
+   
 };
 
 /** Add certificate */
@@ -191,6 +194,7 @@ if (get_post_meta($listingID, 'rz_certificates')[0]){
 };
 
 do_action ('show_certificates', $cert,$listingID);
+
 die();
 }
 
@@ -233,6 +237,21 @@ $cert[$sert_index_edit] = array_combine($key,$val);
 do_action ('show_certificates', $cert);
 
 die();
+}
+
+/** Switch certficate */
+
+if(!empty($_POST['ajax_switch_certificate']) )  {
+
+  $switch_cert = $_POST['switch_certificate'];
+  $switch_user_certificate = $_POST['switch_user_certificate'];
+  $switch_data = $_POST['switch_data'];
+  
+  $listingID = get_user_meta($user_id, 'behandlerID', true);
+  update_post_meta($listingID, $switch_cert, $switch_data);
+  update_user_meta($user_id, $switch_user_certificate, $switch_data);
+
+  die();
 }
 
 /** Forward to location */

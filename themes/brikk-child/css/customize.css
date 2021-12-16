@@ -1249,7 +1249,7 @@ tabs css
   margin: 0;
 
 }
-.rz-preloader-full i{
+.rz-preloader-full i, .rz-preloader i{
   -webkit-animation: "fa-spin" 2s linear infinite;
   animation: "fa-spin" 2s linear infinite;
 }

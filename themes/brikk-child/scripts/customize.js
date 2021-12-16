@@ -192,3 +192,34 @@ jQuery(function edit_certificate() {
     edit_cert();
 
 });
+
+jQuery(function switch_certificate() {
+
+    let $switch_cert = $('[data-id=switch_certificate]');
+
+    $($switch_cert).on('click', function () {
+        let n = $switch_cert.index(this);
+        let $switch_cert_data = $switch_cert.eq(n).val();
+
+        $.ajax({
+            url: '/form_wizard_step/',
+            method: 'post',
+            data: {
+                ajax_switch_certificate: true,
+                switch_certificate: $switch_cert.eq(n).attr('name'),
+                switch_user_certificate: $switch_cert.eq(n).attr('id'),
+                switch_data: $switch_cert_data
+            },
+            beforeSend: function () {
+                $('.switch-certificate .rz-preloader').fadeTo('fast', 1.0);
+            },
+            complete: function () {
+                $('.switch-certificate .rz-preloader').fadeTo('fast', 0.0);
+            }
+        });
+    });
+
+});
+
+
+

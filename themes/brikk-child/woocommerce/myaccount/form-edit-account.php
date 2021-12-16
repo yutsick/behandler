@@ -369,21 +369,26 @@ defined( 'ABSPATH' ) || exit;
 	<!-- Certificates -->
 	<?php include('certificate-modal.php'); ?>
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
-		<h3>Certifikater, kurser og erfaring</h3>
-		
-		<div class="toggle tab-content_style__toggle">
-			<label for="erdurabgodkendt" class="switch">
-				Er du RAB Godkendt?
-				<input onclick="$(this).attr('value', this.checked ? 1 : 0)" type="checkbox" name="erdurabgodkendt" id="erdurabgodkendt" value="<?php echo esc_attr(get_the_author_meta('erdurabgodkendt', $user->ID)); ?>" class="switch-input regular-text"/>
-				<span class="slider round"></span>
-			</label>
-		</div>
-		<div class="toggle tab-content_style__toggle">
-			<label for="erdumedlemafsygesikringdanmark" class="switch">
-				Er du medlem af Sygesikring Danmark?
-				<input onclick="$(this).attr('value', this.checked ? 1 : 0)" type="checkbox" name="erdumedlemafsygesikringdanmark" id="erdumedlemafsygesikringdanmark" value="<?php echo esc_attr(get_the_author_meta('erdumedlemafsygesikringdanmark', $user->ID)); ?>" class="switch-input regular-text"/>
-				<span class="slider round"></span>
-			</label>
+	
+		<div class="switch-certificate ajaxing rz-position-relative">
+			<div class="rz-preloader">
+				<i class="fas fa-sync"></i>
+		  </div>
+			<h3>Certifikater, kurser og erfaring</h3>
+			<div class="toggle tab-content_style__toggle">
+				<label for="rab" class="switch">
+					Er du RAB Godkendt?
+					<input onclick="$(this).attr('value', this.checked ? 1 : 0)" type="checkbox" name="rz_rab" id="rab" value="<?php echo get_post_meta($listingID,'rz_rab')[0];?>" class="switch-input regular-text" <?php echo get_post_meta($listingID,'rz_rab')[0] ? 'checked' : '';?> data-id="switch_certificate"/>
+					<span class="slider round"></span>
+				</label>
+			</div>
+			<div class="toggle tab-content_style__toggle">
+				<label for="sygesikring" class="switch">
+					Er du medlem af Sygesikring Danmark?
+					<input onclick="$(this).attr('value', this.checked ? 1 : 0)" type="checkbox" name="rz_sygesikring" id="sygesikring" value="<?php echo get_post_meta($listingID,'rz_sygesikring')[0];?>" class="switch-input regular-text" <?php echo get_post_meta($listingID,'rz_sygesikring')[0] ? 'checked' : '';?> data-id="switch_certificate"/>
+					<span class="slider round"></span>
+				</label>
+			</div>
 		</div>
 
 		<br>
