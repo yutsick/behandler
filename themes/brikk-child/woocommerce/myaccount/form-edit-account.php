@@ -545,8 +545,8 @@ defined( 'ABSPATH' ) || exit;
 	</div>
 </div>
 <script>
-var $gal_id = document.querySelector('#rz_main_photo_id');
-var el = document.querySelector('#main_photo');
+var $gal_id = document.querySelector('#rz_main_avatar_id');
+var el = document.querySelector('#avatar_photo');
 
 const config = {
     childList: true
@@ -558,7 +558,7 @@ const config = {
         if (mutation.type === 'childList') {
 					
             var $picId = [];
-            $images_data = document.querySelectorAll('#main_photo>.rz-image-prv-wrapper');
+            $images_data = document.querySelectorAll('#avatar_photo>.rz-image-prv-wrapper');
 						
             var i;
             for (var i = 0; i < $images_data.length; i++){

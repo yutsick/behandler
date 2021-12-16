@@ -7,10 +7,10 @@ $all_user_meta = array_map(
 );
 
 ?>
-<div class="rz-form-group rz-field rz-col-12" data-multiple="true" data-upload-type="image" data-type="upload" data-storage="request" data-disabled="no" data-heading="Upload gallery" data-id="gallery">
+<div class="rz-form-group rz-field rz-col-12" data-multiple="false" data-upload-type="image" data-type="upload" data-storage="request" data-disabled="no" data-heading="Upload avatar" data-id="avatar">
   <div class="rz-upload">
     <!-- button -->
-    <label for="rz-upload-rz_gallery" class="rz-flex">
+    <label for="rz-upload-rz_avatar" class="rz-flex">
         <div class="tab-content_style__edit-avatar"> 
           <?php 
           
@@ -21,11 +21,11 @@ $all_user_meta = array_map(
 		    </div>       
       </label>
             <!-- input -->
-            <textarea class="rz-upload-input rz-none" type="text" name="rz_photo_main" placeholder=""></textarea>
-            <input type="hidden" name="rz_main_photo_id[]" value="" id="rz_main_photo_id">
+            <textarea class="rz-upload-input rz-none" type="text" name="rz_avatar_main" placeholder=""></textarea>
+            <input type="hidden" name="rz_main_avatar_id[]" value="" id="rz_main_avatar_id">
             <!-- file -->
             <div class="rz-none">
-                <input class="rz-upload-file" type="file" id="rz-upload-rz_gallery" multiple="false">
+                <input class="rz-upload-file" type="file" id="rz-upload-rz_avatar" multiple="false">
             </div>
 
             <!-- field info -->
@@ -39,7 +39,7 @@ $all_user_meta = array_map(
             
 
             <!-- image preview -->
-            <div class="rz-image-preview rz-no-select" id="main_photo">
+            <div class="rz-image-preview rz-no-select" id="avatar_photo">
             </div>
             
             <!-- error output -->

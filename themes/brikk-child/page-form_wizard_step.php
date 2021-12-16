@@ -1,8 +1,8 @@
 <?php 
 $user = wp_get_current_user();
 $user_id = get_current_user_id(); 
-// print_r($_POST);
-// die();
+ print_r($_POST);
+ //die();
 /*Second wizard step*/
 
 if ($_POST['step'] == 'first'){
@@ -81,10 +81,9 @@ if (!empty($_POST['save_about'])) {
 
 }
 
-if (!empty($_POST['rz_main_photo_id'][0])) {
+if (!empty($_POST['rz_main_avatar_id'][0])) {
   $listingID = get_user_meta($user_id, 'behandlerID', true);
-  $id_attach = '['.json_encode(array('id'=>$_POST['rz_main_photo_id'][0])).']';
-  $listingID = get_user_meta($user_id, 'behandlerID', true);
+  $id_attach = '['.json_encode(array('id'=>$_POST['rz_main_avatar_id'][0])).']';
   update_post_meta($listingID,'rz_avatar',$id_attach);
 
 }
