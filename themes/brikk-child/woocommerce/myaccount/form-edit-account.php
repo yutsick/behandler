@@ -525,23 +525,8 @@ defined( 'ABSPATH' ) || exit;
 <div class="bg-white rz-p-3 tab-content_style">
 		<h3>Galleri</h3>
 
-		<div class="tab-content_style-cards rz-mb-3">
-			<div class="tab-content_style-cards__item">
-				<?php include (get_stylesheet_directory().'/page-add-listing.php'); ?>
-			</div>
-			<div class="tab-content_style-cards__item">
-				<?php include (get_stylesheet_directory().'/page-add-listing.php'); ?>
-			</div>
-			<div class="tab-content_style-cards__item">
-				<?php include (get_stylesheet_directory().'/page-add-listing.php'); ?>
-			</div>
-			<div class="tab-content_style-cards__item">
-				<?php include (get_stylesheet_directory().'/page-add-listing.php'); ?>
-			</div>
-			<div class="tab-content_style-cards__item">
-				<?php include (get_stylesheet_directory().'/page-add-listing.php'); ?>
-			</div>			
-		</div>
+		<?php include_once('add-gallery.php'); ?>
+		
 	</div>
 </div>
 <script>

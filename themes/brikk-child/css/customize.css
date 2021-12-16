@@ -1045,6 +1045,10 @@ color: #a58ca5
   height: 100%;
 }
 
+.rz-h-150{
+  height: 150px;
+}
+
 .rz-search-form .rz-quick-label::placeholder, 
 .rz-search-form .rz-is-placeholder, 
 .rz-search-form .rz-is-placeholder span{
