@@ -1,8 +1,8 @@
 <?php 
 $user = wp_get_current_user();
 $user_id = get_current_user_id(); 
- print_r($_POST);
- //die();
+ 
+
 /*Second wizard step*/
 
 if ($_POST['step'] == 'first'){
@@ -252,6 +252,23 @@ if(!empty($_POST['ajax_switch_certificate']) )  {
 
   die();
 }
+
+/** Student section */
+if(!empty($_POST['student_section'])){
+  $online_behandling = $_POST['tilbyderduonlinebooking'];
+  $du_studerende = $_POST['erdustudende'];
+  $skole = $_POST['hvilkenskole'];
+  $skole_end = $_POST['hvornarer'];
+
+  $listingID = get_user_meta($user_id, 'behandlerID', true);
+  update_post_meta($listingID, 'rz_online_behandling', $online_behandling);
+  update_post_meta($listingID, 'rz_du_studerende', $du_studerende);
+  update_post_meta($listingID, 'rz_skole', $skole);
+  update_post_meta($listingID, 'rz_skole_end', $skole_end);
+
+}
+
+
 
 /** Forward to location */
 if( isset( $_POST['location'] ) && $location = $_POST['location'] ){

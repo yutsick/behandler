@@ -424,37 +424,40 @@ defined( 'ABSPATH' ) || exit;
 
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
 		<h3>Student section</h3>
-		
-		<div class="toggle tab-content_style__toggle">
-			<label for="tilbyderduonlinebooking" class="switch">
-				Tilbyder du online booking?
-				<input onclick="$(this).attr('value', this.checked ? 1 : 0)" type="checkbox" name="tilbyderduonlinebooking" id="tilbyderduonlinebooking" value="<?php echo esc_attr(get_the_author_meta('tilbyderduonlinebooking', $user->ID)); ?>" class="switch-input regular-text"/>
-				<span class="slider round"></span>
-			</label>
-		</div>
-		<div class="toggle tab-content_style__toggle">
-			<label for="erdustudende" class="switch">
-				Er du studerende?
-				<input onclick="$(this).attr('value', this.checked ? 1 : 0)" type="checkbox" name="erdustudende" id="erdustudende" value="<?php echo esc_attr(get_the_author_meta('erdustudende', $user->ID)); ?>" class="switch-input regular-text"/>
-				<span class="slider round"></span>
-			</label>
-		</div>
+		<form action="/form_wizard_step/" method="post">
+				<input type="hidden" name = "location" value = "/my-account/edit-account/">
+				<input type="hidden" name = "student_section" value = "student_section">
+			<div class="toggle tab-content_style__toggle">
+				<label for="tilbyderduonlinebooking" class="switch">
+					Tilbyder du online booking?
+					<input onclick="$(this).attr('value', this.checked ? 1 : 0)" type="checkbox" name="tilbyderduonlinebooking" id="tilbyderduonlinebooking" value="<?php echo get_post_meta($listingID,'rz_online_behandling')[0];?>" class="switch-input regular-text" <?php echo get_post_meta($listingID,'rz_online_behandling')[0] ? 'checked' : '';?>/>
+					<span class="slider round"></span>
+				</label>
+			</div>
+			<div class="toggle tab-content_style__toggle">
+				<label for="erdustudende" class="switch">
+					Er du studerende?
+					<input onclick="$(this).attr('value', this.checked ? 1 : 0)" type="checkbox" name="erdustudende" id="erdustudende" value="<?php echo get_post_meta($listingID,'rz_du_studerende')[0];?>" class="switch-input regular-text" <?php echo get_post_meta($listingID,'rz_du_studerende')[0] ? 'checked' : '';?>/>
+					<span class="slider round"></span>
+				</label>
+			</div>
 
-		<br>
-		
-		<form action="">
-			<p class="input-box">
-				<input type="text" name="hvilkenskole" id="hvilkenskole" value="" placeholder=" " required>
-				<label for="hvilkenskole">Hvilken skole studererer du på?<span style="color: #F55951;">*</span></label>
-			</p>
+			<br>
+			
+			
+				<p class="input-box">
+					<input type="text" name="hvilkenskole" id="hvilkenskole" value="<?php echo get_post_meta($listingID,'rz_skole')[0];?>" placeholder=" " required>
+					<label for="hvilkenskole">Hvilken skole studererer du på?<span style="color: #F55951;">*</span></label>
+				</p>
 
-			<p class="input-box">
-				<input type="text" id="hvornarer" value="" placeholder=" " required>
-				<label for="hvornarer">Hvornår er din uddannelse færdig?<span style="color: #F55951;">*</span></label>
-			</p>
+				<p class="input-box">
+					<input type="text" name="hvornarer" id="hvornarer" value="<?php echo get_post_meta($listingID,'rz_skole_end')[0];?>" placeholder=" " required>
+					<label for="hvornarer">Hvornår er din uddannelse færdig?<span style="color: #F55951;">*</span></label>
+				</p>
+		
+
+		<button type="submit" class="rz-button rz-button-accent">Gem indstillinger</button>
 		</form>
-
-		<button class="rz-button rz-button-accent">Tilføj nyt certifikat</button>
 	</div>
 
 	<div class="delete-profil">
