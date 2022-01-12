@@ -220,6 +220,33 @@ jQuery(function switch_certificate() {
     });
 
 });
+/**Show data plans */
 
+// jQuery(function send_plan_id() {
+//     let plan = $('.send_plan');
+
+//     $(plan).on('click', function () {
+//         let n = plan.index(this);
+//         let plan_id = plan.eq(n).data('plan-id');
+//         console.log(n + 'b' + plan_id);
+//         $.ajax({
+//             url: '/form_wizard_step/',
+//             method: 'post',
+//             data: {
+//                 show_plan: true,
+//                 my_plan: plan_id
+//             },
+//             success: function (response) {
+//                 $('#modal_plan').html(response);
+//             },
+//             beforeSend: function () {
+//                 $('.rz-modal_plan .rz-preloader-full').fadeTo('fast', 1.0);
+//             },
+//             complete: function () {
+//                 $('.rz-modal_plan .rz-preloader-full').fadeTo('fast', 0.0);
+//             }
+//         });
+//     });
+// });
 
 

@@ -1251,7 +1251,7 @@ tabs css
   height: 100%;
   border-radius: 0;
   margin: 0;
-
+  
 }
 .rz-preloader-full i, .rz-preloader i{
   -webkit-animation: "fa-spin" 2s linear infinite;

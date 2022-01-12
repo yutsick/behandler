@@ -471,44 +471,57 @@ defined( 'ABSPATH' ) || exit;
 		<h3>Kommissionbaseret betaling</h3>
 		<p>Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. Lorem Ipsum har været standard fyldtekst siden 1500-tallet</p>
 
+		<?php 
+			$current_plan = get_post_meta($listingID,'rz_subscription_id')[0];
+			$args = array( 
+					'post_type' => 'product',
+					'product_tag' => "plan",
+					'post_status' => 'publish',
+					// 'columns' => 4,
+					'orderby' => "id",
+					'order' => 'ASC',
+					//'visibility' => 'visible',
+			);
+     $loop = new WP_Query( $args );
+		 
+		?>
 		<div class="mulige">
 			<div class="mulige__header">
 				Mulige profiler
 			</div>
-			<div class="mulige__item mulige__item_accent">
-				<div class="mulige__content">
-					<div class="mulige__title">Kommissionsbaseret</div>
-					<a href="#" class="mulige__link">Læs mere</a>
-				</div>
+			<?php 
+				  while ( $loop->have_posts() ) : $loop->the_post(); 
+					$ID = get_the_ID();
+				//	echo gettype($ID);
+          //$product = wc_get_product( $post->ID );
+				?>
 
-				<div class="mulige__btn">
-					<button class="rz-button btn-red-line">Nuværende profil</button>
-				</div>
-			</div>
 			<div class="mulige__container">
-				<div class="mulige__item">
+				<div class="mulige__item <?php echo ($current_plan == get_the_ID()) ? 'mulige__item mulige__item_accent' : ''; ?>">
 					<div class="mulige__content">
-						<div class="mulige__title">Abonnementsbaseret</div>
-						<a href="#" class="mulige__link">Læs mere</a>
+						<div class="mulige__title"><?php the_title(); ;?></div>
+						<!-- <form action="" method="get"> -->
+							<input type="hidden" value = <?php echo $ID; ?> name="plan_id">
+						<a href="#" class="mulige__link send_plan" <?php echo (get_the_ID() != $current_plan) ? 'data-modal="modal_plan-'.$ID.'" data-plan-id='.$ID : ''; ?> type="submit">Læs mere</a>
+						
+						<!-- </form> -->
 					</div>
 
 					<div class="mulige__btn">
-						<button class="rz-button btn-red-line">Skift til</button>
+						<a href=<?php echo (get_the_ID() != $current_plan) ? "/wizard_plan" : "#"; ?>>
+						<button class="rz-button btn-red-line" data-plan-id="<?php echo $ID; ?>"><?php echo ($current_plan == get_the_ID()) ? 'Nuværende profil' : 'Skift til'; ?></button>
+						</a>
 					</div>
 				</div>
-				<div class="mulige__item">
-					<div class="mulige__content">
-						<div class="mulige__title">Gratis</div>
-						<a href="#" class="mulige__link">Læs mere</a>
-					</div>
 
-					<div class="mulige__btn">
-						<button class="rz-button btn-red-line">Skift til</button>
-					</div>
-				</div>
+				
+				<?php endwhile; wp_reset_query();  ?>
+			
 			</div>
+			
 		</div>
 	</div>
+	<?php require_once('plan-modal.php'); ?>
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
 		<h3>Betalingsmetode</h3>
 		<p>Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. Lorem Ipsum har været standard fyldtekst siden 1500-tallet</p>

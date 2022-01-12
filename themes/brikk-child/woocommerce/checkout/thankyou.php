@@ -41,6 +41,16 @@ $location = '/my-account/edit-account/'; // set redirect path after success orde
 			if ( 'processing' == $order->status) {
     			$order->update_status( 'completed' );
   			}
+					/**Save current subscription ID */
+		
+				foreach($order->get_items() as $item_id => $item){
+					$product_id = $item->get_product_id();
+				}
+
+				$user_id = get_current_user_id(); 
+				$listingID = get_user_meta($user_id, 'behandlerID', true);
+				update_post_meta($listingID, 'rz_subscription_id', $product_id);
+		
 			wp_safe_redirect( $location );
         	exit();
 		?>

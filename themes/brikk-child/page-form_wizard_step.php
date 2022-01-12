@@ -268,7 +268,59 @@ if(!empty($_POST['student_section'])){
 
 }
 
+/**Show the plan in modal window */
+if(!empty($_POST['show_plan'])){
+  $ID = $_POST['my_plan'];
+  $product = wc_get_product( $ID );
+  
+  $plan_html = '
+    <div class="rz-preloader-full">
+      <i class="fas fa-sync"></i>
+    </div>
+    <div class="rz-col-3 rz-col-md-12 rz-mb-3 rz-flex ">
+                    <form action="" method="GET">
+                        <label for="product-'.$ID.'" >
+                            <input type="radio" name="rz_plan" value="'.$ID.'" class="rz-none" id="product-'.$ID.'">
+                            <div class="rz-plan rz--plan-type-listing_plan rz-flex rz-flex-column rz-justify-space rz-h-100">
 
+                                <div class="rz-heading">
+                                    <div class="rz--desc select-desc">'.$product->short_description.'</div>
+                                </div>
+                                <div class="">
+                                    <div class="rz-price ">
+                                        <p>
+                                            <span class="woocommerce-Price-amount amount">
+                                                <bdi>
+                                                    <span class="woocommerce-Price-currencySymbol">DKK</span>
+                                                    &nbsp;'. 
+                                                    $product -> price.'
+                                                </bdi>
+                                            </span>
+                                        </p>
+                                    </div>
+
+
+                                    <span class="rz-content text-bold">
+                                        <div class="price__info_make">'.
+                                            $product->description.'
+                                        </div>
+                                    </span>
+                                    <div class="rz-action">
+
+                                        <input  type="submit" class="test rz-button rz-button-accent select-plan" value="Vælg denne plan" data-product="product-'.$ID.'"> 
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                    </form>
+                </div>
+  ';
+  
+ echo $plan_html;
+
+
+ die();
+}
 
 /** Forward to location */
 if( isset( $_POST['location'] ) && $location = $_POST['location'] ){
