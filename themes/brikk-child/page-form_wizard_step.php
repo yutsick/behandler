@@ -84,7 +84,7 @@ if (!empty($_POST['save_about'])) {
 if (!empty($_POST['rz_main_avatar_id'][0])) {
   $listingID = get_user_meta($user_id, 'behandlerID', true);
   $id_attach = '['.json_encode(array('id'=>$_POST['rz_main_avatar_id'][0])).']';
-  update_post_meta($listingID,'rz_avatar',$id_attach);
+  update_field('rz_avatar', $id_attach, $listingID);
 
 }
 
@@ -321,6 +321,20 @@ if(!empty($_POST['show_plan'])){
 
  die();
 }
+/** Add account gallery */
+
+if (!empty($_POST['gallery_acc'])){
+  $listingID = get_user_meta($user_id, 'behandlerID', true);
+  $id_current = $_POST['rz_gallery_id_acc'][0];
+  $id_new = $_POST['rz_gallery_acc'];
+  preg_match("'^.(.*).'",$id_current,$gg);
+  preg_match("'^.(.*).'",$id_new,$bb);
+
+ $new_gal = "[".$gg[1].",".$bb[1]."]";
+
+  update_field('rz_gallery', $new_gal, $listingID);
+}
+
 
 /** Forward to location */
 if( isset( $_POST['location'] ) && $location = $_POST['location'] ){

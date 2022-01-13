@@ -520,7 +520,9 @@ defined( 'ABSPATH' ) || exit;
 	</div>	
 </div>
 			<?php require_once('plan-modal.php'); ?>
-			<!-- Payment methods and refferal codes. Not needed -->
+			<?php 
+				/*
+			Payment methods and refferal codes. Not needed -->
 
 		<!-- <div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
 			<h3>Betalingsmetode</h3>
@@ -532,19 +534,26 @@ defined( 'ABSPATH' ) || exit;
 		<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
 			<h3>Tilbudskode</h3>
 			<p>Del din referencekode med behandlere der ikke er på vores platform endnu. For hver behandler der accepterer din invitation, får du én måneds gratis abonnement.</p>
-		</div> -->
+		</div> 
+		*/
+		?>
 	
 </div>
 <div id="Galleri" class="tab-content">
 	<div class="bg-white rz-p-3 tab-content_style">
-		<?php require_once('add-gallery.php'); ?>
+		<form action="/form_wizard_step/" method="post" class="woocommerce-form woocommerce-form-register register">
+			<?php require_once('add-gallery.php'); ?>
 
+			<input type="hidden" value="gallery_acc" name="gallery_acc">	
+			<input type="hidden" name = "location" value = "/my-account/edit-account/">
+
+		</form>
 		
 	</div>
 </div>	
 
 <script>
-var $gal_id = document.querySelector('#rz_main_avatar_id');
+var $avatar_id = document.querySelector('#rz_main_avatar_id');
 var el = document.querySelector('#avatar_photo');
 
 const config = {
@@ -564,11 +573,16 @@ const config = {
                 var $id = $images_data[i].getAttribute("data-id");   
                 $picId.push( $id);
             }
-             $gal_id.value = $picId; 
+             $avatar_id.value = $picId; 
         } 
     }
 };
 
 const observer = new MutationObserver(callback);
 observer.observe(el, config);
+
+
+
+
+
 </script>
