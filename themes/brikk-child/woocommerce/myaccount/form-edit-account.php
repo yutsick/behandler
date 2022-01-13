@@ -465,86 +465,84 @@ defined( 'ABSPATH' ) || exit;
 	</div>
 </div>
 
-<div id="Betalingsindstillinger" class="tab-content">
-	<div class="bg-white rz-p-3 tab-content_style">
-		<span>Din nuværende profil er</span>
-		<h3>Kommissionbaseret betaling</h3>
-		<p>Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. Lorem Ipsum har været standard fyldtekst siden 1500-tallet</p>
+	<div id="Betalingsindstillinger" class="tab-content">
+		<div class="bg-white rz-p-3 tab-content_style">
+			<span>Din nuværende profil er</span>
+			<h3>Kommissionbaseret betaling</h3>
+			<p>Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. Lorem Ipsum har været standard fyldtekst siden 1500-tallet</p>
 
-		<?php 
-			$current_plan = get_post_meta($listingID,'rz_subscription_id')[0];
-			$args = array( 
-					'post_type' => 'product',
-					'product_tag' => "plan",
-					'post_status' => 'publish',
-					// 'columns' => 4,
-					'orderby' => "id",
-					'order' => 'ASC',
-					//'visibility' => 'visible',
-			);
-     $loop = new WP_Query( $args );
-		 
-		?>
-		<div class="mulige">
-			<div class="mulige__header">
-				Mulige profiler
-			</div>
 			<?php 
-				  while ( $loop->have_posts() ) : $loop->the_post(); 
-					$ID = get_the_ID();
-				//	echo gettype($ID);
-          //$product = wc_get_product( $post->ID );
-				?>
-
-			<div class="mulige__container">
-				<div class="mulige__item <?php echo ($current_plan == get_the_ID()) ? 'mulige__item mulige__item_accent' : ''; ?>">
-					<div class="mulige__content">
-						<div class="mulige__title"><?php the_title(); ;?></div>
-						<!-- <form action="" method="get"> -->
-							<input type="hidden" value = <?php echo $ID; ?> name="plan_id">
-						<a href="#" class="mulige__link send_plan" <?php echo (get_the_ID() != $current_plan) ? 'data-modal="modal_plan-'.$ID.'" data-plan-id='.$ID : ''; ?> type="submit">Læs mere</a>
-						
-						<!-- </form> -->
-					</div>
-
-					<div class="mulige__btn">
-						<a href=<?php echo (get_the_ID() != $current_plan) ? "/wizard_plan" : "#"; ?>>
-						<button class="rz-button btn-red-line" data-plan-id="<?php echo $ID; ?>"><?php echo ($current_plan == get_the_ID()) ? 'Nuværende profil' : 'Skift til'; ?></button>
-						</a>
-					</div>
+				$current_plan = get_post_meta($listingID,'rz_subscription_id')[0];
+				$args = array( 
+						'post_type' => 'product',
+						'product_tag' => "plan",
+						'post_status' => 'publish',
+						// 'columns' => 4,
+						'orderby' => "id",
+						'order' => 'ASC',
+						//'visibility' => 'visible',
+				);
+			$loop = new WP_Query( $args );
+			
+			?>
+			<div class="mulige">
+				<div class="mulige__header">
+					Mulige profiler
 				</div>
+				<?php 
+						while ( $loop->have_posts() ) : $loop->the_post(); 
+						$ID = get_the_ID();
+					//	echo gettype($ID);
+						//$product = wc_get_product( $post->ID );
+					?>
 
-				
-				<?php endwhile; wp_reset_query();  ?>
-			
+				<div class="mulige__container">
+					<div class="mulige__item <?php echo ($current_plan == get_the_ID()) ? 'mulige__item mulige__item_accent' : ''; ?>">
+						<div class="mulige__content">
+							<div class="mulige__title"><?php the_title(); ;?></div>
+							<!-- <form action="" method="get"> -->
+								<input type="hidden" value = <?php echo $ID; ?> name="plan_id">
+							<a href="#" class="mulige__link send_plan" <?php echo (get_the_ID() != $current_plan) ? 'data-modal="modal_plan-'.$ID.'" data-plan-id='.$ID : ''; ?> type="submit">Læs mere</a>
+							
+							<!-- </form> -->
+						</div>
+
+						<div class="mulige__btn rx-mb-5">
+							<a href=<?php echo (get_the_ID() != $current_plan) ? "/wizard_plan" : "#"; ?>>
+							<button class="rz-button btn-red-line" data-plan-id="<?php echo $ID; ?>"><?php echo ($current_plan == get_the_ID()) ? 'Nuværende profil' : 'Skift til'; ?></button>
+							</a>
+						</div>
+					</div>
+					<?php endwhile; wp_reset_query();  ?>
+				</div>
 			</div>
-			
 		</div>
-	</div>
-	<?php require_once('plan-modal.php'); ?>
-	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
-		<h3>Betalingsmetode</h3>
-		<p>Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. Lorem Ipsum har været standard fyldtekst siden 1500-tallet</p>
-
-		<button class="rz-button rz-button-accent">Tilføj ny metode</button>
-	</div>
-
-	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
-		<h3>Tilbudskode</h3>
-		<p>Del din referencekode med behandlere der ikke er på vores platform endnu. For hver behandler der accepterer din invitation, får du én måneds gratis abonnement.</p>
-
-		
-	</div>
+	</div>	
 </div>
+			<?php require_once('plan-modal.php'); ?>
+			<!-- Payment methods and refferal codes. Not needed -->
 
+		<!-- <div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
+			<h3>Betalingsmetode</h3>
+			<p>Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. Lorem Ipsum har været standard fyldtekst siden 1500-tallet</p>
+
+			<button class="rz-button rz-button-accent">Tilføj ny metode</button>
+		</div>
+
+		<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
+			<h3>Tilbudskode</h3>
+			<p>Del din referencekode med behandlere der ikke er på vores platform endnu. For hver behandler der accepterer din invitation, får du én måneds gratis abonnement.</p>
+		</div> -->
+	
+</div>
 <div id="Galleri" class="tab-content">
-<div class="bg-white rz-p-3 tab-content_style">
-		<h3>Galleri</h3>
+	<div class="bg-white rz-p-3 tab-content_style">
+		<?php require_once('add-gallery.php'); ?>
 
-		<?php include_once('add-gallery.php'); ?>
 		
 	</div>
-</div>
+</div>	
+
 <script>
 var $gal_id = document.querySelector('#rz_main_avatar_id');
 var el = document.querySelector('#avatar_photo');

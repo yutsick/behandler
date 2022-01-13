@@ -54,7 +54,7 @@ $loop = new WP_Query( $args );
 
                 $product = wc_get_product( $post->ID );
 
-                ?>
+                ?> 
 
                 <div class="rz-col-3 rz-col-md-12 rz-mb-3 rz-flex ">
                     <form action="" method="GET">
