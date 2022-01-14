@@ -305,6 +305,10 @@ defined( 'ABSPATH' ) || exit;
 	</div>
 	<div class="bg-white rz-p-3 rz-mt-3 tab-content_style">
 		<h3>Notifikationer og Bero</h3>
+		<?php /* 
+		
+		not needed
+
 		<p>I dette afsnit kan du ændre brugerindstillinger</p>
 		<div class="toggle tab-content_style__toggle">
 			<label for="send_notif" class="switch">
@@ -313,19 +317,30 @@ defined( 'ABSPATH' ) || exit;
 				<span class="slider round"></span>
 			</label>
 		</div>
-		<div class="toggle tab-content_style__toggle">
-			<label for="receive_notif" class="switch">
-				Modtag notifikationer
-				<input onclick="$(this).attr('value', this.checked ? 1 : 0)" type="checkbox" name="receive_notif" id="receive_notif" value="<?php echo esc_attr(get_the_author_meta('receive_notif', $user->ID)); ?>" class="switch-input regular-text"/>
-				<span class="slider round"></span>
-			</label>
-		</div>
-		<div class="toggle tab-content_style__toggle">
-			<label for="hold_profile" class="switch">
-				Sæt profil i bero
-				<input onclick="$(this).attr('value', this.checked ? 1 : 0)" type="checkbox" name="hold_profile" id="hold_profile" value="1" class="switch-input regular-text"/>
-				<span class="slider round"></span>
-			</label>
+    */?>
+		<div class="receive_notif ajaxing rz-position-relative">
+			<div class="rz-preloader">
+				<i class="fas fa-sync"></i>
+		  </div>
+			<div class="toggle tab-content_style__toggle">
+				<label for="receive_notif" class="switch">
+					Modtag notifikationer
+					<input onclick="$(this).attr('value', this.checked ? 1 : 0)" type="checkbox" name="receive_notif" id="receive_notif" value="<?php echo get_post_meta($listingID,'rz_receive_notif')[0]; ?>" class="switch-input regular-text" <?php echo get_post_meta($listingID,'rz_receive_notif')[0] ? 'checked' : '';?>/>
+					<span class="slider round"></span>
+				</label>
+			</div>
+			<?php /*
+			
+			not needed
+
+			<div class="toggle tab-content_style__toggle">
+				<label for="hold_profile" class="switch">
+					Sæt profil i bero
+					<input onclick="$(this).attr('value', this.checked ? 1 : 0)" type="checkbox" name="hold_profile" id="hold_profile" value="1" class="switch-input regular-text"/>
+					<span class="slider round"></span>
+				</label>
+			</div>
+			*/?>
 		</div>
 	</div>
 </div>

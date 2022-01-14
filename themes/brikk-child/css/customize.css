@@ -1258,5 +1258,7 @@ tabs css
   animation: "fa-spin" 2s linear infinite;
 }
 
-
+.rz-preloader{
+  z-index: 1;
+}
 

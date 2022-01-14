@@ -221,4 +221,28 @@ jQuery(function switch_certificate() {
 
 });
 
+jQuery(function receiveNotifications() {
+
+    let $receive_notif = $('#receive_notif');
+
+    $($receive_notif).on('click', function () {
+
+        $.ajax({
+            url: '/form_wizard_step/',
+            method: 'post',
+            data: {
+                ajax_receive_notif: true,
+                receive_data: $receive_notif.val()
+            },
+            beforeSend: function () {
+                $('.receive_notif  .rz-preloader').fadeTo('fast', 1.0);
+            },
+            complete: function () {
+                $('.receive_notif  .rz-preloader').fadeTo('fast', 0.0);
+            },
+
+        });
+    });
+
+});
 
