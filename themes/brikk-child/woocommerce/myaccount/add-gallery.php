@@ -3,10 +3,7 @@
   <?php   
 
     $image_ID = json_decode(get_post_meta($listingID,'rz_gallery')[0]);
-    //$avatarUrl = wp_get_attachment_image_url($image_ID[0]->id,'medium',true);
-    //	$gal_img[] = get_post_meta($listingID,'rz_gallery')[0];
 
-      //var_dump($gal_img);
     if ($image_ID){
       foreach ($image_ID as $imgID){ ?>
         <?php 

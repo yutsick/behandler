@@ -37,6 +37,8 @@
 						if( $current_page < 1 ) {
 							$current_page = 1;
 						}
+            
+						$listingID = get_user_meta($author->ID, 'behandlerID', true);
 
 						$listing_types = new \WP_Query([
 							'post_status' => 'publish',
@@ -130,11 +132,17 @@
 			<div class="rz-col-lg-12 rz-col-4 bg-white">
 				<div class="brk--inner">
 					<div class="author-avatar brk--cover-avatar">
-						<?php if( $user_avatar ): ?>
-							<img src="<?php echo esc_url( $user_avatar ); ?>">
+
+						<?php 
+						$image_ID = json_decode(get_post_meta($listingID,'rz_avatar')[0]);
+						$avatarUrl = wp_get_attachment_image_url($image_ID[0]->id,'medium',true);
+
+						if( $avatarUrl ): ?>
+							<img class="tab-content_style__current-avatar-img" src="<?php echo $avatarUrl; ?>">
 						<?php else: ?>
 							<i class="brk--avatar fas fa-user-alt"></i>
 						<?php endif; ?>
+
 					</div>
 				</div>
 				<div class="author-title">
@@ -153,40 +161,53 @@
 				<div class="author-data rz-mt-4">
 					<div class="author-data-item rz-flex rz-align-center">
 						<img class="icon rz-mr-1" src="<?php echo get_stylesheet_directory_uri();?>/images/ico-place.svg" alt="">
-						<span class="icon-text"><?php echo esc_attr(get_the_author_meta('gadenavn_og_nummer', $author->ID)); ?></span>
+						<span class="icon-text"><?php echo get_post_meta($listingID,'rz_location__geo_city_alt')[0]; ?></span>
 					</div>
+
 					<div class="author-data-item rz-mt-1 rz-flex rz-align-center">
 						<img class="icon rz-mr-1" src="<?php echo get_stylesheet_directory_uri();?>/images/ico-globo.svg" alt="">
-						<span class="icon-text"><a href=""><?php echo esc_attr(get_the_author_meta('email', $author->ID)); ?></a></span>
+						<span class="icon-text"><a href="<?php echo get_post_meta($listingID,'rz_site_url')[0]; ?>"><?php echo get_post_meta($listingID,'rz_site_url')[0]; ?></a></span>
 					</div>
 					<div class="author-data-item rz-mt-1 rz-flex rz-align-center">
 						<img class="icon rz-mr-1" src="<?php echo get_stylesheet_directory_uri();?>/images/ico-phone.svg" alt="">
-						<span class="icon-text"><?php echo esc_attr(get_the_author_meta('telephone', $author->ID)); ?></span>
+						<span class="icon-text"><?php echo get_post_meta($listingID,'rz_telephone')[0]; ?></span>
 					</div>
 				</div>
 
 				<h3 class="rz-mt-4"><?php esc_html_e( 'Om klinikken', 'brikk' ); ?></h3>
 				<div class="author-about-klinik">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Iste tempora ex excepturi similique nostrum quia ut asperiores id, 
-					odit natus ipsam! Quaerat nostrum dolor minima sit laudantium 
-					reiciendis tempora quae neque, illum enim fugiat praesentium 
-					reprehenderit quis consequatur velit ipsum. Numquam suscipit labore quo. 
-					Maiores nihil rerum temporibus unde facere.
+					<?php echo get_post_meta($listingID,'rz_about')[0];?>
 				</div>
 				
 				<h3 class=rz-mt-4><?php esc_html_e( 'Specialer', 'brikk' ); ?></h3>
+				<?php 
+					$behandler_listing = get_post($listingID);	
+					$doctor_types = get_post_meta($behandler_listing->ID,'rz_doctor-type');
+						
+				?>
 				<ul>
-					<li>Lorem ipsum</li>
-					<li>Lorem ipsum</li>
-					<li>Lorem ipsum</li>
+					<?php 
+						foreach ($doctor_types as $special){
+							echo '<li>'.get_term($special)->name.'</li>';
+						}?>
 				</ul>
 
 				<h3 class="rz-mt-4"><?php esc_html_e( 'Certifikater, uddannelse og forsikring', 'brikk' ); ?></h3>
 				<ul>
-					<li>Den Danske Akupunktørskole <span>(2001)</span></li>
-					<li>RAB Godkendt <span>(2014)</span></li>
-					<li>Er du Medlem af Sygesikring Danmark  <span>(2018)</span></li>
+					<?php $certs = json_decode(get_post_meta($listingID, 'rz_certificates')[0],true);
+						if (!empty($certs)){
+							foreach ($certs as $cert){ 
+								foreach($cert as $cert_year=>$cert_name){?>
+									
+												<li><?php echo $cert_name; ?><span class="tab-content_style__presentation-input-year"> (<?php echo $cert_year; ?>)</span></li>
+
+							<?php 
+								}
+							} 
+						} else {
+							echo ('<span class="no_cert"> No certifikate</span>');
+						}
+						?>
 				</ul>
 
 				<div class="kontakt rz-mt-3">
@@ -207,18 +228,22 @@
 				</div>
 				<div class="rz-grid">
 					<?php 
-						$gal_img = get_field ('gallery'); 
-						if ($gal_img){
-							foreach ($gal_img as $gal_image){ ?>
-							<div class="rz-ol-lg-12 rz-col-6">
-								<img src="<?php echo $gal_image; ?>" alt="" class="rz-w-100">
-							</div>
-						<?php	}
-						} else { ?>
-						<div class="rz-ol-lg-12 rz-col-6">
-								<p><?php esc_html_e( 'No gallery present', 'brikk' ); ?></p>
-						</div>
-						<?php }
+						$image_ID = json_decode(get_post_meta($listingID,'rz_gallery')[0]);
+						  if ($image_ID){
+								foreach ($image_ID as $imgID){ ?>
+									<?php 
+										$imgUrl = wp_get_attachment_image_url($imgID->id,'medium',true);
+									?>
+									<div class="rz-ol-lg-12 rz-col-6">
+										<img src="<?php echo $imgUrl; ?>" alt="" class="rz-w-100">
+									</div> 
+							<?php	
+								} 
+							} else { ?>
+								<div class="rz-ol-lg-12 rz-col-6">
+									<p><?php esc_html_e( 'No gallery present', 'brikk' ); ?></p>
+								</div>
+							<?php }	  
 					?>
 				</div>
 				<div class="bg-white rz-p-20">
@@ -285,6 +310,10 @@
 							?>
 					</div>
 				</div>
+
+				<?php /*
+				not needed
+
 				<div class="bg-white rz-p-20 rz-mt-2 rz-mb-2">
 					<h2 class="rz-mt-3">
 						<?php esc_html_e( 'Anmeldelser', 'brikk' ); ?> <span class="color-grey"> (114)</span>
@@ -305,6 +334,8 @@
 							i dybden med udfordringerne.</p>
 					</div>
 				</div>
+				*/
+				?>
 			</div>
 		</div>
 	</div>
