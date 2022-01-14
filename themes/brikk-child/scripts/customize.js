@@ -224,9 +224,7 @@ jQuery(function switch_certificate() {
 jQuery(function receiveNotifications() {
 
     let $receive_notif = $('#receive_notif');
-
     $($receive_notif).on('click', function () {
-
         $.ajax({
             url: '/form_wizard_step/',
             method: 'post',
@@ -240,9 +238,7 @@ jQuery(function receiveNotifications() {
             complete: function () {
                 $('.receive_notif  .rz-preloader').fadeTo('fast', 0.0);
             },
-
         });
     });
-
 });
 
