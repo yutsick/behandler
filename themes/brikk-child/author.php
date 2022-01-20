@@ -226,7 +226,8 @@
 						<a href="gallery"><button class="rz-button rz-button-border rz-small ">See alle fotos</button></a>
 					</div>
 				</div>
-				<div class="rz-grid">
+
+				<div class="author-page rz-mb-3" id="author-page">
 					<?php 
 						$image_ID = json_decode(get_post_meta($listingID,'rz_gallery')[0]);
 						  if ($image_ID){
@@ -234,9 +235,9 @@
 									<?php 
 										$imgUrl = wp_get_attachment_image_url($imgID->id,'medium',true);
 									?>
-									<div class="rz-ol-lg-12 rz-col-6">
-										<img src="<?php echo $imgUrl; ?>" alt="" class="rz-w-100">
-									</div> 
+									<li class="rz-listing-item rz-p-1 <?php Rz()->listing_class(); ?>">
+										<img src="<?php echo $imgUrl; ?>" alt="" class="rz-h-100 rz-w-100">
+								</li>
 							<?php	
 								} 
 							} else { ?>
@@ -246,7 +247,8 @@
 							<?php }	  
 					?>
 				</div>
-				<div class="bg-white rz-p-20">
+
+				<div class="bg-white rz-p-20" id="author-page-listing">
 					<h2 class="rz-mt-3">
 						<?php esc_html_e( 'Behandlinger', 'brikk' ); ?>
 					</h2>
@@ -271,7 +273,7 @@
 								while ( $query->have_posts() ) {
 									$query->the_post();
 									$fields = get_post_custom();
-									//print_r($fields);
+									
 								?>
 								<div class="rz-col-4 rz-col-sm-12 rz-mb-3">
 									<div class="list_card">
@@ -294,7 +296,7 @@
 											</div>
 											<div class="list_desc rz-mt-3">
 												<?php echo mb_strimwidth($fields['post_content'][0],0,40,""); ?>
-												<a href="<?php the_permalink(); ?>">læs mere</a>
+												<a href="#" data-modal="listing_modal" data-listing-id="<?php echo get_the_ID();?>">læs mere</a>
 											</div>
 											<div class="red-text rz-mt-3 rz-text-right">
 												Book nu &rarr;
@@ -306,7 +308,7 @@
 									}
 									wp_reset_postdata();
 								} 
-
+								get_template_part('listing-modal');
 							?>
 					</div>
 				</div>

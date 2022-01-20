@@ -219,9 +219,42 @@ jQuery(document).ready(function () {
 
   };
 
+  jQuery('#author-page').slick({
+    dots: false,
+    infinite: true,
+    slidesToShow: 2,
+    arrows: true,
+    prevArrow: "<button class='slick-prev'></button>",
+    nextArrow: "<button class='slick-next'></button>",
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          arrows: true,
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      // {
+      //   breakpoint: 768,
+      //   settings: {
+      //     // slidesToShow: 2,
+      //     // slidesToScroll: 2
+      //   }
+      // },
+      {
+        breakpoint: 600,
+        settings: {
+          arrows: false,
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+
 });
 
 
-// jQuery(".pagination > .prev").text("Hello my world!");
-//
-// console.log(jQuery(".pagination > .prev"))
+

@@ -295,6 +295,35 @@ if (!empty($_POST['gallery_acc'])){
   update_field('rz_gallery', $new_gal, $listingID);
 }
 
+/**Listing Modal Content */
+
+if (!empty($_POST['ajax_get_listing'])){
+  $post = get_post($_POST['listing_id']);
+  $postImgID = json_decode(get_post_meta($post->ID,'rz_gallery')[0])[0]->id;
+  $imgUrl = wp_get_attachment_image_url($postImgID,'full',true);
+  $listingModalHTML = '<div class="rz-preloader-full rz-absolute">
+				<i class="fas fa-sync"></i>
+		  </div>
+    <a href="#" class="rz-close">
+      <i class="fas fa-times"></i>
+    </a>
+    <div class="h-350 rz-relative">
+        <img src="'.$imgUrl.'" alt="" class="rz-w-100 rz-h-100">
+        <div class="rz-absolute rz-bottom-0 rz-right-0 rz-mr-1 rz-mb-1"">
+          <a href="gallery"><button class="rz-button rz-button-border rz-small rz-bg-white">See alle fotos</button></a>
+        </div>
+    </div>
+    <div class="rz-modal-content">
+      <div class="rz-modal-container " id="listing_modal">
+        <div class="rz-heading">
+          <h4>'.$post->post_title.'</h4>
+        </div>
+        <div class="">'.
+          $post->post_content.'
+        </div>
+    </div>';
+  echo $listingModalHTML;      
+}
 
 /** Forward to location */
 if( isset( $_POST['location'] ) && $location = $_POST['location'] ){
