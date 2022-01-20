@@ -1268,7 +1268,7 @@ tabs css
   z-index: 1;
 }
 #author-page .slick-prev.slick-arrow{
-  top:50%;
+  top:44%;
   right: auto;
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
