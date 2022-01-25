@@ -37,7 +37,7 @@ if(!empty ($_POST['recurring_availability'])){
 
 if (!empty($_POST['add_post'])) {
     
-    $rz_time_availability = '[{"template":{"id":"period","name":"Period","heading":"name","heading_text":"Custom Period"},"fields":{"name":"Custom Period","key":"custom-period","start_time":"'.$_POST["start_time"].'","end_time":"'.$_POST["end_time"].'","duration":"'.$_POST["duration"].'","custom_duration_length":"","custom_duration_entity":"60","interval":"'.$_POST["interval"].'","custom_interval_length":"","custom_interval_entity":"60","recurring":"1","start":"","end":"","recurring_availability":'.$rec_str.',"price":"","price_weekend":"","limit":""}}]';
+    $rz_time_availability = '[{"template":{"id":"period","name":"Period","heading":"name","heading_text":"Custom Period"},"fields":{"name":"Custom Period","key":"custom-period","start_time":"'.$_POST["start_time"].'","end_time":"'.$_POST["end_time"].'","duration":"'.$_POST["duration"].'","custom_duration_length":"","custom_duration_entity":"60","interval":"'.$_POST["interval"].'","custom_interval_length":"","custom_interval_entity":"60","recurring":"1","start":"","end":"","recurring_availability":'.$rec_str.',"price":"","price_weekend":"","limit":"1"}}]';
     $rz_price_seasonal = '[{"template":{"id":"period","name":"Period","heading":"start","heading_text":"Discount"},"fields":{"start":"'.$_POST["start_discount"].'","end":"'.$_POST["end_discount"].'","price":"'.$_POST["price_discount"].'","price_weekend":""}}]';
 
     $listing_postarr = array(
@@ -322,7 +322,7 @@ if (!empty($_POST['ajax_get_listing'])){
           $post->post_content.'
         </div>
     </div>';
-  echo $listingModalHTML;      
+  echo $listingModalHTML; 
 }
 
 /** Forward to location */

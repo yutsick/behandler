@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php get_header(); 
+global $rz_listing;
+?>
 
 <div class="about__main author">
     <div class="container color-w">
@@ -199,7 +201,7 @@
 							foreach ($certs as $cert){ 
 								foreach($cert as $cert_year=>$cert_name){?>
 									
-												<li><?php echo $cert_name; ?><span class="tab-content_style__presentation-input-year"> (<?php echo $cert_year; ?>)</span></li>
+									<li><?php echo $cert_name; ?><span class="tab-content_style__presentation-input-year"> (<?php echo $cert_year; ?>)</span></li>
 
 							<?php 
 								}
@@ -299,7 +301,8 @@
 												<a href="#" data-modal="listing_modal" data-listing-id="<?php echo get_the_ID();?>">læs mere</a>
 											</div>
 											<div class="red-text rz-mt-3 rz-text-right">
-												Book nu &rarr;
+												<a href="#" data-modal="booking_modal">Book nu &rarr;</a>
+												
 											</div>
 										</div>
 									</div>
@@ -309,6 +312,7 @@
 									wp_reset_postdata();
 								} 
 								get_template_part('listing-modal');
+								include_once('templates/routiz/single/booking-modal.php');
 							?>
 					</div>
 				</div>
@@ -343,6 +347,7 @@
 	</div>
 </div>
 <!-- end -->
+
 <?php get_footer('registration'); ?>
 
 
