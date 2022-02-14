@@ -1,4 +1,4 @@
-<main class="brk-main">
+<main class="brk-main brikk/templates/content-page.php">
     <div class="brk-content">
         <article <?php post_class(); ?>>
 

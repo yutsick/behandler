@@ -10,7 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 	private static $_this;
-	public $retry_interval;
 
 	/**
 	 * Constructor.
@@ -20,8 +19,6 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 	 */
 	public function __construct() {
 		self::$_this = $this;
-
-		$this->retry_interval = 1;
 
 		add_action( 'wp', [ $this, 'maybe_process_redirect_order' ] );
 		add_action( 'woocommerce_order_status_processing', [ $this, 'capture_payment' ] );
@@ -215,6 +212,7 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 	 * @since 3.1.0
 	 * @version 4.0.0
 	 * @param  int $order_id
+	 * @return stdClass|void Result of payment capture.
 	 */
 	public function capture_payment( $order_id ) {
 		$order = wc_get_order( $order_id );
@@ -308,6 +306,7 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 
 				// This hook fires when admin manually changes order status to processing or completed.
 				do_action( 'woocommerce_stripe_process_manual_capture', $order, $result );
+				return $result;
 			}
 		}
 	}

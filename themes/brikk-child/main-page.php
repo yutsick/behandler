@@ -15,7 +15,7 @@ $args = array(
 ?>
 
 <?php get_header(); ?>
-<main class="brk-main">
+<main class="brk-main brikk-child/main-page.php">
     <div class="brk-content">
         <article <?php post_class(); ?>>
 

@@ -224,9 +224,7 @@ jQuery(function switch_certificate() {
 jQuery(function receiveNotifications() {
 
     let $receive_notif = $('#receive_notif');
-
     $($receive_notif).on('click', function () {
-
         $.ajax({
             url: '/form_wizard_step/',
             method: 'post',
@@ -240,33 +238,7 @@ jQuery(function receiveNotifications() {
             complete: function () {
                 $('.receive_notif  .rz-preloader').fadeTo('fast', 0.0);
             },
-
         });
     });
-
 });
 
-jQuery(function getListingModalData() {
-    let listing_ID = $("#author-page-listing .list_desc a");
-    $(listing_ID).on('click', function () {
-        $.ajax({
-            url: '/form_wizard_step/',
-            method: 'post',
-            data: {
-                ajax_get_listing: true,
-                listing_id: $(this).data("listing-id")
-            },
-            success: function (response) {
-                $('.rz-listing_modal').html(response);
-
-            },
-            beforeSend: function () {
-                $('.rz-listing_modal  .rz-preloader-full').fadeTo('fast', 1.0);
-            },
-            complete: function () {
-                $('.rz-listing_modal  .rz-preloader-full').fadeTo('fast', 0.0);
-            },
-        })
-        console.log($(this).data("listing-id"));
-    })
-})

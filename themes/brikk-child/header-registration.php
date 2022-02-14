@@ -14,4 +14,4 @@
 
 <?php wp_body_open(); ?>
 
-<div id="page" class="site" style="margin-top: -74px;">
+<div id="page" class="site brikk-child/header.php" style="margin-top: -74px;">

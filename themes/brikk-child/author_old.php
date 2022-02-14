@@ -24,105 +24,105 @@
 
 <?php
 
-						global $wpdb;
+	global $wpdb;
 
-						$author = get_queried_object();
-						$user = new \Routiz\Inc\Src\User( $author->ID );
-						$user_avatar = $user->get_avatar();
-						$user_cover = $user->get_cover();
-						$title = $author->display_name;
+	$author = get_queried_object();
+	$user = new \Routiz\Inc\Src\User( $author->ID );
+	$user_avatar = $user->get_avatar();
+	$user_cover = $user->get_cover();
+	$title = $author->display_name;
 
-						$listings_per_page = 6;
-						$current_page = isset( $_GET['onpage'] ) ? (int) $_GET['onpage'] : 1;
-						if( $current_page < 1 ) {
-							$current_page = 1;
-						}
+	$listings_per_page = 6;
+	$current_page = isset( $_GET['onpage'] ) ? (int) $_GET['onpage'] : 1;
+	if( $current_page < 1 ) {
+		$current_page = 1;
+	}
 
-						$listing_types = new \WP_Query([
-							'post_status' => 'publish',
-							'post_type' => 'rz_listing_type',
-							'posts_per_page' => -1,
-						]);
+	$listing_types = new \WP_Query([
+		'post_status' => 'publish',
+		'post_type' => 'rz_listing_type',
+		'posts_per_page' => -1,
+	]);
 
-						$args = [
-							'post_status' => 'publish',
-							'post_type' => 'rz_listing',
-							'author' => $author->ID,
-							'posts_per_page' => $listings_per_page,
-							'offset' => ( $current_page - 1 ) * $listings_per_page,
-						];
+	$args = [
+		'post_status' => 'publish',
+		'post_type' => 'rz_listing',
+		'author' => $author->ID,
+		'posts_per_page' => $listings_per_page,
+		'offset' => ( $current_page - 1 ) * $listings_per_page,
+	];
 
-						// set listing type by query string
-						if( isset( $_GET['type'] ) ) {
-							$listing_type = new \Routiz\Inc\Src\Listing_Type\Listing_Type( $_GET['type'] );
-							if( $listing_type->id ) {
-								$args['meta_query'] = [
-									[
-										'key' => 'rz_listing_type',
-										'value' => $listing_type->id,
-										'compare' => '=',
-									]
-								];
-							}
-						}
+	// set listing type by query string
+	if( isset( $_GET['type'] ) ) {
+		$listing_type = new \Routiz\Inc\Src\Listing_Type\Listing_Type( $_GET['type'] );
+		if( $listing_type->id ) {
+			$args['meta_query'] = [
+				[
+					'key' => 'rz_listing_type',
+					'value' => $listing_type->id,
+					'compare' => '=',
+				]
+			];
+		}
+	}
 
-						// set listing type by first
-						if( ! isset( $args['meta_query'] ) ) {
-							if( $listing_types->found_posts > 0 ) {
-								$args['meta_query'] = [
-									[
-										'key' => 'rz_listing_type',
-										'value' => $listing_types->posts[0]->ID,
-										'compare' => '=',
-									]
-								];
-							}
-						}
+	// set listing type by first
+	if( ! isset( $args['meta_query'] ) ) {
+		if( $listing_types->found_posts > 0 ) {
+			$args['meta_query'] = [
+				[
+					'key' => 'rz_listing_type',
+					'value' => $listing_types->posts[0]->ID,
+					'compare' => '=',
+				]
+			];
+		}
+	}
 
-						$listings = new \WP_Query( $args );
+	$listings = new \WP_Query( $args );
 
-						$author_posts = $wpdb->get_results(
-							$wpdb->prepare("
-									SELECT ID
-									FROM $wpdb->posts
-									WHERE post_status = 'publish'
-									AND post_type = 'rz_listing'
-									AND post_author = %d
-								",
-								$author->ID
-							)
-						);
+	$author_posts = $wpdb->get_results(
+		$wpdb->prepare("
+				SELECT ID
+				FROM $wpdb->posts
+				WHERE post_status = 'publish'
+				AND post_type = 'rz_listing'
+				AND post_author = %d
+			",
+			$author->ID
+		)
+	);
 
-						$comment_rating = '-';
-						$rating_count = 0;
+	$comment_rating = '-';
+	$rating_count = 0;
 
-						$author_post_ids = [];
-						foreach( $author_posts as $author_post ) {
-							$author_post_ids[] = $author_post->ID;
-						}
+	$author_post_ids = [];
+	foreach( $author_posts as $author_post ) {
+		$author_post_ids[] = $author_post->ID;
+	}
 
-						if( $author_post_ids ) {
+	if( $author_post_ids ) {
 
-							$comments = $wpdb->get_row("
-								SELECT *, m.meta_value as review_rating_average, SUM( m.meta_value ) as rating_sum, SUM( CASE WHEN m.meta_value THEN 1 ELSE 0 END ) as rating_count
-								FROM {$wpdb->comments} c
-									LEFT JOIN {$wpdb->prefix}commentmeta m ON m.comment_id = c.comment_ID AND m.meta_key = 'rz_rating_average'
-								WHERE comment_post_ID IN ( " . implode( ',', $author_post_ids ) . " )
-								AND comment_type = 'rz-review'
-								AND comment_approved = 1
-								AND comment_parent = 0
-							");
+		$comments = $wpdb->get_row("
+			SELECT *, m.meta_value as review_rating_average, SUM( m.meta_value ) as rating_sum, SUM( CASE WHEN m.meta_value THEN 1 ELSE 0 END ) as rating_count
+			FROM {$wpdb->comments} c
+				LEFT JOIN {$wpdb->prefix}commentmeta m ON m.comment_id = c.comment_ID AND m.meta_key = 'rz_rating_average'
+			WHERE comment_post_ID IN ( " . implode( ',', $author_post_ids ) . " )
+			AND comment_type = 'rz-review'
+			AND comment_approved = 1
+			AND comment_parent = 0
+		");
 
-							$rating_count = $comments->rating_count;
+		$rating_count = $comments->rating_count;
 
-							if( $comments->rating_sum and $comments->rating_count ) {
-								$comment_rating = number_format( $comments->rating_sum / $comments->rating_count, 2 );
-							}
+		if( $comments->rating_sum and $comments->rating_count ) {
+			$comment_rating = number_format( $comments->rating_sum / $comments->rating_count, 2 );
+		}
 
-						}
+	}
 
 
-					?>
+?>
 <div class="container-fluid bg-grey">
 	<div class="container">
 		<div class="rz-grid rz-align-start">
@@ -303,13 +303,13 @@
 <!-- end -->
 <?php get_footer('registration'); ?>
 
-
+<!-- Content brikk-child/author_old.php -->
 <div class="brk-container">
 
 	<?php get_template_part('templates/title'); ?>
 
 	<div class="brk-row">
-		<main class="brk-main">
+		<main class="brk-main brikk-child/author_old.php">
 			<div class="brk-content">
 
 				<?php if( function_exists('routiz') ): ?>
@@ -458,5 +458,5 @@
 		</main>
 	</div>
 </div>
-
-<?php get_footer();
+<!-- END Content brikk-child/author_old.php -->
+<?php gett_footer();

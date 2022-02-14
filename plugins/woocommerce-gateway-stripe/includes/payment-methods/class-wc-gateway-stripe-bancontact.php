@@ -11,6 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 4.0.0
  */
 class WC_Gateway_Stripe_Bancontact extends WC_Stripe_Payment_Gateway {
+
+	const ID = 'stripe_bancontact';
+
 	/**
 	 * Notices (array)
 	 *
@@ -57,7 +60,7 @@ class WC_Gateway_Stripe_Bancontact extends WC_Stripe_Payment_Gateway {
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->id           = 'stripe_bancontact';
+		$this->id           = self::ID;
 		$this->method_title = __( 'Stripe Bancontact', 'woocommerce-gateway-stripe' );
 		/* translators: link */
 		$this->method_description = sprintf( __( 'All other general Stripe settings can be adjusted <a href="%s">here</a>.', 'woocommerce-gateway-stripe' ), admin_url( 'admin.php?page=wc-settings&tab=checkout&section=stripe' ) );
@@ -273,7 +276,8 @@ class WC_Gateway_Stripe_Bancontact extends WC_Stripe_Payment_Gateway {
 			if ( $order->has_status(
 				apply_filters(
 					'wc_stripe_allowed_payment_processing_statuses',
-					[ 'pending', 'failed' ]
+					[ 'pending', 'failed' ],
+					$order
 				)
 			) ) {
 				$this->send_failed_order_email( $order_id );

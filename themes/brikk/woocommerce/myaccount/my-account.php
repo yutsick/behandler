@@ -26,7 +26,7 @@ do_action( 'woocommerce_account_navigation' ); ?>
 
 <?php Brk()->the_template('account/heading'); ?>
 
-<div class="woocommerce-MyAccount-content">
+<div class="woocommerce-MyAccount-content myaccount/my-account.php">
 	<?php
 		/**
 		 * My Account content.

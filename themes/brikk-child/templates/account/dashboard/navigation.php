@@ -1,6 +1,13 @@
-<?php
+<?php $user = wp_get_current_user();
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (get_the_author_meta('rz_role', $user->ID) == 'business'){
+        
+        // echo'/business';
+        // $url = '/business';
+        // wp_redirect( home_url() );
+        // exit; ?>
+
+<?php  if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -38,5 +45,16 @@ $dashboard_icons = apply_filters('routiz/account/navigation/icons', [
 		</ul>
 	</nav>
 </div> 
-
+<!-- END Sidebar -->
 <?php do_action( 'woocommerce_after_account_navigation' ); ?>
+        
+<?php }else if(get_the_author_meta('rz_role', $user->ID) == 'customer'){
+    
+        // echo'/customer';
+        // $url = '/customer';
+        // wp_redirect( home_url() );
+        // exit; ?>
+        
+<!-- Sidebar brikk-child/templates/account/dashboard/navigation.php -->
+	
+ <?php }  ?>

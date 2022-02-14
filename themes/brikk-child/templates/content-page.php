@@ -1,4 +1,5 @@
-<main class="brk-main">
+<!-- Content-page brikk-child/templates/account/dashboard/navigation.php --> 
+<main class="brk-main templates/content-page.php">
     <div class="brk-content">
         <article <?php post_class(); ?>>
 
@@ -248,3 +249,4 @@
         <?php comments_template(); ?>
     <?php endif; ?>
 </main>
+<!-- END Content-page brikk-child/templates/account/dashboard/navigation.php --> 

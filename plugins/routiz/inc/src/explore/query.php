@@ -13,7 +13,7 @@ class Query {
     public $page;
     public $query = [];
     public $meta_query = [
-        'relation' => 'OR',
+        'relation' => 'OR'
     ];
 
     function __construct() {
@@ -132,7 +132,6 @@ class Query {
             'post_type' => 'rz_listing',
             'posts_per_page' => $this->posts_per_page,
             'meta_query' => $this->meta_query,
-            
         ]);
 
         // dd( $this->query );

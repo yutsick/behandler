@@ -23,6 +23,22 @@ class WC_REST_Stripe_Account_Keys_Controller extends WC_Stripe_REST_Base_Control
 	protected $rest_base = 'wc_stripe/account_keys';
 
 	/**
+	 * The instance of the Stripe account.
+	 *
+	 * @var WC_Stripe_Account
+	 */
+	private $account;
+
+	/**
+	 * Constructor.
+	 *
+	 * @param WC_Stripe_Account $account The instance of the Stripe account.
+	 */
+	public function __construct( WC_Stripe_Account $account ) {
+		$this->account = $account;
+	}
+
+	/**
 	 * Configure REST API routes.
 	 */
 	public function register_routes() {
@@ -174,7 +190,11 @@ class WC_REST_Stripe_Account_Keys_Controller extends WC_Stripe_REST_Base_Control
 		$test_secret_key      = $request->get_param( 'test_secret_key' );
 		$test_webhook_secret  = $request->get_param( 'test_webhook_secret' );
 
-		$settings                         = get_option( self::STRIPE_GATEWAY_SETTINGS_OPTION_NAME, [] );
+		$settings = get_option( self::STRIPE_GATEWAY_SETTINGS_OPTION_NAME, [] );
+
+		// If all keys were empty, then is a new account; we need to set the test/live mode.
+		$new_account = ! trim( $settings['publishable_key'] ) && ! trim( $settings['secret_key'] ) && ! trim( $settings['test_publishable_key'] ) && ! trim( $settings['test_secret_key'] );
+
 		$settings['publishable_key']      = is_null( $publishable_key ) ? $settings['publishable_key'] : $publishable_key;
 		$settings['secret_key']           = is_null( $secret_key ) ? $settings['secret_key'] : $secret_key;
 		$settings['webhook_secret']       = is_null( $webhook_secret ) ? $settings['webhook_secret'] : $webhook_secret;
@@ -182,8 +202,20 @@ class WC_REST_Stripe_Account_Keys_Controller extends WC_Stripe_REST_Base_Control
 		$settings['test_secret_key']      = is_null( $test_secret_key ) ? $settings['test_secret_key'] : $test_secret_key;
 		$settings['test_webhook_secret']  = is_null( $test_webhook_secret ) ? $settings['test_webhook_secret'] : $test_webhook_secret;
 
-		update_option( self::STRIPE_GATEWAY_SETTINGS_OPTION_NAME, $settings );
+		if ( $new_account ) {
+			if ( trim( $settings['publishable_key'] ) && trim( $settings['secret_key'] ) ) {
+				$settings['testmode'] = 'no';
+			} else if ( trim( $settings['test_publishable_key'] ) && trim( $settings['test_secret_key'] ) ) {
+				$settings['testmode'] = 'yes';
+			}
+		}
 
-		return new WP_REST_Response( [], 200 );
+		update_option( self::STRIPE_GATEWAY_SETTINGS_OPTION_NAME, $settings );
+		$this->account->clear_cache();
+
+		// Gives an instant reply if the connection was succesful or not + rebuild the cache for the next request
+		$account = $this->account->get_cached_account_data();
+
+		return new WP_REST_Response( $account, 200 );
 	}
 }
