@@ -2,14 +2,17 @@
 
 global $rz_upcoming;
 
-
-
+$request = \Routiz\Inc\Src\Request\Request::instance();
+// $listing = new \Routiz\Inc\Src\Listing\Listing( $request->get('listing_id') );
+$listing = new \Routiz\Inc\Src\Listing\Listing( 3645 );
+$action = $listing->type->get_action('booking_appointments');
+echo $checkin_date;
 $appointment_key = 0;
 
 if( ! is_array( $rz_upcoming ) ) {
     return;
 }
-
+//print_r($rz_upcoming);
 echo '<div class="rz-appointment-table">';
 foreach( $rz_upcoming as $time ):
     foreach( $time as $appointment ): ?>

@@ -3,16 +3,17 @@
 use \Routiz\Inc\Src\Request\Request;
 use \Routiz\Inc\Src\Listing\Listing;
 use \Routiz\Inc\Src\Listing\Appointments;
+// $request = \Routiz\Inc\Src\Request\Request::instance();
+// // $listing = new \Routiz\Inc\Src\Listing\Listing( $request->get('listing_id') );
+// $listing = new \Routiz\Inc\Src\Listing\Listing( 3645 );
+// $action = $listing->type->get_action('booking_appointments');
 
 
-$request = \Routiz\Inc\Src\Request\Request::instance();
-// $listing = new \Routiz\Inc\Src\Listing\Listing( $request->get('listing_id') );
-$listing = new \Routiz\Inc\Src\Listing\Listing( 3645 );
-$action = $listing->type->get_action('booking_appointments');
 
-$rz_listing = new Listing( 3645 );
-$appointments = new Appointments( $rz_listing );
-$rz_upcoming = $appointments->get( $checkin_date, null, 1, $request->get('guests'), $request->get('addons') );
+// $rz_listing = new Listing( 3645 );
+// $appointments = new Appointments( $rz_listing );
+// $rz_upcoming = $appointments->get( $checkin_date, null, 1, $request->get('guests'), $request->get('addons') );
+
 global $rz_upcoming;
 global $rz_listing;
 
@@ -38,7 +39,7 @@ global $rz_listing;
         </div>
       </div>
 
-    <?php include_once('appointments.php'); ?>
+    <?php include_once('appointments-more.php'); ?>
 
     </div>
   </div>

@@ -42,14 +42,9 @@ $booking_action_types = [
                     $has_booking_action_type = true;
                 }
             }
-            echo ('bb ');
-            // print_r($action_type->fields);
-             print_r($action_type->template->id);
             $action->render( array_merge( (array) $action_type->fields, [
                 'type' => $action_type->template->id,
             ]));
-            
-
         }
 
     ?>

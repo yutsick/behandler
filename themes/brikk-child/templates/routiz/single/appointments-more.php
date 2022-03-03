@@ -7,8 +7,8 @@ use \Routiz\Inc\Src\Listing\Appointments;
 defined('ABSPATH') || exit;
 
 $request = Request::instance();
-$listing = new Listing( $request->get('listing_id') );
-
+// $listing = new Listing( $request->get('listing_id') );
+$listing = new Listing( 3645 );
 $action = $listing->type->get_action('booking_appointments');
 $checkin = $request->get('checkin');
 $page = max( 1, (int) $request->get('page') );
@@ -18,17 +18,17 @@ $checkin_date = null;
 if( $checkin ) {
     $checkin_date = new \DateTime( date( 'Y-m-d', $checkin ), $appointments->timezone );
 }
-
+$checkin_date = new \DateTime( date( 'Y-m-d', $checkin ), $appointments->timezone );
 $upcoming = $appointments->get( $checkin_date, 20, $page, $request->get('guests'), $request->get('addons') );
 
 $appointment_key = 0;
 
 $last_day = new \DateTime( date( 'Y-m-d' ), $appointments->timezone );
+
 $last_day->modify('today');
 
 ?>
 
-<div class="rz-modal-container rz-scrollbar">
     <div class="rz-appointment-table">
 
         <?php foreach( $upcoming as $time ): ?>
@@ -95,7 +95,7 @@ $last_day->modify('today');
         <?php endif; ?>
 
     </div>
-</div>
+
 
 <?php if( count( $upcoming ) >= 20 ): ?>
     <div class="rz-modal-footer rz--top-border rz-text-center">
