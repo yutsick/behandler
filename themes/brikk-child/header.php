@@ -10,7 +10,10 @@
 
 </head>
 
+
 <body <?php body_class(); ?>>
+
+<!--templates-->
 
 <?php wp_body_open(); ?>
 
