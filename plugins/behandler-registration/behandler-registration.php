@@ -186,7 +186,7 @@ function add_extra_social_links($user, $client)
     </p>
     <?php } else {
         if ($client == 'client'){ ?>
-            <input type="hidden" id="location" name="location" value="/my-account/">
+            <input type="hidden" id="location" name="location" value="/">
     <?php }
     }
     ?>

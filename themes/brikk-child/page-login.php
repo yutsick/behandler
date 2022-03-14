@@ -32,4 +32,71 @@ Template Post Type: page
 
     </div>
 </div>
+
+<?php 
+$user = wp_get_current_user();
+
+    if (get_the_author_meta('rz_role', $user->ID) == 'business'){
+        
+        // echo'/business';
+        // $url = '/business';
+        // wp_redirect( home_url() );
+        // exit;
+        
+        ?>
+            <script>
+                location.href = '<?php echo home_url(); ?>/my-account/';
+            </script>
+        
+        <?php
+     
+    }else if(get_the_author_meta('rz_role', $user->ID) == 'customer'){
+    
+        // echo'/customer';
+        // $url = '/customer';
+        // wp_redirect( home_url() );
+        // exit;
+        
+            ?>
+            <script>
+                location.href = '<?php echo home_url(); ?>/my-account/';
+            </script>
+        
+        <?php
+        
+    }
+
+
+
+if(0){
+    // echo'/home';
+    // $url = '/home';
+    // wp_redirect( home_url() );
+    // exit;
+    
+    
+        ?>
+        <script>
+            location.href = '<?php echo home_url(); ?>/homeeeeeee';
+        </script>
+    
+    <?php
+}
+
+// $current_user = wp_get_current_user();
+
+// echo '<pre>';
+// var_dump($current_user);
+// echo '</pre>';
+
+// if( $current_user->exists() ){
+// 	echo ' on. <br />';
+	
+	
+// 	echo 'Username: '         . $current_user->user_login     . '<br />';
+// }
+// else {
+// 	echo 'Не авторизован.';
+// }
+?>
 <?php get_footer('registration'); ?>

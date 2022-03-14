@@ -1,10 +1,10 @@
 === WooCommerce Stripe Payment Gateway ===
 Contributors: woocommerce, automattic, royho, akeda, mattyza, bor0, woothemes
 Tags: credit card, stripe, apple pay, payment request, google pay, sepa, sofort, bancontact, alipay, giropay, ideal, p24, woocommerce, automattic
-Requires at least: 4.6
-Tested up to: 5.7
-Requires PHP: 5.6
-Stable tag: 5.4.1
+Requires at least: 5.6
+Tested up to: 5.8
+Requires PHP: 7.0
+Stable tag: 6.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Attributions: thorsten-stripe
@@ -13,7 +13,7 @@ Take credit card payments on your store using Stripe.
 
 == Description ==
 
-Accept Visa, MasterCard, American Express, Discover, JCB, Diners Club, SEPA, Sofort, iDeal, Giropay, Alipay, and more directly on your store with the Stripe payment gateway for WooCommerce, including Apple Pay, Google Pay, and Microsoft Pay for mobile and desktop.
+Accept Visa, MasterCard, American Express, Discover, JCB, Diners Club, SEPA, Sofort, iDEAL, giropay, Alipay, and more directly on your store with the Stripe payment gateway for WooCommerce, including Apple Pay, Google Pay, and Microsoft Pay for mobile and desktop.
 
 = Take Credit card payments easily and directly on your store =
 
@@ -24,6 +24,7 @@ Stripe is available for Store Owners and Merchants in:
 * Australia
 * Austria
 * Belgium
+* Brazil
 * Bulgaria
 * Canada
 * Cyprus
@@ -77,6 +78,7 @@ WooCommerce Stripe includes [Apple Pay](https://woocommerce.com/apple-pay) suppo
 WooCommerce Stripe includes [Web Payments API](https://www.w3.org/TR/payment-request/) support, which means customers can pay using payment details associated to their mobile devices, in browsers supporting the Web Payments API (Chrome for Android, amongst others). Checkout is now just a few taps away on mobile. Only supports simple, variable, and Subscription products for now. More support to come.
 
 == Installation ==
+
 You can download an [older version of this gateway for older versions of WooCommerce from here](https://wordpress.org/plugins/woocommerce-gateway-stripe/developers/).
 
 Please note, v4 of this gateway requires WooCommerce 3.0 and above.
@@ -111,7 +113,7 @@ Yes, it does - production and Test (sandbox) mode is driven by the API keys you 
 
 = Where can I find documentation? =
 
-For help setting up and configuring, please refer to our [documentation](https://docs.woocommerce.com/document/stripe/).
+For help setting up and configuring, please refer to our [documentation](https://woocommerce.com/document/stripe/).
 
 = Where can I get support or talk to other users? =
 
@@ -126,7 +128,15 @@ If you get stuck, you can ask for help in the Plugin Forum.
 
 == Changelog ==
 
-= 5.4.1 - 2021-09-01 =
-* Fix - Get Subscription CustomerID from Order instead of User.
+= 6.0.0 - 2022-01-05 =
+* Fix - Fixed capitalization for payment method names: iDEAL, giropay, and Sofort.
+* Add - Text to explain how to enable webhooks when manually entering your API keys in the new Stripe settings.
+* Tweak - Redirect to the settings tab after an account is connected
+* Tweak - Prompt message when navigating out Stripe settings with unsaved changes
+* Tweak - Show toast when payment methods list is updated with new payment methods.
+* Fix - JS error on checkout when Boleto method was not active
+* Fix - Fixed bug that show "Use new payment method" on pay order page when there were no saved card was.
+* Tweak - Autocomplete for account keys and webhooks fields were disabled.
+* Fix - The settings page is not reloaded when the user enters invalid account keys.
 
 [See changelog for all versions](https://raw.githubusercontent.com/woocommerce/woocommerce-gateway-stripe/trunk/changelog.txt).

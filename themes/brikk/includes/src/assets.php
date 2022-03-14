@@ -45,14 +45,34 @@ class Assets {
         }
 
         $is_explore = ( function_exists('routiz') and Rz()->is_explore() ) ? Rz()->is_explore() : false;
-        if( ! $is_explore ) {
+      
+      
+         $userwp_get_current_user = wp_get_current_user();
 
-            $is_account = ( function_exists('is_account_page') and is_account_page() );
+        if(get_the_author_meta('rz_role', $userwp_get_current_user->ID) == 'business'){
 
-            if( $is_account and is_user_logged_in() ) {
-                $classes[] = 'brk-is-account-bar';
-            }
-        }
+          if( ! $is_explore ) {
+
+              $is_account = ( function_exists('is_account_page') and is_account_page() );
+
+              if( $is_account and is_user_logged_in() ) {
+
+
+                  $classes[] = 'brk-is-account-bar';
+
+
+              }
+          }
+
+
+       }else if(get_the_author_meta('rz_role', $userwp_get_current_user->ID) == 'customer'){
+
+
+       }
+
+
+      
+
 
         // header
         if( $header_style = get_option('rz_header_style') ) {

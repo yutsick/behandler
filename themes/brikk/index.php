@@ -2,10 +2,10 @@
 
 <?php global $wp_query; ?>
 
-<div class="brk-container">
+<div class="brk-container brikk/index.php">
 	<?php get_template_part('templates/title'); ?>
 	<div class="brk-row">
-		<main class="brk-main">
+		<main class="brk-main brikk/index.php">
 			<div class="brk-content">
 				<?php if( have_posts() ): ?>
 					<div class="brk-msnry">
